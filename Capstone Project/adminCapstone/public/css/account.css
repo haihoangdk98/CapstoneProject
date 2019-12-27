@@ -1,0 +1,20 @@
+.role{
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.traveler-button,.guider-button{
+    width: 150px;
+    cursor: pointer;
+}
+
+.guider-button{
+    margin-left: 1em;
+}
+
+#dataTable_length,#dataTable_filter,#dataTable_info,#dataTable_paginate,.dataTables_empty,#searchOutAccount{
+    display: none !important;
+}
+.hide-search {
+    display: none !important;
+}

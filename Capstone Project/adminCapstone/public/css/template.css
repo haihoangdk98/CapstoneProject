@@ -1,0 +1,79 @@
+.triggerA{
+    cursor: pointer;
+}
+.catNloc{
+    display: flex;
+}
+.category,.location{
+    width: 50%;
+}
+
+.addForm{
+    width: 400px;
+    position: relative; 
+    margin-top: 20px;
+}
+
+.locationForm {
+ width: 100%;
+ margin-top: 20px;
+}
+
+.locationForm_input{
+    width: 33%;
+    display: inline-block;
+}
+
+.addForm_Input{
+    width: 54%;
+    display: inline-block;
+}
+
+.addForm_Span{
+    position: absolute;
+    right:-70px;
+}
+
+.closeForm_Span{
+    position: absolute;
+    right:-140px;
+}
+.adminLogin{
+    background-color: #4e73df;
+    height: 1000px;
+}
+
+input[type="file"] {
+    display: none;
+}
+.categoryForm{
+    width:100%;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: #4e73df;
+    color: #fff;
+}
+
+.categoryForm{
+    width: 460px;
+    margin-top: 20px;
+}
+
+.selectDate{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.selectDate > span{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.fromDate,.toDate{
+    width: 200px;
+    display: inline-block;
+}
