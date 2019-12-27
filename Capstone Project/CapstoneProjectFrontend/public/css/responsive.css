@@ -1,0 +1,96 @@
+@media only screen and (max-width: 1024px){
+    .containerMain{
+        margin: 0 20px;
+    }
+
+    .navbar .menubar .navLeft{
+        width: 30%;
+    }
+
+    .navbar .menubar .navRight{
+        width: 70%;
+    }
+
+    .homeSlide .Title-e9h41{
+        width: 90%;
+    }
+
+    .slideContent{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .containerMain{
+        margin: 0 10px;
+    }
+    .navbarRightContent ul li, .navbarRightContent ul li:first-child{
+        width: 85px;
+    }
+
+    .navbarRightContent ul .noti li{
+        width: 60px;
+    }
+
+    .navbar .menubar .navLeft{
+        width: 18%;
+    }
+
+    .navbar .menubar .navRight{
+        width: 82%;
+    }
+
+    .homeSlide img{
+        height: 490px;
+    }
+
+    .homeSlide .Title-e9h41 h1{
+        font-size: 30px;
+    }
+
+    .slideContent{
+        width: 100% !important;
+    }
+
+    .Search-2ul6i, 
+    .Search-3ul6i label, 
+    .Search-3ul6i input[name="search"],
+    .Search-3ul6i{
+        width: 100%;
+    }
+
+    .Button-2i{
+        margin: auto;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 10px);
+    }
+
+    footer .footer-content{
+        width: 100%;
+        margin: 0 10px;
+    }
+
+    .socialMedia .webLogo{
+        font-size: 30px;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .webInfo div{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 320px){
+    .navbarRightContent ul li, .navbarRightContent ul li:first-child,
+    .navbarRightContent ul .noti, .navbarRightContent ul li:nth-child(1), .navbarRightContent ul li:nth-child(2), .navbarRightContent ul li:nth-child(3){
+        width: 54px;
+    }
+
+    .navbarRightContent ul li a{
+        font-size: 13px;
+    }
+
+
+}

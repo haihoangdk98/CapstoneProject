@@ -1,0 +1,214 @@
+.content{
+    margin: 0 auto;
+    width: 60%;
+    margin-top: 90px;
+}
+
+.h1-profile{
+    font-size: 36px;
+    color: #000;
+    margin-top: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.content-profile{
+    background-color: #fff;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    border: 1px solid #999;
+    padding: 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px -2px;
+    margin-bottom: 10%;
+}
+
+.information_Main{
+    width: 70%;
+    border-left: 1px solid #eaeaea;
+    padding-left: 15px;
+}
+
+.profile-image{  
+    height: auto;
+    margin: 0 auto;
+    width: 30%;
+    text-align: center;
+}
+
+.h1-introduce{
+    font-size: 32px;
+    color: #6fbe44;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.h2-introduce{
+    font-size: 32px;
+    color: #000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.h2-introduce::after{
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: #6fbe44;
+    margin: auto;
+    margin-top: 8px;
+}
+
+.profile-avatar{
+    border-radius: 100%;
+    border: 2px solid #6fbe44;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    min-width: 150px;
+    min-height: 150px;
+}
+
+.btn-changepic{
+    background: #6fbe44;
+    color: #fff;
+    font-size: 14px;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.profile-information{
+    margin: 0 auto;
+    width: 90%;
+    border-bottom: 1px #eaeaea solid;
+    padding-bottom: 35px;
+    margin-bottom: 35px;   
+}
+
+.boxInt{
+    margin-bottom: 5px;
+}
+
+.boxInt label{
+    display: inline-block;
+    width: 150px;
+    max-width: 150px;
+}
+
+.boxInt div{
+    display: inline-block;
+}
+
+.label-information{
+    color: #555;
+    margin: 15px 0;
+}
+
+.input-information{
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    width: calc(100% - 150px);
+    height: 38px;
+    padding: 4px 10px;
+}
+
+.form-control{
+    border: none;
+    border: 0.5px solid #ccc;
+    height: 33px;
+}
+
+.information_Main .form-control{
+    width: 100px;
+}
+
+.DOB{
+    border: none;
+    border-bottom: 0.5px solid #ccc;
+    margin-right: 10px;
+    min-width: 80px;
+}
+
+.country{
+    width: 400px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.languageOption{
+    height: 200px;
+    overflow-y: hidden;
+}
+
+.input-something{
+    width: 400px;
+    height: 35px;
+    border: none;
+    border: 1px #ccc solid;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+
+.last-information{
+    margin: 0 auto;
+    width: 90%;
+}
+
+.btn-save{
+    margin-top: 20px;
+    background: #6fbe44;
+    color: #fff;
+    font-size: 14px;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+#commentInTraveler{
+    width: 80%;
+    margin: 0 auto;
+}
+
+#subject {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+ #commentPFT {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }

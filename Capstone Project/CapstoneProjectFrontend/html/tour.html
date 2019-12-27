@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="./css/profile.css" rel="stylesheet" />
+    <link href="./css/tour.css" rel="stylesheet" />
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./js/profile.js"></script>
+    <script src="./js/tour.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- timepicker -->
+    <!-- end timepicker -->
+</head>
+
+<body>
+
+    <div id="reactContainer">
+        <!-- Menubar -->
+        <nav class="navbar">
+            <div class="menubar">
+                <div class="logoContainer">
+                    <a href="#"><i class="far fa-smile-wink"></i></a>
+                </div>
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Welcome to my website" name="search" class="searchInput"
+                            autocomplete="off">
+                    </label>
+                    <div class="fillter">
+                        <div class="filter-Content">
+                            <div class="localsOrExperience">
+                                <h3 class="explore">
+                                    Explore TravelWlocals
+                                </h3>
+                                <div class="button-group">
+                                    <button class="active">All</button>
+                                    <button>Locals</button>
+                                    <button>Experiences</button>
+                                </div>
+                            </div>
+                            <div class="popularDestination">
+                                <h3 id="popularLabel">Popular Destinations</h3>
+                                <ul>
+                                    <li><i class="fa fa-map-marker-alt"></i><a>Ha Noi</a></li>
+                                    <li><i class="fa fa-map-marker-alt"></i><a>Ho Chi Minh</a></li>
+                                    <li><i class="fa fa-map-marker-alt"></i><a>Da Nang</a></li>
+                                    <li><i class="fa fa-map-marker-alt"></i><a>Bac Ninh</a></li>
+                                    <li><i class="fa fa-map-marker-alt"></i><a>Da Lat</a></li>
+                                    <li><i class="fa fa-map-marker-alt"></i><a>Hue</a></li>
+                                    <li><i class="fa fa-map-marker-alt"></i><a>Vung Tau</a></li>
+                                    <li><i class="fa fa-map-marker-alt"></i><a>Hai Phong</a></li>
+                                    <li><i class="fa fa-map-marker-alt"></i><a>Phu Quoc</a></li>
+                                    <li><i class="fa fa-map-marker-alt"></i><a>Sapa</a></li>
+                                    <li><i class="fa fa-map-marker-alt"></i><a>Ca Mau</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbarRightContent">
+                    <ul>
+                        <li><a href="#">Become a host</a></li>
+                        <li><a href="#">Log in</a></li>
+                        <li><a href="#" class="signup">Sign up</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End MenuBar -->
+        <!--  Content  -->
+        <div class="content">
+            <div class="content-left">
+                <div class="book_block">
+                    <div class="experience_price">$45.00 per person</div>
+                    <div class="Rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        250 reviews
+                    </div>
+                    <div>
+                        <div class="DateSelector-2OYxm">
+                            <button class="Button-1bHL5 DropdownButton-1gKqn">
+                                <span class="CalendarIconContainer-2Gxrj">
+                                    <svg class="CalendarIcon-3Nhbh" width="16" height="20" viewBox="0 0 18 23">
+                                        <g>
+                                            <path
+                                                d="M17,19.8657336 L17,4.63426638 C17,3.87033675 16.4003614,3.25 15.678604,3.25 L2.32139605,3.25 C1.59963862,3.25 1,3.87033675 1,4.63426638 L1,19.8657336 C1,20.6296633 1.59963862,21.25 2.32139605,21.25 L15.678604,21.25 C16.4003614,21.25 17,20.6296633 17,19.8657336 Z M18,19.8657336 C18,21.174497 16.9603822,22.25 15.678604,22.25 L2.32139605,22.25 C1.03961782,22.25 8.34368004e-16,21.174497 8.34368004e-16,19.8657336 L8.34368004e-16,4.63426638 C8.34368004e-16,3.32550299 1.03961782,2.25 2.32139605,2.25 L15.678604,2.25 C16.9603822,2.25 18,3.32550299 18,4.63426638 L18,19.8657336 Z">
+                                            </path>
+                                            <path
+                                                d="M4,0.5 C4,0.223857625 4.22385763,-9.71445147e-16 4.5,-9.71445147e-16 C4.77614237,-9.71445147e-16 5,0.223857625 5,0.5 L5,5.5 C5,5.77614237 4.77614237,6 4.5,6 C4.22385763,6 4,5.77614237 4,5.5 L4,0.5 Z">
+                                            </path>
+                                            <path
+                                                d="M13,0.5 C13,0.223857625 13.2238576,-3.1918912e-15 13.5,-3.1918912e-15 C13.7761424,-3.1918912e-15 14,0.223857625 14,0.5 L14,5.5 C14,5.77614237 13.7761424,6 13.5,6 C13.2238576,6 13,5.77614237 13,5.5 L13,0.5 Z">
+                                            </path>
+                                            <polygon points="0.5 9.25 0.5 8.25 17.5 8.25 17.5 9.25"></polygon>
+                                        </g>
+                                    </svg>
+                                </span>
+                                <span id="btn-calendar" class="ButtonText-xoSvS"> 10-10-2019 </span>
+                                <svg class="ChevronIcon-1tmys" width="9" height="5" viewBox="0 0 15 9">
+                                    <path
+                                        d="M7.5,5.66602416 L2.43674491,0.431396522 C1.9082727,-0.114962532 1.01849523,-0.14659907 0.449371305,0.360734337 C-0.119752618,0.868067744 -0.15270734,1.72225426 0.375764875,2.26861331 L6.46950998,8.56860926 C7.02586699,9.14379691 7.97413301,9.14379691 8.53049002,8.56860926 L14.6242351,2.26861331 C15.1527073,1.72225426 15.1197526,0.868067744 14.5506287,0.360734337 C13.9815048,-0.14659907 13.0917273,-0.114962532 12.5632551,0.431396522 L7.5,5.66602416 Z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <input type="text" id="text-calendar" class="calendar" />
+
+                        </div>
+                        <div class="numberTravel">
+                            <span>
+                                <span class="PeopleSelector-3cPTh">
+                                    <button class="Button-1bHL5 DropdownButton-15Fja" id="Button-1bHL6">
+                                        <span class="ProfileIconContainer-3Xala">
+                                            <svg class="ProfileIcon-3FvCp" width="16" height="16" viewBox="0 0 20 23">
+                                                <g>
+                                                    <path
+                                                        d="M15.414094,6.65663665 C15.414094,3.52796224 12.9882716,1 10.0062103,1 C7.02509025,1 4.59942235,3.52812516 4.59942235,6.65663665 C4.59942235,9.78514815 7.02509025,12.3132733 10.0062103,12.3132733 C12.9882716,12.3132733 15.414094,9.78531106 15.414094,6.65663665 Z M16.4126481,6.65663665 C16.4126481,10.3285794 13.5485479,13.3132733 10.0047644,13.3132733 C6.46189225,13.3132733 3.59797646,10.3283892 3.59797646,6.65663665 C3.59797646,2.9848841 6.46189225,0 10.0047644,0 C13.5485479,0 16.4126481,2.98469387 16.4126481,6.65663665 Z">
+                                                    </path>
+                                                    <path
+                                                        d="M1.01540138,21.9992828 C1.19144555,18.0419836 3.44634003,14.5899302 6.73724542,13.1335217 C6.98976422,13.0217681 7.10387696,12.726467 6.99212337,12.4739482 C6.88036977,12.2214294 6.58506864,12.1073166 6.33254984,12.2190702 C2.53516372,13.8996246 0.00429829063,17.9459179 0.00429829063,22.4992828 L0.00429829063,22.9992828 L20.003133,22.9992828 L20.003133,22.4992828 C20.003133,17.9435721 17.4710994,13.897152 13.6713661,12.2178274 C13.4187915,12.1062 13.1235474,12.2204602 13.0119199,12.4730347 C12.9002924,12.7256093 13.0145526,13.0208534 13.2671272,13.1324809 C16.5600972,14.5878371 18.8160013,18.0399474 18.9920364,21.9992828 L1.01540138,21.9992828 Z">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <span class="ButtonText-3rr6g">4 Adults</span>
+                                        <svg class="ChevronIcon-1tmys" width="9" height="5" viewBox="0 0 15 9">
+                                            <path
+                                                d="M7.5,5.66602416 L2.43674491,0.431396522 C1.9082727,-0.114962532 1.01849523,-0.14659907 0.449371305,0.360734337 C-0.119752618,0.868067744 -0.15270734,1.72225426 0.375764875,2.26861331 L6.46950998,8.56860926 C7.02586699,9.14379691 7.97413301,9.14379691 8.53049002,8.56860926 L14.6242351,2.26861331 C15.1527073,1.72225426 15.1197526,0.868067744 14.5506287,0.360734337 C13.9815048,-0.14659907 13.0917273,-0.114962532 12.5632551,0.431396522 L7.5,5.66602416 Z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </span>
+                            </span>
+                            <div class="viewNumberTravel">
+                                <div class="adult"> Adults
+                                    <div class="plusAndMinus">
+                                        <i class="fas fa-minus-circle"></i>&nbsp1&nbsp<i class="fas fa-plus-circle"></i>
+                                    </div>
+                                </div>
+                                <div class="children"> Children
+                                    <div class="plusAndMinus">
+                                        <i class="fas fa-minus-circle"></i>&nbsp1&nbsp<i class="fas fa-plus-circle"></i>
+                                    </div>
+                                </div>
+                                <p>€223 per person</p>
+                                <a href="javascript:void(0)">Apply</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="LocalInfo-3-Zrh">
+                        <div class="LocalImages-1fJRM">
+                            <img alt=""
+                                src="https://withlocals-com-res.cloudinary.com/image/upload/w_56,h_56,c_fill,g_auto,q_auto,dpr_1.0,f_auto/49726c5301c4720ed18497075cd753cd"
+                                width="56" height="56" class="LocalAvatar-2w9Nv">
+                            <img alt=""
+                                src="https://withlocals-com-res.cloudinary.com/image/upload/w_56,h_56,c_fill,g_auto,q_auto,dpr_1.0,f_auto/502ed371a533beceb145d4f52c96bd7c"
+                                width="56" height="56" class="LocalAvatar-2w9Nv">
+                        </div>
+                        <div class="LocalInfoText-2C1wz">
+                            <span>
+                                <span data-translatekey="ExperiencePage.Footer.pickALocal">Pick one of the <span
+                                        class="HighlightedText-1qv83">7</span> locals available on this tour
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="BookButtonContainer-8-YC2">
+                        <button class="Button-2iSbC Gradient-9mayK FullWidth-pJfgw Large-1e1rx">Pick your favorite local
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="intro">
+                    <ol class="Breadcrumbs">
+                        <li class="ListItem"><a class="Link-3Z1kp" href="#"><span>Viet Nam</span></a>›</li>
+                        <li class="ListItem"><a class="Link-3Z1kp" href="#"><span>Ha Noi</span></a>›</li>
+                        <li class="#"><a class="Link-3Z1kp" href="#"><span>Tours</span></a>›</li>
+                        <li class="ListItem"><a class="Link-3Z1kp" href="#"><span>Food tours</span></a>›</li>
+                        <li class="ListItem"><span>HaNoi's Favorite Food Tour: 10 tastings</span></li>
+                    </ol>
+                    <video controls>
+                        <source src="./video/Food_Tour-1_m8apyj.webm" type="video/mp4">
+                    </video>
+                    <h2 class="titleTour">HaNoi's Favorite Food Tour: the 10 Tastings</h2>
+                    <p class="introduceTour">
+                        Ready to taste the best food in Lisbon? Get your taste buds dancing during the most
+                        delicious Lisbon food tour in town! Together with your foodie insider, enjoy 10
+                        delicious tastings, and food memories to last you a lifetime. What are you waiting
+                        for? Tasty local food awaits!
+                    </p>
+                </div>
+                <div class="activities">
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i><span>Ha Noi</span></li>
+                        <li><i class="fas fa-pizza-slice"></i><span>Food tour</span></li>
+                        <li><i class="fas fa-hourglass-end"></i></i><span>3 hours</span></li>
+                        <li><i class="fas fa-walking"></i><span>Walking tour</span></li>
+                        <li><i class="fas fa-users"></i></i><span>Private tour. Only you and your host</span></li>
+                    </ul>
+                    <i class="fas fa-sticky-note"></i><span><strong>Including:</strong>Private guide • 8 tastings and 2
+                        drinks • 2 alcoholic drinks</span>
+                </div>
+
+                <div class="activities reason">
+                    <h2>6 reasons to book this tour</h2>
+                    <ul>
+                        <li><i class="fas fa-check"></i>
+                            <p>Visit the charming old village of Sintra</p>
+                        </li>
+                        <li><i class="fas fa-check"></i>
+                            <p>Discover all the mysteries of Regaleira Palace and Gardens</p>
+                        </li>
+                        <li><i class="fas fa-check"></i>
+                            <p>Be amazed by the Arabic-style Monserrate Palace</p>
+                        </li>
+                        <li><i class="fas fa-check"></i>
+                            <p>Visit the most westerly point of Europe</p>
+                        </li>
+                        <li><i class="fas fa-check"></i>
+                            <p>100% personalized to your wishes</p>
+                        </li>
+                        <li><i class="fas fa-check"></i>
+                            <p>Discover the laid back seaside town of Cascais</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- slideshow -->
+                <div class="slideshow">
+                    <div class="slideshow-container">
+                        <h2>What you can expect</h2>
+                        <div class="mySlides fade">
+                            <img src="img/natural1.jpg">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <img src="img/nature2.jpg">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <img src="img/nature3.jpg">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="img/nature4.jpg">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="img/nature5.jpg">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="img/nature6.jpg">
+                        </div>
+
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                    </div>
+                    <br>
+
+                    <div class="navigation" style="text-align:center ; margin-bottom: 30px">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                        <span class="dot" onclick="currentSlide(6)"></span>
+                    </div>
+
+                    <div class="readMoreText expect">
+                        <div id="section">
+                            <div class="slideshow">
+                                <p>The best way to make the most out of your stay. Enjoy the city like and with a local.
+                                    Lisbon is a mix of wonderful architecture, lively streets, and colorful sights. Get
+                                    answers to all questions and the best recommendations from your local insider!
+                                </p>
+                                <p class="moretext">
+                                    Hop from town to town discovering monuments and fascinating stories. Go to Óbidos
+                                    and step back in time at this medieval town. Not only you will see UNESCO heritage
+                                    monuments, you'll also have a taste of the best 'ginginja' in Portugal!
+                                </p>
+                                <p class="moretext">
+                                    Follow the pilgrimage road that leads to Fátima. Discover its fascinating story and
+                                    the
+                                    reason why many people decide to visit this town for religious reasons and
+                                    blessings.
+                                </p>
+                            </div>
+                            <a class="moreless-button" href="javascript:void(0)">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end slideshow -->
+
+                <!-- plan -->
+                <div class="plan">
+                    <h2>This is plan</h2>
+                    <p>Check out the plan below to see what you'll get up to with your local host.</p>
+                    </p> Feel free to personalize this offer.</p>
+                    <div style="margin-bottom: 30px"></div>
+                    <div class="meetPoint">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="detailPlan">
+                            <h4>Meeting point</h4>
+                            <p>Curry 36 - Berlin</p>
+                        </div>
+
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-circle"></i>
+                        <div class="detailPlan">
+                            <h4>Classic Currywurst</h4>
+                            <p>Try it from a place with 35 years of tradition that became a culinary Berliner
+                                institution.</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-circle"></i>
+                        <div class="detailPlan">
+                            <h4>Schaumkuss</h4>
+                            <p>Try a delicious sweet treat</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-circle"></i>
+                        <div class="detailPlan">
+                            <h4>A sweet Berliner (Pfannkuchen)</h4>
+                            <p>A Withlocals favorite that you will not forget!</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-circle"></i>
+                        <div class="detailPlan">
+                            <h4>Leberkäse mit Semmel</h4>
+                            <p>A hearty portion of a German specialty</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-circle"></i>
+                        <div class="detailPlan">
+                            <h4>Kartoffelpuffer</h4>
+                            <p>Authentic German street-food, prepared for 30 years, daily, by the same chef.</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-circle"></i>
+                        <div class="detailPlan">
+                            <h4>Original German Berlin beer</h4>
+                            <p>Time for a refreshment!</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-circle"></i>
+                        <div class="detailPlan">
+                            <h4>Berlin-style Boulette</h4>
+                            <p>Taste a Berlin-style Boulette served by an imbiss run by locals.</p>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-circle"></i>
+                        <div class="detailPlan">
+                            <h4>Baklava</h4>
+                            <p>Oriental sweets to enjoy the tour on a sweet note!/p>
+                        </div>
+                    </div>
+                    <button>Contact me to personalize this for you</button>
+                </div>
+                <!-- end plan -->
+
+                <!-- good to know  -->
+                <div class="activities reason shouldKnow">
+                    <h2>6 reasons to book this tour</h2>
+                    <ul>
+                        <h3>What's included</h3>
+                        <li><i class="fas fa-check"></i>
+                            <p>Private guide</p>
+                        </li>
+                        <li><i class="fas fa-check"></i>
+                            <p>8 local food tastings</p>
+                        </li>
+                        <li><i class="fas fa-check"></i>
+                            <p>2 alcoholic drinks: beer, local drinks</p>
+                        </li>
+                    </ul>
+                    <ul>
+                        <h3>Cancellation</h3>
+                        <li><i class="fas fa-check"></i>
+                            <p>Free cancellation up to 14 days before experience date</p>
+                        </li>
+                        <li><i class="fas fa-times"></i>
+                            <p>No refunds within 14 days of experience date.</p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end good to know -->
+
+                <!-- List review -->
+                <ul class="listReview">
+                    <h2>Reviews</h2>
+                    <li>
+                        <div class="review">
+                            <div class="reviewContainer">
+                                <img class="defaultLogo" src="./img/defaultAvatarComment.webp" alt="logo">
+                                <div class="reviewInfo">
+                                    <div class="nickName">AnnaBanana</div>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="dateComment">1 October 2019</div>
+                                </div>
+                                <div class="commentDetails">
+                                    You can go to a city and explore it one time, two times, maybe even lucky enough
+                                    to go
+                                    three times. You can research that city on the internet and get so much
+                                    information.
+                                    But, you will never know a city the way a local knows their city. Laura showed
+                                    us so
+                                    many hidden treasures in Barcelona that were not on the internet. We were with
+                                    her for
+                                    only three hours. Yet we saw so much and learned so much about Barcelona and
+                                    Spain in
+                                    that short period of time. Laura is an amazing guide. Her English is easy to
+                                    understand.
+                                    And she is truly a friendly, knowledgable person.
+                                </div>
+                                <span class="reviewTitle">Laura The Local!</span>
+                            </div>
+                        </div>
+                    </li>
+                    </div>
+
+
+                    <li>
+                        <div class="review">
+                            <div class="reviewContainer">
+                                <img class="defaultLogo" src="./img/defaultAvatarComment.webp" alt="logo">
+                                <div class="reviewInfo">
+                                    <div class="nickName">AnnaBanana</div>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="dateComment">1 October 2019</div>
+                                </div>
+                                <div class="commentDetails">
+                                    You can go to a city and explore it one time, two times, maybe even lucky enough
+                                    to go
+                                    three times. You can research that city on the internet and get so much
+                                    information.
+                                    But, you will never know a city the way a local knows their city. Laura showed
+                                    us so
+                                    many hidden treasures in Barcelona that were not on the internet. We were with
+                                    her for
+                                    only three hours. Yet we saw so much and learned so much about Barcelona and
+                                    Spain in
+                                    that short period of time. Laura is an amazing guide. Her English is easy to
+                                    understand.
+                                    And she is truly a friendly, knowledgable person.
+                                </div>
+                                <span class="reviewTitle">Laura The Local!</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="review">
+                            <div class="reviewContainer">
+                                <img class="defaultLogo" src="./img/defaultAvatarComment.webp" alt="logo">
+                                <div class="reviewInfo">
+                                    <div class="nickName">AnnaBanana</div>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="dateComment">1 October 2019</div>
+                                </div>
+                                <div class="commentDetails">
+                                    You can go to a city and explore it one time, two times, maybe even lucky enough
+                                    to go
+                                    three times. You can research that city on the internet and get so much
+                                    information.
+                                    But, you will never know a city the way a local knows their city. Laura showed
+                                    us so
+                                    many hidden treasures in Barcelona that were not on the internet. We were with
+                                    her for
+                                    only three hours. Yet we saw so much and learned so much about Barcelona and
+                                    Spain in
+                                    that short period of time. Laura is an amazing guide. Her English is easy to
+                                    understand.
+                                    And she is truly a friendly, knowledgable person.
+                                </div>
+                                <span class="reviewTitle">Laura The Local!</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="review">
+                            <div class="reviewContainer">
+                                <img class="defaultLogo" src="./img/defaultAvatarComment.webp" alt="logo">
+                                <div class="reviewInfo">
+                                    <div class="nickName">AnnaBanana</div>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="dateComment">1 October 2019</div>
+                                </div>
+                                <div class="commentDetails">
+                                    You can go to a city and explore it one time, two times, maybe even lucky enough
+                                    to go
+                                    three times. You can research that city on the internet and get so much
+                                    information.
+                                    But, you will never know a city the way a local knows their city. Laura showed
+                                    us so
+                                    many hidden treasures in Barcelona that were not on the internet. We were with
+                                    her for
+                                    only three hours. Yet we saw so much and learned so much about Barcelona and
+                                    Spain in
+                                    that short period of time. Laura is an amazing guide. Her English is easy to
+                                    understand.
+                                    And she is truly a friendly, knowledgable person.
+                                </div>
+                                <span class="reviewTitle">Laura The Local!</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="review">
+                            <div class="reviewContainer">
+                                <img class="defaultLogo" src="./img/defaultAvatarComment.webp" alt="logo">
+                                <div class="reviewInfo">
+                                    <div class="nickName">AnnaBanana</div>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="dateComment">1 October 2019</div>
+                                </div>
+                                <div class="commentDetails">
+                                    You can go to a city and explore it one time, two times, maybe even lucky enough
+                                    to go
+                                    three times. You can research that city on the internet and get so much
+                                    information.
+                                    But, you will never know a city the way a local knows their city. Laura showed
+                                    us so
+                                    many hidden treasures in Barcelona that were not on the internet. We were with
+                                    her for
+                                    only three hours. Yet we saw so much and learned so much about Barcelona and
+                                    Spain in
+                                    that short period of time. Laura is an amazing guide. Her English is easy to
+                                    understand.
+                                    And she is truly a friendly, knowledgable person.
+                                </div>
+                                <span class="reviewTitle">Laura The Local!</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="review">
+                            <div class="reviewContainer">
+                                <img class="defaultLogo" src="./img/defaultAvatarComment.webp" alt="logo">
+                                <div class="reviewInfo">
+                                    <div class="nickName">AnnaBanana</div>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="dateComment">1 October 2019</div>
+                                </div>
+                                <div class="commentDetails">
+                                    You can go to a city and explore it one time, two times, maybe even lucky enough
+                                    to go
+                                    three times. You can research that city on the internet and get so much
+                                    information.
+                                    But, you will never know a city the way a local knows their city. Laura showed
+                                    us so
+                                    many hidden treasures in Barcelona that were not on the internet. We were with
+                                    her for
+                                    only three hours. Yet we saw so much and learned so much about Barcelona and
+                                    Spain in
+                                    that short period of time. Laura is an amazing guide. Her English is easy to
+                                    understand.
+                                    And she is truly a friendly, knowledgable person.
+                                </div>
+                                <span class="reviewTitle">Laura The Local!</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="review">
+                            <div class="reviewContainer">
+                                <img class="defaultLogo" src="./img/defaultAvatarComment.webp" alt="logo">
+                                <div class="reviewInfo">
+                                    <div class="nickName">AnnaBanana</div>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="dateComment">1 October 2019</div>
+                                </div>
+                                <div class="commentDetails">
+                                    You can go to a city and explore it one time, two times, maybe even lucky enough
+                                    to go
+                                    three times. You can research that city on the internet and get so much
+                                    information.
+                                    But, you will never know a city the way a local knows their city. Laura showed
+                                    us so
+                                    many hidden treasures in Barcelona that were not on the internet. We were with
+                                    her for
+                                    only three hours. Yet we saw so much and learned so much about Barcelona and
+                                    Spain in
+                                    that short period of time. Laura is an amazing guide. Her English is easy to
+                                    understand.
+                                    And she is truly a friendly, knowledgable person.
+                                </div>
+                                <span class="reviewTitle">Laura The Local!</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="review">
+                            <div class="reviewContainer">
+                                <img class="defaultLogo" src="./img/defaultAvatarComment.webp" alt="logo">
+                                <div class="reviewInfo">
+                                    <div class="nickName">AnnaBanana</div>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="dateComment">1 October 2019</div>
+                                </div>
+                                <div class="commentDetails">
+                                    You can go to a city and explore it one time, two times, maybe even lucky enough
+                                    to go
+                                    three times. You can research that city on the internet and get so much
+                                    information.
+                                    But, you will never know a city the way a local knows their city. Laura showed
+                                    us so
+                                    many hidden treasures in Barcelona that were not on the internet. We were with
+                                    her for
+                                    only three hours. Yet we saw so much and learned so much about Barcelona and
+                                    Spain in
+                                    that short period of time. Laura is an amazing guide. Her English is easy to
+                                    understand.
+                                    And she is truly a friendly, knowledgable person.
+                                </div>
+                                <span class="reviewTitle">Laura The Local!</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- Load Review button -->
+                <div class="commentButton">
+                    <div id="loadMore">Show more reviews</div>
+                    <div id="showLess">Hide less reviews</div>
+                </div>
+                <!-- End Review -->
+
+            </div>
+
+        </div>
+
+        </script>
+        <div class="bookOffers tourversion">
+            <h2>Other things to do in Ha Noi</h2>
+            <ul>
+                <li>
+                    <div class="sheet">
+                        <button class="unlike">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="like">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div class="imageFigure">
+                            <img src="./img/1.jpg" alt="logo" width="42" height="42">
+                        </div>
+                        <div class="experienceCard-details">
+                            <div class="experienceAvatarCardContainer">
+                                <div class="experienceAvatarCard1">
+                                    <img src="./img/2.jpg" alt="logo" width="64" height="64">
+                                </div>
+                                <div class="experienceAvatarCard2">
+                                    <img src="./img/3.jpg" alt="logo" width="64" height="64">
+                                </div>
+                                <div class="localAvailable">7 others locals available</div>
+                            </div>
+                            <span class="enjoy">Enjoy Hanoi with <span class="withName">Amadio</span></span>
+                            <h3 class="">Mysteries of Regaleira: Sintra</h3>
+                            <div class="price">
+                                <span>$57.50 pp</span>
+                                <span class="experienceCard-topDetails-bullet">&#9679;</span>
+                                <span class="experienceCard-topDetails-duration">8 hours</span>
+                                <span class="experienceCard-topDetails-bullet"> &#9679;</span>
+                                <span data-translatekey="Experience.SubcategoryOrTag.day-trip">Day
+                                    trip</span>
+                            </div>
+                            <div class="experienceCard-bottomDetails">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="colorShared">1249 |</span>
+                                <span class="colorShared"><i class="fas fa-bolt"></i> |</span>
+                                <span class="colorShared"><i class="fas fa-car"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sheet">
+                        <button class="unlike">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="like">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div class="imageFigure">
+                            <img src="./img/1.jpg" alt="logo" width="42" height="42">
+                        </div>
+                        <div class="experienceCard-details">
+                            <div class="experienceAvatarCardContainer">
+                                <div class="experienceAvatarCard1">
+                                    <img src="./img/2.jpg" alt="logo" width="64" height="64">
+                                </div>
+                                <div class="experienceAvatarCard2">
+                                    <img src="./img/3.jpg" alt="logo" width="64" height="64">
+                                </div>
+                                <div class="localAvailable">7 others locals available</div>
+                            </div>
+                            <span class="enjoy">Enjoy Hanoi with <span class="withName">Amadio</span></span>
+                            <h3 class="">Mysteries of Regaleira: Sintra</h3>
+                            <div class="price">
+                                <span>$57.50 pp</span>
+                                <span class="experienceCard-topDetails-bullet">&#9679;</span>
+                                <span class="experienceCard-topDetails-duration">8 hours</span>
+                                <span class="experienceCard-topDetails-bullet"> &#9679;</span>
+                                <span data-translatekey="Experience.SubcategoryOrTag.day-trip">Day
+                                    trip</span>
+                            </div>
+                            <div class="experienceCard-bottomDetails">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="colorShared">1249 |</span>
+                                <span class="colorShared"><i class="fas fa-bolt"></i> |</span>
+                                <span class="colorShared"><i class="fas fa-car"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sheet">
+                        <button class="unlike">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="like">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div class="imageFigure">
+                            <img src="./img/1.jpg" alt="logo" width="42" height="42">
+                        </div>
+                        <div class="experienceCard-details">
+                            <div class="experienceAvatarCardContainer">
+                                <div class="experienceAvatarCard1">
+                                    <img src="./img/2.jpg" alt="logo" width="64" height="64">
+                                </div>
+                                <div class="experienceAvatarCard2">
+                                    <img src="./img/3.jpg" alt="logo" width="64" height="64">
+                                </div>
+                                <div class="localAvailable">7 others locals available</div>
+                            </div>
+                            <span class="enjoy">Enjoy Hanoi with <span class="withName">Amadio</span></span>
+                            <h3 class="">Mysteries of Regaleira: Sintra</h3>
+                            <div class="price">
+                                <span>$57.50 pp</span>
+                                <span class="experienceCard-topDetails-bullet">&#9679;</span>
+                                <span class="experienceCard-topDetails-duration">8 hours</span>
+                                <span class="experienceCard-topDetails-bullet"> &#9679;</span>
+                                <span data-translatekey="Experience.SubcategoryOrTag.day-trip">Day
+                                    trip</span>
+                            </div>
+                            <div class="experienceCard-bottomDetails">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="colorShared">1249 |</span>
+                                <span class="colorShared"><i class="fas fa-bolt"></i> |</span>
+                                <span class="colorShared"><i class="fas fa-car"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--  End Content  -->
+        <footer>
+            <div class="footer-content">
+                <div class="socialMedia">
+                    <div class="webLogo">
+                        <a href="#"><i class="far fa-smile-wink"></i></a>
+                        Travel
+                    </div>
+                    <ul class="socialMediaList">
+                        <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="#"><i class="fab fa-pinterest-square"></i></a></li>
+                        <li><a href="#"><i class="fab fa-facebook-messenger"></i></a></li>
+                    </ul>
+                </div>
+                <div class="webInfo">
+                    <div>
+                        <h4>Contact us</h4>
+                        <ul>
+                            <li><a>Phone:0969449743</a></li>
+                            <li><a>Mail:Longthse04935@fpt.edu.vn</a></li>
+                            <li><a>Help</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a>Help Center for hosts</a></li>
+                            <li><a>Help Center for travelers</a></li>
+                            <li><a>Pravicy Policy</a></li>
+                            <li><a>Term and Conditions</a></li>
+                            <li><a>Cancelation policy for guests</a></li>
+                            <li><a>Cancelation policy for hosts</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>How to partner</h4>
+                        <ul>
+                            <li><a>Become a host</a></li>
+                            <li><a>Become a partner</a></li>
+                            <li><a>Become an ambassador</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>About my web</h4>
+                        <ul>
+                            <li><a>Our story</a></li>
+                            <li><a>Jobs</a></li>
+                            <li><a>Press</a></li>
+                            <li><a>Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+        </footer>
+    </div> -->
+
+</body>
+
+</html>

@@ -1,0 +1,265 @@
+2019-Dec-26 09:30:34 ERROR [http-nio-8080-exec-6] s.TokenHelper - Identified token io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-12-25T19:26:13Z. Current time: 2019-12-26T09:30:34Z, a difference of 50661216 milliseconds.  Allowed clock skew: 0 milliseconds.
+2019-Dec-26 09:30:34 ERROR [http-nio-8080-exec-3] s.TokenHelper - Identified token io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-12-25T19:26:12Z. Current time: 2019-12-26T09:30:34Z, a difference of 50662216 milliseconds.  Allowed clock skew: 0 milliseconds.
+2019-Dec-26 09:30:34 ERROR [http-nio-8080-exec-1] s.TokenHelper - Identified token io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-12-25T19:26:12Z. Current time: 2019-12-26T09:30:34Z, a difference of 50662216 milliseconds.  Allowed clock skew: 0 milliseconds.
+2019-Dec-26 09:30:34 ERROR [http-nio-8080-exec-4] s.TokenHelper - Identified token io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-12-25T19:26:12Z. Current time: 2019-12-26T09:30:34Z, a difference of 50662217 milliseconds.  Allowed clock skew: 0 milliseconds.
+2019-Dec-26 09:30:34 ERROR [http-nio-8080-exec-2] s.TokenHelper - Identified token io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-12-25T19:26:12Z. Current time: 2019-12-26T09:30:34Z, a difference of 50662216 milliseconds.  Allowed clock skew: 0 milliseconds.
+2019-Dec-26 09:30:34 ERROR [http-nio-8080-exec-5] s.TokenHelper - Identified token io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-12-25T19:26:12Z. Current time: 2019-12-26T09:30:34Z, a difference of 50662216 milliseconds.  Allowed clock skew: 0 milliseconds.
+2019-Dec-26 09:30:36 ERROR [http-nio-8080-exec-7] s.TokenHelper - Identified token io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-12-25T19:26:13Z. Current time: 2019-12-26T09:30:36Z, a difference of 50663229 milliseconds.  Allowed clock skew: 0 milliseconds.
+2019-Dec-26 09:30:36 ERROR [http-nio-8080-exec-9] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 09:30:36 ERROR [http-nio-8080-exec-9] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 09:31:17 WARN  [http-nio-8080-exec-8] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 09:31:17 ERROR [http-nio-8080-exec-9] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 09:31:17 ERROR [http-nio-8080-exec-9] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 10:00:06 ERROR [MessageBroker-2] c.p.b.HttpConnection - Error code : 400 with response : {"name":"TRANSACTION_ALREADY_REFUNDED","message":"Refund refused. Refund was already issued for transaction.","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"a15df3b2376fe"}
+2019-Dec-26 10:00:06 ERROR [MessageBroker-2] o.s.s.s.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task.
+com.paypal.base.rest.PayPalRESTException: Error code : 400 with response : {"name":"TRANSACTION_ALREADY_REFUNDED","message":"Refund refused. Refund was already issued for transaction.","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"a15df3b2376fe"}
+	at com.paypal.base.rest.PayPalRESTException.createFromHttpErrorException(PayPalRESTException.java:72)
+	at com.paypal.base.rest.PayPalResource.execute(PayPalResource.java:439)
+	at com.paypal.base.rest.PayPalResource.configureAndExecute(PayPalResource.java:267)
+	at com.paypal.api.payments.Sale.refund(Sale.java:605)
+	at services.Paypal.PaypalServiceImpl.refundPayment(PaypalServiceImpl.java:135)
+	at services.Paypal.PaypalServiceImpl$$FastClassBySpringCGLIB$$7d0cb6d7.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at services.Paypal.PaypalServiceImpl$$EnhancerBySpringCGLIB$$14661f46.refundPayment(<generated>)
+	at services.trip.TripServiceImpl.cancelTripFilter(TripServiceImpl.java:508)
+	at services.trip.TripServiceImpl$$FastClassBySpringCGLIB$$c56988b7.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at services.trip.TripServiceImpl$$EnhancerBySpringCGLIB$$299ec0e6.cancelTripFilter(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:93)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.paypal.base.exception.HttpErrorException: Error code : 400 with response : {"name":"TRANSACTION_ALREADY_REFUNDED","message":"Refund refused. Refund was already issued for transaction.","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"a15df3b2376fe"}
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:174)
+	at com.paypal.base.HttpConnection.execute(HttpConnection.java:67)
+	at com.paypal.base.rest.PayPalResource.execute(PayPalResource.java:425)
+	... 34 common frames omitted
+Caused by: java.io.IOException: Server returned HTTP response code: 400 for URL: https://api.sandbox.paypal.com/v1/payments/sale/9GE23517DW467112B/refund
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1944)
+	at sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1939)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:1938)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1508)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:263)
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:144)
+	... 36 common frames omitted
+Caused by: java.io.IOException: Server returned HTTP response code: 400 for URL: https://api.sandbox.paypal.com/v1/payments/sale/9GE23517DW467112B/refund
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1894)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:347)
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:133)
+	... 36 common frames omitted
+2019-Dec-26 10:20:52 ERROR [http-nio-8080-exec-5] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 10:20:52 ERROR [http-nio-8080-exec-5] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 10:20:53 WARN  [http-nio-8080-exec-2] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 10:24:27 WARN  [http-nio-8080-exec-9] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 10:24:27 ERROR [http-nio-8080-exec-8] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 10:24:27 ERROR [http-nio-8080-exec-8] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 10:24:31 ERROR [http-nio-8080-exec-3] w.f.w.a.TravelerController - PreparedStatementCallback; bad SQL grammar [select count(post_id) from post inner join guider on post.guider_id = guider.guider_id inner join favoritepost on post.post_id = favoritepost.post_id where post.active = true and guider.active = true and favoritepost.traveler_id = ?]; nested exception is org.postgresql.util.PSQLException: ERROR: column reference "post_id" is ambiguous
+  Position: 14
+2019-Dec-26 10:26:40 ERROR [http-nio-8080-exec-10] w.f.w.a.TravelerController - PreparedStatementCallback; bad SQL grammar [select count(post_id) from post inner join guider on post.guider_id = guider.guider_id inner join favoritepost on post.post_id = favoritepost.post_id where post.active = true and guider.active = true and favoritepost.traveler_id = ?]; nested exception is org.postgresql.util.PSQLException: ERROR: column reference "post_id" is ambiguous
+  Position: 14
+2019-Dec-26 10:26:40 WARN  [http-nio-8080-exec-1] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 10:31:23 WARN  [http-nio-8080-exec-4] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 10:31:28 ERROR [http-nio-8080-exec-9] s.TokenHelper - Identified token io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-12-25T19:30:02Z. Current time: 2019-12-26T10:31:28Z, a difference of 54086661 milliseconds.  Allowed clock skew: 0 milliseconds.
+2019-Dec-26 10:31:28 ERROR [http-nio-8080-exec-8] s.TokenHelper - Identified token io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-12-25T19:30:02Z. Current time: 2019-12-26T10:31:28Z, a difference of 54086661 milliseconds.  Allowed clock skew: 0 milliseconds.
+2019-Dec-26 10:31:28 ERROR [http-nio-8080-exec-9] w.f.w.a.PlanController - Incorrect result size: expected 1, actual 0
+2019-Dec-26 10:31:28 ERROR [http-nio-8080-exec-7] s.TokenHelper - Identified token io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-12-25T19:30:03Z. Current time: 2019-12-26T10:31:28Z, a difference of 54085891 milliseconds.  Allowed clock skew: 0 milliseconds.
+2019-Dec-26 10:31:34 ERROR [http-nio-8080-exec-2] w.f.w.a.PlanController - Incorrect result size: expected 1, actual 0
+2019-Dec-26 10:31:49 WARN  [http-nio-8080-exec-9] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 10:31:49 ERROR [http-nio-8080-exec-2] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 10:31:49 ERROR [http-nio-8080-exec-2] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:00:05 ERROR [MessageBroker-1] c.p.b.HttpConnection - Error code : 400 with response : {"name":"TRANSACTION_ALREADY_REFUNDED","message":"Refund refused. Refund was already issued for transaction.","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"e77f84f455caa"}
+2019-Dec-26 11:00:05 ERROR [MessageBroker-1] o.s.s.s.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task.
+com.paypal.base.rest.PayPalRESTException: Error code : 400 with response : {"name":"TRANSACTION_ALREADY_REFUNDED","message":"Refund refused. Refund was already issued for transaction.","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"e77f84f455caa"}
+	at com.paypal.base.rest.PayPalRESTException.createFromHttpErrorException(PayPalRESTException.java:72)
+	at com.paypal.base.rest.PayPalResource.execute(PayPalResource.java:439)
+	at com.paypal.base.rest.PayPalResource.configureAndExecute(PayPalResource.java:267)
+	at com.paypal.api.payments.Sale.refund(Sale.java:605)
+	at services.Paypal.PaypalServiceImpl.refundPayment(PaypalServiceImpl.java:135)
+	at services.Paypal.PaypalServiceImpl$$FastClassBySpringCGLIB$$7d0cb6d7.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at services.Paypal.PaypalServiceImpl$$EnhancerBySpringCGLIB$$6208013d.refundPayment(<generated>)
+	at services.trip.TripServiceImpl.cancelTripFilter(TripServiceImpl.java:508)
+	at services.trip.TripServiceImpl$$FastClassBySpringCGLIB$$c56988b7.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at services.trip.TripServiceImpl$$EnhancerBySpringCGLIB$$7740a2dd.cancelTripFilter(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:93)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.paypal.base.exception.HttpErrorException: Error code : 400 with response : {"name":"TRANSACTION_ALREADY_REFUNDED","message":"Refund refused. Refund was already issued for transaction.","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"e77f84f455caa"}
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:174)
+	at com.paypal.base.HttpConnection.execute(HttpConnection.java:67)
+	at com.paypal.base.rest.PayPalResource.execute(PayPalResource.java:425)
+	... 34 common frames omitted
+Caused by: java.io.IOException: Server returned HTTP response code: 400 for URL: https://api.sandbox.paypal.com/v1/payments/sale/9GE23517DW467112B/refund
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1944)
+	at sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1939)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:1938)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1508)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:263)
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:144)
+	... 36 common frames omitted
+Caused by: java.io.IOException: Server returned HTTP response code: 400 for URL: https://api.sandbox.paypal.com/v1/payments/sale/9GE23517DW467112B/refund
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1894)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:347)
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:133)
+	... 36 common frames omitted
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-9] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-3] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-3] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-9] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-2] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-1] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-1] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-4] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-4] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-7] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-5] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-5] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-6] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-10] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-8] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-3] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-9] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:24 ERROR [http-nio-8080-exec-2] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:29 ERROR [http-nio-8080-exec-1] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:34 ERROR [http-nio-8080-exec-5] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:34 ERROR [http-nio-8080-exec-3] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:54:44 WARN  [http-nio-8080-exec-4] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 11:55:33 ERROR [http-nio-8080-exec-5] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:55:33 ERROR [http-nio-8080-exec-5] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:59:23 WARN  [http-nio-8080-exec-8] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 11:59:23 ERROR [http-nio-8080-exec-2] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 11:59:23 ERROR [http-nio-8080-exec-2] s.TokenHelper - java.lang.NullPointerException
+2019-Dec-26 12:00:06 ERROR [MessageBroker-3] c.p.b.HttpConnection - Error code : 400 with response : {"name":"TRANSACTION_ALREADY_REFUNDED","message":"Refund refused. Refund was already issued for transaction.","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"65b4fefac1cd4"}
+2019-Dec-26 12:00:06 ERROR [MessageBroker-3] o.s.s.s.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task.
+com.paypal.base.rest.PayPalRESTException: Error code : 400 with response : {"name":"TRANSACTION_ALREADY_REFUNDED","message":"Refund refused. Refund was already issued for transaction.","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"65b4fefac1cd4"}
+	at com.paypal.base.rest.PayPalRESTException.createFromHttpErrorException(PayPalRESTException.java:72)
+	at com.paypal.base.rest.PayPalResource.execute(PayPalResource.java:439)
+	at com.paypal.base.rest.PayPalResource.configureAndExecute(PayPalResource.java:267)
+	at com.paypal.api.payments.Sale.refund(Sale.java:605)
+	at services.Paypal.PaypalServiceImpl.refundPayment(PaypalServiceImpl.java:135)
+	at services.Paypal.PaypalServiceImpl$$FastClassBySpringCGLIB$$7d0cb6d7.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at services.Paypal.PaypalServiceImpl$$EnhancerBySpringCGLIB$$6208013d.refundPayment(<generated>)
+	at services.trip.TripServiceImpl.cancelTripFilter(TripServiceImpl.java:508)
+	at services.trip.TripServiceImpl$$FastClassBySpringCGLIB$$c56988b7.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at services.trip.TripServiceImpl$$EnhancerBySpringCGLIB$$7740a2dd.cancelTripFilter(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:93)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.paypal.base.exception.HttpErrorException: Error code : 400 with response : {"name":"TRANSACTION_ALREADY_REFUNDED","message":"Refund refused. Refund was already issued for transaction.","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"65b4fefac1cd4"}
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:174)
+	at com.paypal.base.HttpConnection.execute(HttpConnection.java:67)
+	at com.paypal.base.rest.PayPalResource.execute(PayPalResource.java:425)
+	... 34 common frames omitted
+Caused by: java.io.IOException: Server returned HTTP response code: 400 for URL: https://api.sandbox.paypal.com/v1/payments/sale/9GE23517DW467112B/refund
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1944)
+	at sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1939)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:1938)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1508)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:263)
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:144)
+	... 36 common frames omitted
+Caused by: java.io.IOException: Server returned HTTP response code: 400 for URL: https://api.sandbox.paypal.com/v1/payments/sale/9GE23517DW467112B/refund
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1894)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:347)
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:133)
+	... 36 common frames omitted
+2019-Dec-26 12:04:37 WARN  [http-nio-8080-exec-4] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 12:05:17 WARN  [http-nio-8080-exec-1] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 12:05:46 WARN  [http-nio-8080-exec-10] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 12:06:28 WARN  [http-nio-8080-exec-10] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 12:06:42 WARN  [http-nio-8080-exec-4] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 12:07:21 WARN  [http-nio-8080-exec-10] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 12:08:31 WARN  [http-nio-8080-exec-1] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 12:10:28 WARN  [http-nio-8080-exec-7] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 12:10:59 WARN  [http-nio-8080-exec-3] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 12:11:18 WARN  [http-nio-8080-exec-4] c.HttpHandshakeInterceptor - Call beforeHandshake
+2019-Dec-26 12:12:46 WARN  [http-nio-8080-exec-5] c.HttpHandshakeInterceptor - Call beforeHandshake

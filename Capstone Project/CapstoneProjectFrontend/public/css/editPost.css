@@ -1,0 +1,209 @@
+.container{
+    margin-top:5%;
+}
+
+.text-lg-center{
+    margin-bottom: 30px;
+}
+
+.text-lg-center h2 {
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.btn-info{
+    margin-left: -12px;
+}
+.activitiesInput {
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+    margin-bottom: 2%;
+    border-bottom-style: dashed;
+}
+
+.style_BtnAdd{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #17a2b8;
+    background: none;
+    font-size: 20px;
+    margin-left: 15px;
+    color: #17a2b8;
+    transition: 0.3s;
+    float: right;
+    margin-top: 2px;
+}
+
+.style_BtnAdd:hover{
+    background: #17a2b8;
+    color: #fff;
+}
+
+input{
+    padding: 0 12px;
+}
+
+#picInput input{
+    padding: 0;
+}
+
+.personal-info form{
+    width: 80%;
+    padding: 50px 6%;
+    border: 1px solid #999;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px -2px;
+    margin-bottom: 70px;
+}
+
+.dropdownCoverSelect{
+    position: relative;
+    display: flex;
+}
+
+/* .dropdownCoverSelect::before{
+    content: '';
+    display: inline-block;
+    height: 30px;
+    width: 1px;
+    top: 0;
+    left: 15px;
+    background: #ced4da;
+} */
+
+.actEditPost{
+    border-bottom: none !important;
+}
+.coverContent{
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 30px 30px 20px;
+}
+.coverContent .brief,.detail{
+    margin-bottom: 15px;
+    margin-left: 6px;
+}
+
+.coverContent .brief input{
+    width: 85%;
+    margin-left: 13px;
+    height: calc(1.5em + .75rem + 2px);
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+.coverContent textarea{
+    width: 84%;
+    margin-left: 0px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    position: absolute;
+    left: 50px;
+}
+ .coverContent{
+    position: relative;
+}
+.coverContent .btn-danger{
+    position: absolute;
+    top: 40px;
+    right: -86px;
+}
+
+.col-lg-8 .filePicture{
+    border:none;
+}
+
+
+/* dropdown select */
+.dropdownCoverSelect{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+.inputUserNamePassword{
+    padding-top:10px;
+}
+.dropdownCoverSelect .btn-add-service, .activitiesInput .btn-add-service{
+    position: absolute;
+    right: 0;
+    background: none;
+    border: 0;
+    font-size: 22px;
+    color: #999;
+    transition: 0.3s;
+}
+
+.activitiesInput .btn-add-service{
+    right: 15px;
+    top: 12px;
+}
+
+.dropdownCoverSelect .btn-add-service:hover, .activitiesInput .btn-add-service:hover{
+    color: red;
+}
+
+.dropdown-select{
+    width: calc(100% - 45px);
+    height: 38px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    
+}
+
+.form-controllerEditPost {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.submit_btn{
+    margin: auto;
+    margin-top: 30px;
+}
+
+.submit_btn .btnSb{
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background: red;
+    border: 0;
+    border-radius: 10px;
+    color: #fff;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.submit_btn .btnSb:hover{
+    background: none;
+    border: 1px solid red;
+    color: red;
+}
+
+.submit_btn .submitBtn{
+    background: blue;
+}
+
+.submit_btn .submitBtn:hover{
+    background: none;
+    border: 1px solid blue;
+    color: blue;
+}

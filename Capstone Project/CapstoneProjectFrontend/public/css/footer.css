@@ -1,0 +1,92 @@
+/* foooter */
+
+footer{
+    width: 100%;
+    background: rgba(0,0,0);
+    color: #f1e4e4;
+  }
+  
+  footer .footer-content{
+    width: 70%;
+    margin:0 auto;
+    height: 100%;
+  }
+  
+  footer .webLogo{
+    display: inline-block;
+  }
+  
+  .socialMedia{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #757575;
+  }
+  
+  .socialMedia ul li{
+    list-style-type: none;
+  }
+  .socialMedia ul.socialMediaList{
+    width: 50%;
+    float: right;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    margin-bottom: 0;
+  }
+  
+  .socialMedia ul::after{
+    clear:both;
+  }
+  
+  .socialMedia ul li{
+    display:inline-block;
+  }
+  
+  .socialMedia .socialMediaList li a:hover{
+    color:#6fbe44;
+  }
+  
+  .socialMedia .webLogo{
+    font-size: 35px;
+    font-weight: 800;
+    color:#fff;
+    width: 50%;
+  }
+  
+  .socialMedia .fa-arrows{
+    font-size: 40px;
+      color: gray;
+      opacity: 0.8;
+  }
+  
+  .socialMedia .socialMediaList li a{
+    color:#bfbfbe;
+    font-size: 40px;
+    margin-right: 10px;
+  }
+  .webInfo{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px 0;
+    justify-content: space-between;
+    line-height: 30px;
+  }
+  .webInfo div{
+    display: inline-block;
+    width: 25%;
+  }
+  
+  .webInfo div ul li{
+    list-style-type: none;
+  }
+
+  .reachUs li{
+    display: inline-block;
+  }
+
+  .reachUs li a i{
+    font-size: 40px;
+    margin-left: 10px;
+  }

@@ -1,0 +1,103 @@
+.postInTour{
+    margin: 5% auto 0;
+    height: auto;
+    width: 70%;
+
+}
+
+.postInTour .contentTour{
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    padding: 30px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+.postInTour > h2{
+    display: inline-block;
+    margin-left: 10%;
+    font-weight: 700;
+    font-size: 40px;
+    margin-top: 20px;
+}
+.postInTour .contentTourDetail{
+    width: 45%;
+    height: auto;
+    display: inline-block;
+    padding: 30px 40px;;
+    box-shadow: 0 6px 13px 0 rgba(0,0,0,.4);
+    border-radius: 10px;
+    margin-bottom: 55px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    position: relative;
+}
+
+.contentTourDetail .imgTourDetail{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 700px;
+    border-radius: 10px;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.contentTourDetail iframe{
+    width: 100%;
+    height: auto;
+    min-height: 260px;
+}
+
+.contentTourDetail .postDestTour{
+    height: 60px; overflow: hidden;
+}
+.contentTour .contentTourDetail .RatingTour {
+    margin-bottom: 10px;
+    display: block;
+    font-size: 16px;
+    color: black;
+}
+.contentTour .contentTourDetail .Rating i{
+    color: #e71575;
+    margin-left: 3px;
+}
+
+.contentTour .contentTourDetail a{
+    margin-top: 20px;
+    background: #e71575;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 15px 4rem;
+    border-radius: 2.5rem;
+    color: #fff;
+    line-height: 3rem;
+    width: 100%;
+    border: none;
+}
+.pagination .paginationContent{
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.pagination .paginationContent .currentPage{
+    color: red;
+}
+
+.pagination .paginationContent button{
+    border:none;
+    padding: 8px 13px;
+    border-radius: 4px;
+    background-color:#FFF;
+    cursor: pointer;
+    margin-right:10px;
+    box-shadow: 0 6px 13px 0 rgba(0,0,0,.4);
+}
+
+.guiderResult li:hover #sheetInTour{
+    width: 380px !important;
+}

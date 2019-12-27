@@ -1,0 +1,309 @@
+.payForm{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 6%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-shadow: 0 7px 33px 0 hsla(0,0%,78%,1);
+    line-height: 2.5rem;
+    color: #4a4a4a;
+    font-weight: 600;
+    font-size: 17px;
+    border-radius: 10px;
+Margin-bottom:3%;
+}
+
+.payForm .inputInfoPay{
+    width: 60%;
+    margin: 40px 0 30px 20px;
+    
+}
+
+.payForm .infoTourBook{
+    width: 33%;
+    box-shadow: 0 7px 33px 0 hsla(0,0%,78%,1);
+    margin: 10px 10px 0 0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.gender .gendermale{
+    margin-left: 0px;
+}
+.gender input{
+    margin-left: 100px;
+}
+
+.infoTravellerPay input[type="text"]{
+width: 100%;
+border: 1px solid #eaeaea;
+padding-left: 10px;
+}
+
+.infoTravellerPay p{
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.gender .countryResidence select{
+    width: 100% !important;
+    height: 40px;
+    border: 1px solid #eaeaea;
+}
+
+.infoTravellerPay .phone_traveller{
+    width: 60% !important;
+}
+
+.infoTravellerPay .saveInfoTraveller{
+    width: 40%;
+    border:none;
+    border-radius: 20px;
+    font-weight: 700;
+    background-color: #a3d063;
+    margin-top: 20px;
+}
+
+.infoTourBook .intro_tour .payImg{
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    height: 320px;
+    object-fit: cover;
+}
+
+.infoTourBook .intro_tour h2{
+    font-weight: 600;
+    padding: 0 20px;
+}
+
+
+.info_tourDetail {
+    padding: 0 20px;
+}
+.infoTourBook .tour_detailHour i{
+    font-size: 17px;
+    color: #676565;
+}
+.infoTourBook .tour_detailHour i .tool_tipPeople{
+    width: 220px;
+    height: 60px;
+    line-height: 30px;
+    margin-top: 5px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+    padding-left: 20px;
+    display: none;
+    background: #fff;
+    z-index: 1;
+    position: absolute;
+}
+
+.infoTourBook .tour_detailHour p{
+    margin-bottom: 0;
+}
+
+.infoTourBook .tour_detailHour span{
+    font-weight: 600;
+    margin-left: 5px;
+    font-family:  Arial;
+}
+
+.infoTourBook .tour_detailHour .celander{
+    margin-left: 0px;
+}
+
+.info_tourDetail .total_priceBook{
+    font-size: 20px;
+    position: relative;
+    color: #676565;
+}
+
+.tour_detailHour .total_priceBook span{
+    position: absolute;
+    right: 20px;
+}
+
+.inputInfoPay  h2{
+    font-size: 35px;
+    font-weight: 800;
+}
+.inputInfoPay  .paypal_radio{
+    position: relative;
+}
+.inputInfoPay  .paypal_radio img{
+    height: 49px;
+    position: absolute;
+    right: 0px;
+}
+
+.inputInfoPay  .paypal_radio span{
+    font-size: 20px;
+}
+.inputInfoPay  .policy{
+    font-family: none;
+    font-weight: lighter;
+    font-style: italic
+}
+.infoTravellerPay .errorInput{
+    color: red;
+    margin-top: 0;
+    font-size: 13px;
+    font-weight: 100;
+}
+
+.inputInfoPay .hidden{
+    display: none;
+}
+
+.coverLoader{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 2000px;
+    background:rgba(74,74,74,0.4);
+    text-align: center;
+    line-height: 840px;
+    display: none;
+    z-index: 3;
+    left: 0;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-right: 16px solid green;
+    border-bottom: 16px solid red;
+    border-left: 16px solid pink;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    display: inline-block;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .infoTourBook .intro_tour .tool-tipPost{
+    width: 530px;
+    height: 490px;
+    position: absolute;
+    left: -30px;
+    overflow-y: scroll;
+    background: #fff;
+    z-index: 3;
+    font-size: 15px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.intro_tour .tool-tipPost .intro iframe{
+    height: 240px;
+}
+  #reactContainer #contentPay{
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    height: auto;
+    margin-top: 0;
+}
+
+#reactContainer #content-rightPay{
+    width: 500px;
+}
+
+#contentPay #content-rightPay h2{
+    padding: 0;
+}
+
+#contentPay #content-rightPay .PostDetail{
+    width: 480px;
+    margin-left: 15px;
+}
+
+#contentPay #content-rightPay .reviewContainer{
+    position: relative;
+    border-bottom: 1px solid #eaeaea;
+    margin: 0px 0 16px 0;
+    padding-bottom: 10px;
+}
+
+#contentPay #content-rightPay .reviewContainer .defaultLogo{
+    top: 0px;
+}
+
+#contentPay #content-rightPay .reviewContainer .reviewInfo > div {
+    height: 35px;
+}
+
+.infoTourBook .intro_tour .titleTourPay {
+    color:#e71575;
+}
+
+.infoTourBook .intro_tour .tool-tipPost{
+    display: none;
+}
+
+.infoTourBook .intro_tour .titleTourPay:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.guiderNamePay {
+    color:#e71575;
+    cursor: pointer;
+}
+
+
+.info_tourDetail .tour_detailHour .tool_tipGuider{
+    margin-top: 10px;
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+    top: 0;
+    left: 145px;
+    display: none;
+}
+
+.tour_detailHour .tool_tipGuider .content-left .profile-box{
+    margin-top: 0px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,.25);
+    width: 330px;
+    border-radius: .5rem;
+    padding: 2rem 1.5rem;
+    position: relative;
+}
+
+.tour_detailHour .tool_tipGuider .content-left .fa-star{
+    color: #e71575;
+}
+
+.tour_detailHour .tool_tipGuider .content-left .profile-box .ListItem{
+    margin-top: 10px;
+}
+
+.tour_detailHour .tool_tipGuider .content-left .profile-box .ListItemText{
+    margin-top: 0px;
+    font-weight: 100;
+}
+
+.payBack{
+    font-size: 18px;
+    font-weight: 300;
+    display: inline-block;
+    line-height: 48px;
+    border: none;
+    padding: 0px 20px;
+    /* border-radius: 36px; */
+    background-color: #e71575;
+    color: #fff;
+    margin-top: 30px;
+}
