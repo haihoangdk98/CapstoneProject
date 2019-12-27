@@ -1,0 +1,85 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PostService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">services.Post</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PostService (services.Post)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">PostService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package services.Post;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import entities.Post;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import java.util.List;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;public interface PostService {
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;    List&lt;Post&gt; findAllPostOfOneGuider(long guider_id, int page) throws Exception;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    int findAllPostOfOneGuiderPageCount(long guider_id) throws Exception;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    List&lt;Post&gt; findAllPostByCategoryId(long category_id, int page) throws Exception;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    int findAllPostByCategoryIdPageCount(long category_id) throws Exception;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    List&lt;Post&gt; findAllPostOfOneGuiderAdmin(long guider_id) throws Exception;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    Post findSpecificPost(long post_id) throws Exception;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    List&lt;Post&gt; findAllPostWithGuiderName(String name, int page) throws Exception;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    int findAllPostWithGuiderNamePageCount(String name) throws Exception;
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    List&lt;Post&gt; findAllPostWithLocationName(String name, int page) throws Exception;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    int findAllPostWithLocationNamePageCount(String name) throws Exception;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    void updatePost(long post_id, Post post) throws Exception;
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    int insertNewPost(long guider_id, Post post) throws Exception;
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    List&lt;Post&gt; getTopTour() throws Exception;
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    void activeDeactivePostForGuider(long post_id) throws Exception;
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    void authorizePost(long post_id) throws Exception;
+<i>38</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

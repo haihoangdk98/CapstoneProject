@@ -1,0 +1,143 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: StatisticController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">winter.findGuider.web.api</a> ]
+</div>
+
+<h1>Coverage Summary for Class: StatisticController (winter.findGuider.web.api)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StatisticController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (16/ 16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package winter.findGuider.web.api;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import entities.Statistic;
+<i>4</i>&nbsp;import org.slf4j.Logger;
+<i>5</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>6</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>7</i>&nbsp;import org.springframework.beans.factory.annotation.Value;
+<i>8</i>&nbsp;import org.springframework.http.HttpStatus;
+<i>9</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>10</i>&nbsp;import org.springframework.web.bind.annotation.CrossOrigin;
+<i>11</i>&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
+<i>12</i>&nbsp;import org.springframework.web.bind.annotation.ResponseStatus;
+<i>13</i>&nbsp;import org.springframework.web.bind.annotation.RestController;
+<i>14</i>&nbsp;import services.Statistic.StatisticService;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;import javax.servlet.http.HttpServletResponse;
+<i>17</i>&nbsp;import java.util.List;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;@RestController
+<i>20</i>&nbsp;@RequestMapping(path = &quot;/statistic&quot;, produces = &quot;application/json&quot;)
+<i>21</i>&nbsp;@CrossOrigin(origins = &quot;*&quot;)
+<i>22</i>&nbsp;public class StatisticController {
+<i>23</i>&nbsp;
+<b class="fc"><i>24</i>&nbsp;    private Logger logger = LoggerFactory.getLogger(getClass());</b>
+<i>25</i>&nbsp;    private StatisticService statisticService;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    @Value(&quot;${order.client.root.url}&quot;)
+<i>28</i>&nbsp;    private String URL_ROOT_CLIENT;
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    @Autowired
+<b class="fc"><i>31</i>&nbsp;    public StatisticController(StatisticService ss) {</b>
+<b class="fc"><i>32</i>&nbsp;        this.statisticService = ss;</b>
+<b class="fc"><i>33</i>&nbsp;    }</b>
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    @RequestMapping(&quot;/completedTrip&quot;)
+<i>36</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>37</i>&nbsp;    public ResponseEntity&lt;List&lt;Statistic&gt;&gt; getStatisticCompletedTrip(HttpServletResponse response) {
+<i>38</i>&nbsp;        try {
+<b class="fc"><i>39</i>&nbsp;            response.setHeader(&quot;Access-Control-Allow-Origin&quot;, URL_ROOT_CLIENT);</b>
+<b class="fc"><i>40</i>&nbsp;            response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;);</b>
+<b class="fc"><i>41</i>&nbsp;            return new ResponseEntity&lt;&gt;(statisticService.getStatisticCompletedTrip(), HttpStatus.OK);</b>
+<b class="fc"><i>42</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>43</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>44</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>45</i>&nbsp;        }
+<i>46</i>&nbsp;    }
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;    @RequestMapping(&quot;/totalRevenue&quot;)
+<i>49</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>50</i>&nbsp;    public ResponseEntity&lt;List&lt;Statistic&gt;&gt; getStatisticTotalRevenue(HttpServletResponse response) {
+<i>51</i>&nbsp;        try {
+<b class="fc"><i>52</i>&nbsp;            response.setHeader(&quot;Access-Control-Allow-Origin&quot;, URL_ROOT_CLIENT);</b>
+<b class="fc"><i>53</i>&nbsp;            response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;);</b>
+<b class="fc"><i>54</i>&nbsp;            return new ResponseEntity&lt;&gt;(statisticService.getStatisticTotalRevenue(), HttpStatus.OK);</b>
+<b class="fc"><i>55</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>56</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>57</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>58</i>&nbsp;        }
+<i>59</i>&nbsp;    }
+<i>60</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

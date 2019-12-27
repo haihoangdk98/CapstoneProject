@@ -1,0 +1,91 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: GuiderService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">services.guider</a> ]
+</div>
+
+<h1>Coverage Summary for Class: GuiderService (services.guider)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">GuiderService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package services.guider;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import entities.Contract;
+<i>4</i>&nbsp;import entities.Guider;
+<i>5</i>&nbsp;import org.springframework.web.multipart.MultipartFile;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import java.io.File;
+<i>8</i>&nbsp;import java.util.List;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;public interface GuiderService {
+<i>11</i>&nbsp;    Guider findGuiderWithID(long id) throws Exception;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    Guider findGuiderWithPostId(long id) throws Exception;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    Contract findGuiderContract(long id) throws Exception;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    long createGuider(Guider newGuider) throws Exception;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    long createGuiderContract(Contract newGuiderContract) throws Exception;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    long updateGuiderWithId(Guider guiderNeedUpdate) throws Exception;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    long activateGuider(long id) throws Exception;
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    long deactivateGuider(long id) throws Exception;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    List&lt;Guider&gt; searchGuiderByName(String key, int page) throws Exception;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    int searchGuiderByNamePageCount(String key) throws Exception;
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    List&lt;Guider&gt; getTopGuiderByRate() throws Exception;
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    List&lt;Guider&gt; getTopGuiderByContribute() throws Exception;
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    void linkGuiderWithContract(long guider_id, long contract_id) throws Exception;
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    List&lt;Contract&gt; getAllContract() throws Exception;
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    void rejectContract(long contract_id) throws Exception;
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    void uploadContractDocument(MultipartFile file, long contract_id) throws Exception;
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    File getDocumentToDownload(long contract_id) throws Exception;
+<i>44</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

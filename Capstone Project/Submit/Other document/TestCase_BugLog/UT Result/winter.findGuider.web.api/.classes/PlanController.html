@@ -1,0 +1,141 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PlanController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">winter.findGuider.web.api</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PlanController (winter.findGuider.web.api)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PlanController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (18/ 18)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package winter.findGuider.web.api;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import entities.Plan;
+<i>4</i>&nbsp;import org.slf4j.Logger;
+<i>5</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>6</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>7</i>&nbsp;import org.springframework.http.HttpStatus;
+<i>8</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>9</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i>10</i>&nbsp;import services.plan.PlanService;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;@RestController
+<i>13</i>&nbsp;@RequestMapping(path = &quot;/plan&quot;, produces = &quot;application/json&quot;)
+<i>14</i>&nbsp;@CrossOrigin(origins = &quot;*&quot;)
+<i>15</i>&nbsp;public class PlanController {
+<b class="fc"><i>16</i>&nbsp;    private Logger logger = LoggerFactory.getLogger(getClass());</b>
+<i>17</i>&nbsp;    private PlanService planService;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    @Autowired
+<b class="fc"><i>20</i>&nbsp;    public PlanController(PlanService ps) {</b>
+<b class="fc"><i>21</i>&nbsp;        this.planService = ps;</b>
+<b class="fc"><i>22</i>&nbsp;    }</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    @RequestMapping(&quot;/create&quot;)
+<i>25</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>26</i>&nbsp;    public ResponseEntity&lt;Integer&gt; createPlan(@RequestBody Plan plan) {
+<i>27</i>&nbsp;        try {
+<b class="fc"><i>28</i>&nbsp;            int createdId = planService.createPlan(plan);</b>
+<b class="fc"><i>29</i>&nbsp;            return new ResponseEntity&lt;&gt;(createdId, HttpStatus.OK);</b>
+<b class="fc"><i>30</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>31</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>32</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>33</i>&nbsp;        }
+<i>34</i>&nbsp;    }
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    @RequestMapping(&quot;/update&quot;)
+<i>37</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>38</i>&nbsp;    public ResponseEntity&lt;Plan&gt; updatePlan(@RequestBody Plan plan) {
+<i>39</i>&nbsp;        try {   
+<b class="fc"><i>40</i>&nbsp;            planService.updatePlan(plan.getPost_id(), plan.getMeeting_point(), plan.getDetail());</b>
+<b class="fc"><i>41</i>&nbsp;            return new ResponseEntity&lt;&gt;(planService.searchPlanByPostId(plan.getPost_id()), HttpStatus.OK);</b>
+<b class="fc"><i>42</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>43</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>44</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>45</i>&nbsp;        }
+<i>46</i>&nbsp;    }
+<i>47</i>&nbsp;    
+<i>48</i>&nbsp;    @RequestMapping(&quot;/{post_id}&quot;)
+<i>49</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>50</i>&nbsp;    public ResponseEntity&lt;Plan&gt; findPlan(@PathVariable(&quot;post_id&quot;) int post_id) {
+<i>51</i>&nbsp;        try {
+<b class="fc"><i>52</i>&nbsp;            return new ResponseEntity&lt;&gt;(planService.searchPlanByPostId(post_id), HttpStatus.OK);</b>
+<b class="fc"><i>53</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>54</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>55</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>56</i>&nbsp;        }
+<i>57</i>&nbsp;    }
+<i>58</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

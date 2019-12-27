@@ -1,0 +1,247 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: AccountController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">winter.findGuider.web.api</a> ]
+</div>
+
+<h1>Coverage Summary for Class: AccountController (winter.findGuider.web.api)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AccountController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93%
+  </span>
+  <span class="absValue">
+    (66/ 71)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;/*
+<i>2</i>&nbsp; * To change this license header, choose License Headers in Project Properties.
+<i>3</i>&nbsp; * To change this template file, choose Tools | Templates
+<i>4</i>&nbsp; * and open the template in the editor.
+<i>5</i>&nbsp; */
+<i>6</i>&nbsp;package winter.findGuider.web.api;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import entities.Account;
+<i>9</i>&nbsp;import org.slf4j.Logger;
+<i>10</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>11</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>12</i>&nbsp;import org.springframework.beans.factory.annotation.Value;
+<i>13</i>&nbsp;import org.springframework.http.HttpHeaders;
+<i>14</i>&nbsp;import org.springframework.http.HttpStatus;
+<i>15</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>16</i>&nbsp;import org.springframework.security.core.context.SecurityContextHolder;
+<i>17</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i>18</i>&nbsp;import security.AuthenProvider;
+<i>19</i>&nbsp;import security.UserService;
+<i>20</i>&nbsp;import services.Mail.MailService;
+<i>21</i>&nbsp;import services.account.AccountRepository;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;import javax.servlet.http.Cookie;
+<i>24</i>&nbsp;import javax.servlet.http.HttpServletResponse;
+<i>25</i>&nbsp;import java.net.URI;
+<i>26</i>&nbsp;import java.util.Date;
+<i>27</i>&nbsp;import java.util.List;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;/**
+<i>30</i>&nbsp; * @author dgdbp
+<i>31</i>&nbsp; */
+<i>32</i>&nbsp;@RestController
+<i>33</i>&nbsp;@RequestMapping(path = &quot;/account&quot;)
+<i>34</i>&nbsp;@CrossOrigin(origins = {&quot;http://localhost:3000&quot;})
+<i>35</i>&nbsp;public class AccountController {
+<i>36</i>&nbsp;
+<b class="fc"><i>37</i>&nbsp;    private Logger logger = LoggerFactory.getLogger(getClass());</b>
+<i>38</i>&nbsp;    private UserService userService;
+<i>39</i>&nbsp;    private AccountRepository repo;
+<i>40</i>&nbsp;    private AuthenProvider auth;
+<i>41</i>&nbsp;    private MailService mailService;
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    @Value(&quot;${order.server.root.url}&quot;)
+<i>44</i>&nbsp;    private String URL_ROOT_SERVER;
+<i>45</i>&nbsp;    @Value(&quot;${order.client.root.url}&quot;)
+<i>46</i>&nbsp;    private String URL_ROOT_CLIENT;
+<i>47</i>&nbsp;    @Value(&quot;${order.client.root.url.domain}&quot;)
+<i>48</i>&nbsp;    private String URL_ROOT_CLIENT_DOMAIN;
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    @Autowired
+<b class="fc"><i>51</i>&nbsp;    public AccountController(AccountRepository repo, UserService userService, AuthenProvider auth, MailService ms) {</b>
+<b class="fc"><i>52</i>&nbsp;        this.userService = userService;</b>
+<b class="fc"><i>53</i>&nbsp;        this.repo = repo;</b>
+<b class="fc"><i>54</i>&nbsp;        this.auth = auth;</b>
+<b class="fc"><i>55</i>&nbsp;        this.mailService = ms;</b>
+<b class="fc"><i>56</i>&nbsp;    }</b>
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    @PostMapping(path = &quot;change&quot;, consumes = &quot;application/json&quot;)
+<i>59</i>&nbsp;    public ResponseEntity&lt;String&gt; changePassword(@RequestBody Account acc) {
+<b class="fc"><i>60</i>&nbsp;        Account model = null;</b>
+<i>61</i>&nbsp;        try {
+<b class="fc"><i>62</i>&nbsp;            model = repo.findAccountByName(</b>
+<b class="fc"><i>63</i>&nbsp;                    SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());</b>
+<i>64</i>&nbsp;
+<b class="nc"><i>65</i>&nbsp;            if (auth.getEncoder().matches(model.getPassword(), acc.getPassword())) {</b>
+<b class="nc"><i>66</i>&nbsp;                repo.changePassword(model.getUserName(), acc.getRePassword());</b>
+<i>67</i>&nbsp;            } else {
+<b class="nc"><i>68</i>&nbsp;                throw new Exception(&quot;wrong password&quot;);</b>
+<i>69</i>&nbsp;            }
+<b class="fc"><i>70</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>71</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>72</i>&nbsp;            return new ResponseEntity&lt;&gt;(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);</b>
+<b class="nc"><i>73</i>&nbsp;        }</b>
+<b class="nc"><i>74</i>&nbsp;        return new ResponseEntity&lt;&gt;(&quot;true&quot;, HttpStatus.OK);</b>
+<i>75</i>&nbsp;    }
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;    @PostMapping(path = &quot;registrator&quot;, consumes = &quot;application/json&quot;)
+<i>78</i>&nbsp;    public ResponseEntity registerUserAccount(@RequestBody Account acc, HttpServletResponse response
+<i>79</i>&nbsp;    ) {
+<b class="fc"><i>80</i>&nbsp;        response.setHeader(&quot;Access-Control-Allow-Origin&quot;, URL_ROOT_CLIENT);</b>
+<b class="fc"><i>81</i>&nbsp;        response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;);</b>
+<b class="fc"><i>82</i>&nbsp;        Account registered = null;</b>
+<b class="fc"><i>83</i>&nbsp;        acc.setToken(&quot;&quot;);</b>
+<b class="fc"><i>84</i>&nbsp;        acc.setExpired(new Date());</b>
+<i>85</i>&nbsp;        try {
+<b class="fc"><i>86</i>&nbsp;            System.out.println(acc.getPassword() + &quot;/&quot; + acc.getUserName() + &quot;/&quot; + acc.getRole());</b>
+<b class="fc"><i>87</i>&nbsp;            registered = userService.registerNewUserAccount(acc);</b>
+<b class="fc"><i>88</i>&nbsp;            Cookie sidCookie = new Cookie(&quot;token&quot;, registered.getToken());</b>
+<b class="fc"><i>89</i>&nbsp;            sidCookie.setPath(&quot;/&quot;);</b>
+<b class="fc"><i>90</i>&nbsp;            sidCookie.setHttpOnly(true);</b>
+<b class="fc"><i>91</i>&nbsp;            sidCookie.setDomain(URL_ROOT_CLIENT_DOMAIN);</b>
+<b class="fc"><i>92</i>&nbsp;            response.addCookie(sidCookie);</b>
+<b class="fc"><i>93</i>&nbsp;            registered.setPassword(&quot;&quot;);</b>
+<b class="fc"><i>94</i>&nbsp;            registered.setToken(&quot;&quot;);</b>
+<b class="fc"><i>95</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>96</i>&nbsp;            logger.error(e.toString());</b>
+<b class="fc"><i>97</i>&nbsp;            return new ResponseEntity&lt;&gt;(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);</b>
+<b class="fc"><i>98</i>&nbsp;        }</b>
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;        // rest of the implementation
+<i>101</i>&nbsp;        //let log in after registration
+<b class="fc"><i>102</i>&nbsp;        return new ResponseEntity&lt;&gt;(registered, HttpStatus.OK);</b>
+<i>103</i>&nbsp;
+<i>104</i>&nbsp;    }
+<i>105</i>&nbsp;
+<i>106</i>&nbsp;    @RequestMapping(&quot;/logout&quot;)
+<i>107</i>&nbsp;    public ResponseEntity logout(HttpServletResponse response) {
+<b class="fc"><i>108</i>&nbsp;        response.addHeader(&quot;Access-Control-Allow-Origin&quot;, URL_ROOT_CLIENT);</b>
+<b class="fc"><i>109</i>&nbsp;        response.addHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;);</b>
+<b class="fc"><i>110</i>&nbsp;        Cookie sidCookie = new Cookie(&quot;token&quot;, &quot;&quot;);</b>
+<b class="fc"><i>111</i>&nbsp;        System.out.println(&quot;tell me why?&quot; + response.toString());</b>
+<b class="fc"><i>112</i>&nbsp;        sidCookie.setPath(&quot;/&quot;);</b>
+<b class="fc"><i>113</i>&nbsp;        sidCookie.setHttpOnly(true);</b>
+<b class="fc"><i>114</i>&nbsp;        sidCookie.setDomain(URL_ROOT_CLIENT_DOMAIN);</b>
+<b class="fc"><i>115</i>&nbsp;        sidCookie.setMaxAge(0);</b>
+<b class="fc"><i>116</i>&nbsp;        response.addCookie(sidCookie);</b>
+<b class="fc"><i>117</i>&nbsp;        return new ResponseEntity(&quot;bye&quot;, HttpStatus.OK);</b>
+<i>118</i>&nbsp;    }
+<i>119</i>&nbsp;
+<i>120</i>&nbsp;    @RequestMapping(&quot;/findAll&quot;)
+<i>121</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>122</i>&nbsp;    public ResponseEntity&lt;List&lt;Account&gt;&gt; findAll(HttpServletResponse response) {
+<i>123</i>&nbsp;        try {
+<b class="fc"><i>124</i>&nbsp;            response.setHeader(&quot;Access-Control-Allow-Origin&quot;, URL_ROOT_CLIENT);</b>
+<b class="fc"><i>125</i>&nbsp;            response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;);</b>
+<b class="fc"><i>126</i>&nbsp;            return new ResponseEntity(repo.findAllAccount(), HttpStatus.OK);</b>
+<b class="fc"><i>127</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>128</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>129</i>&nbsp;            return new ResponseEntity(null, HttpStatus.NOT_FOUND);</b>
+<i>130</i>&nbsp;        }
+<i>131</i>&nbsp;    }
+<i>132</i>&nbsp;
+<i>133</i>&nbsp;    @RequestMapping(&quot;/emailConfirm&quot;)
+<i>134</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>135</i>&nbsp;    public ResponseEntity&lt;Object&gt; confirmEmail(@RequestParam(&quot;token&quot;) String token) {
+<b class="fc"><i>136</i>&nbsp;        HttpHeaders httpHeaders = new HttpHeaders();</b>
+<i>137</i>&nbsp;        try {
+<b class="fc"><i>138</i>&nbsp;            repo.confirmEmail(token);</b>
+<b class="fc"><i>139</i>&nbsp;            URI home = new URI(URL_ROOT_CLIENT);</b>
+<b class="fc"><i>140</i>&nbsp;            httpHeaders.setLocation(home);</b>
+<b class="fc"><i>141</i>&nbsp;            return new ResponseEntity(httpHeaders, HttpStatus.SEE_OTHER);</b>
+<b class="fc"><i>142</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>143</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>144</i>&nbsp;            return new ResponseEntity(null, HttpStatus.NOT_FOUND);</b>
+<i>145</i>&nbsp;        }
+<i>146</i>&nbsp;    }
+<i>147</i>&nbsp;
+<i>148</i>&nbsp;    @RequestMapping(&quot;/resendEmailConfirmation&quot;)
+<i>149</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>150</i>&nbsp;    public ResponseEntity&lt;Boolean&gt; resendEmailConfirmation(@RequestParam(&quot;account_id&quot;) long account_id) {
+<i>151</i>&nbsp;        try {
+<b class="fc"><i>152</i>&nbsp;            String token = repo.insertEmailConfirmToken(account_id);</b>
+<b class="fc"><i>153</i>&nbsp;            String email = repo.getEmail((int) account_id);</b>
+<b class="fc"><i>154</i>&nbsp;            String content = &quot;Hello &quot; + repo.findAccountNameByAccountId((int) account_id) + &quot;\n\n&quot;;</b>
+<b class="fc"><i>155</i>&nbsp;            content = content.concat(&quot;To verify your email, please click here : &quot;);</b>
+<b class="fc"><i>156</i>&nbsp;            content = content.concat(URL_ROOT_SERVER + &quot;/account/emailConfirm?token=&quot; + token);</b>
+<b class="fc"><i>157</i>&nbsp;            mailService.sendMail(email, &quot;TravelWLocal Email Confirmation&quot;, content);</b>
+<b class="fc"><i>158</i>&nbsp;            return new ResponseEntity(true, HttpStatus.OK);</b>
+<b class="fc"><i>159</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>160</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>161</i>&nbsp;            return new ResponseEntity(null, HttpStatus.NOT_FOUND);</b>
+<i>162</i>&nbsp;        }
+<i>163</i>&nbsp;    }
+<i>164</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

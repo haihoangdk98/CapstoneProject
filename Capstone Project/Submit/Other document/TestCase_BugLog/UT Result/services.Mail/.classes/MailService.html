@@ -1,0 +1,69 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MailService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">services.Mail</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MailService (services.Mail)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">MailService$MockitoMock$1955059227</td>
+  </tr>
+  <tr>
+    <td class="name">MailService$MockitoMock$1955059227$auxiliary$IjHXvzEh</td>
+  </tr>
+  <tr>
+    <td class="name">MailService$MockitoMock$1955059227$auxiliary$qXW9QwDC</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package services.Mail;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import entities.Order;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;public interface MailService {
+<i>6</i>&nbsp;    boolean sendMail(String email, String subject, String content) throws Exception;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;    String getMailContent(Order order, String orderStatus) throws Exception;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;    String acceptContractMailContent(long guider_id) throws Exception;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    String rejectContractMailContent(long guider_id) throws Exception;
+<i>13</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

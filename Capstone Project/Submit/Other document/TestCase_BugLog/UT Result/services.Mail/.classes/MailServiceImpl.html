@@ -1,0 +1,238 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MailServiceImpl</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">services.Mail</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MailServiceImpl (services.Mail)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MailServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (83/ 83)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package services.Mail;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import entities.*;
+<i>4</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>5</i>&nbsp;import org.springframework.beans.factory.annotation.Value;
+<i>6</i>&nbsp;import org.springframework.mail.SimpleMailMessage;
+<i>7</i>&nbsp;import org.springframework.mail.javamail.JavaMailSender;
+<i>8</i>&nbsp;import org.springframework.stereotype.Repository;
+<i>9</i>&nbsp;import services.Post.PostService;
+<i>10</i>&nbsp;import services.guider.GuiderService;
+<i>11</i>&nbsp;import services.traveler.TravelerService;
+<i>12</i>&nbsp;import services.trip.TripService;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import java.time.format.DateTimeFormatter;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;@Repository
+<i>17</i>&nbsp;public class MailServiceImpl implements MailService {
+<i>18</i>&nbsp;    private static final String UNCONFIRMED = &quot;WAITING&quot;;
+<i>19</i>&nbsp;    private static final String ONGOING = &quot;ONGOING&quot;;
+<i>20</i>&nbsp;    private static final String FINISHED = &quot;FINISHED&quot;;
+<i>21</i>&nbsp;    private static final String CANCELLED = &quot;CANCELLED&quot;;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    private JavaMailSender emailSender;
+<i>24</i>&nbsp;    private TravelerService travelerService;
+<i>25</i>&nbsp;    private GuiderService guiderService;
+<i>26</i>&nbsp;    private PostService postService;
+<i>27</i>&nbsp;    private TripService tripService;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    @Value(&quot;${sysadmin.email}&quot;)
+<i>30</i>&nbsp;    private String sysadminEmail;
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    @Autowired
+<b class="fc"><i>33</i>&nbsp;    public MailServiceImpl(JavaMailSender jm, TravelerService ts, GuiderService gs, PostService ps, TripService ots) {</b>
+<b class="fc"><i>34</i>&nbsp;        this.emailSender = jm;</b>
+<b class="fc"><i>35</i>&nbsp;        this.travelerService = ts;</b>
+<b class="fc"><i>36</i>&nbsp;        this.guiderService = gs;</b>
+<b class="fc"><i>37</i>&nbsp;        this.postService = ps;</b>
+<b class="fc"><i>38</i>&nbsp;        this.tripService = ots;</b>
+<b class="fc"><i>39</i>&nbsp;    }</b>
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    @Override
+<i>42</i>&nbsp;    public boolean sendMail(String email, String subject, String content) throws Exception {
+<i>43</i>&nbsp;        // Create a mail
+<b class="fc"><i>44</i>&nbsp;        SimpleMailMessage mail = new SimpleMailMessage();</b>
+<b class="fc"><i>45</i>&nbsp;        mail.setTo(email);</b>
+<b class="fc"><i>46</i>&nbsp;        mail.setSubject(subject);</b>
+<b class="fc"><i>47</i>&nbsp;        mail.setText(content);</b>
+<i>48</i>&nbsp;        // Send mail
+<b class="fc"><i>49</i>&nbsp;        this.emailSender.send(mail);</b>
+<b class="fc"><i>50</i>&nbsp;        return true;</b>
+<i>51</i>&nbsp;    }
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    @Override
+<i>54</i>&nbsp;    public String getMailContent(Order order, String orderStatus) throws Exception {
+<b class="fc"><i>55</i>&nbsp;        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;MM/dd/yyyy HH:mm&quot;);</b>
+<b class="fc"><i>56</i>&nbsp;        String content = &quot;&quot;;</b>
+<b class="fc"><i>57</i>&nbsp;        Traveler traveler = travelerService.findTravelerWithId(order.getTraveler_id());</b>
+<b class="fc"><i>58</i>&nbsp;        Post post = postService.findSpecificPost(order.getPost_id());</b>
+<b class="fc"><i>59</i>&nbsp;        Guider guider = guiderService.findGuiderWithPostId(order.getPost_id());</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;        // create mail content
+<b class="fc"><i>62</i>&nbsp;        content = content.concat(&quot;Dear Mr/Ms &quot; + traveler.getLast_name() + &quot;\n\n&quot;);</b>
+<b class="fc"><i>63</i>&nbsp;        switch (orderStatus) {</b>
+<i>64</i>&nbsp;            case UNCONFIRMED:
+<b class="fc"><i>65</i>&nbsp;                content = content.concat(&quot;Your tour has been booked successfully.\n&quot;);</b>
+<b class="fc"><i>66</i>&nbsp;                break;</b>
+<i>67</i>&nbsp;            case ONGOING:
+<b class="fc"><i>68</i>&nbsp;                content = content.concat(&quot;Your tour has been accepted by &quot; + guider.getFirst_name() + &quot; &quot; + guider.getLast_name() + &quot;.\n&quot;);</b>
+<b class="fc"><i>69</i>&nbsp;                break;</b>
+<i>70</i>&nbsp;            case CANCELLED:
+<b class="fc"><i>71</i>&nbsp;                content = content.concat(&quot;Your tour has been cancelled by &quot; + guider.getFirst_name() + &quot; &quot; + guider.getLast_name() + &quot;.\n&quot;);</b>
+<b class="fc"><i>72</i>&nbsp;                break;</b>
+<i>73</i>&nbsp;            case FINISHED:
+<b class="fc"><i>74</i>&nbsp;                content = content.concat(&quot;Your tour has finished.\n&quot;);</b>
+<i>75</i>&nbsp;                break;
+<i>76</i>&nbsp;        }
+<b class="fc"><i>77</i>&nbsp;        content = content.concat(&quot;Below is the information of your tour:\n&quot;);</b>
+<b class="fc"><i>78</i>&nbsp;        content = content.concat(&quot;Tour: &quot; + post.getTitle() + &quot;\n&quot;);</b>
+<b class="fc"><i>79</i>&nbsp;        content = content.concat(&quot;Your guider: &quot; + guider.getFirst_name() + &quot; &quot; + guider.getLast_name() + &quot;\n&quot;);</b>
+<b class="fc"><i>80</i>&nbsp;        content = content.concat(&quot;Begin on: &quot; + order.getBegin_date().format(formatter)</b>
+<b class="fc"><i>81</i>&nbsp;                + &quot; - Expected end on: &quot; + order.getFinish_date().format(formatter) + &quot;\n&quot;);</b>
+<b class="fc"><i>82</i>&nbsp;        content = content.concat(&quot;The tour has &quot; + order.getAdult_quantity() + &quot; adults and &quot; + order.getChildren_quantity() + &quot; children.\n&quot;);</b>
+<b class="fc"><i>83</i>&nbsp;        content = content.concat(&quot;Total: &quot; + order.getFee_paid() + &quot;$\n\n&quot;);</b>
+<b class="fc"><i>84</i>&nbsp;        String tourStatus = &quot;&quot;;</b>
+<b class="fc"><i>85</i>&nbsp;        if (order.getStatus() == null) {</b>
+<b class="fc"><i>86</i>&nbsp;            tourStatus = &quot;Waiting for confirmation&quot;;</b>
+<i>87</i>&nbsp;        } else {
+<b class="fc"><i>88</i>&nbsp;            switch (order.getStatus()) {</b>
+<i>89</i>&nbsp;                case ONGOING:
+<b class="fc"><i>90</i>&nbsp;                    tourStatus = &quot;Ongoing&quot;;</b>
+<b class="fc"><i>91</i>&nbsp;                    break;</b>
+<i>92</i>&nbsp;                case CANCELLED:
+<b class="fc"><i>93</i>&nbsp;                    tourStatus = &quot;Cancelled&quot;;</b>
+<b class="fc"><i>94</i>&nbsp;                    break;</b>
+<i>95</i>&nbsp;                case FINISHED:
+<b class="fc"><i>96</i>&nbsp;                    tourStatus = &quot;Finished&quot;;</b>
+<i>97</i>&nbsp;                    break;
+<i>98</i>&nbsp;            }
+<i>99</i>&nbsp;        }
+<b class="fc"><i>100</i>&nbsp;        content = content.concat(&quot;Status: &quot; + tourStatus + &quot;\n\n&quot;);</b>
+<b class="fc"><i>101</i>&nbsp;        content = content.concat(&quot;Thank your for using our service. We wish you a great trip and happy experience.\n\n&quot;);</b>
+<b class="fc"><i>102</i>&nbsp;        content = content.concat(&quot;Sincerely,\n&quot;);</b>
+<b class="fc"><i>103</i>&nbsp;        content = content.concat(&quot;TravelWLocal&quot;);</b>
+<b class="fc"><i>104</i>&nbsp;        return content;</b>
+<i>105</i>&nbsp;    }
+<i>106</i>&nbsp;
+<i>107</i>&nbsp;    @Override
+<i>108</i>&nbsp;    public String acceptContractMailContent(long guider_id) throws Exception {
+<b class="fc"><i>109</i>&nbsp;        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;MM/dd/yyyy&quot;);</b>
+<b class="fc"><i>110</i>&nbsp;        String content = &quot;&quot;;</b>
+<b class="fc"><i>111</i>&nbsp;        Contract contract = guiderService.findGuiderContract(guider_id);</b>
+<b class="fc"><i>112</i>&nbsp;        content = content.concat(&quot;Dear Mr/Ms &quot; + contract.getName() + &quot;\n\n&quot;);</b>
+<b class="fc"><i>113</i>&nbsp;        content = content.concat(&quot;Your contract to become a guider has been accepted !\n\n&quot;);</b>
+<b class="fc"><i>114</i>&nbsp;        content = content.concat(&quot;Here is the information you have given us upon setting up the contract\n&quot;);</b>
+<b class="fc"><i>115</i>&nbsp;        content = content.concat(&quot;Name: &quot; + contract.getName() + &quot;\n&quot;);</b>
+<b class="fc"><i>116</i>&nbsp;        content = content.concat(&quot;Nationality: &quot; + contract.getNationality() + &quot;\n&quot;);</b>
+<b class="fc"><i>117</i>&nbsp;        content = content.concat(&quot;Date of birth (MM/dd/yyyy): &quot; + contract.getDate_of_birth().format(formatter) + &quot;\n&quot;);</b>
+<b class="fc"><i>118</i>&nbsp;        if (contract.getGender() == 1) {</b>
+<b class="fc"><i>119</i>&nbsp;            content = content.concat(&quot;Gender: Male\n&quot;);</b>
+<b class="fc"><i>120</i>&nbsp;        } else if (contract.getGender() == 2) {</b>
+<b class="fc"><i>121</i>&nbsp;            content = content.concat(&quot;Gender: Female\n&quot;);</b>
+<i>122</i>&nbsp;        } else {
+<b class="fc"><i>123</i>&nbsp;            content = content.concat(&quot;Gender: Other\n&quot;);</b>
+<i>124</i>&nbsp;        }
+<b class="fc"><i>125</i>&nbsp;        content = content.concat(&quot;Hometown: &quot; + contract.getHometown() + &quot;\n&quot;);</b>
+<b class="fc"><i>126</i>&nbsp;        content = content.concat(&quot;Address: &quot; + contract.getAddress() + &quot;\n&quot;);</b>
+<b class="fc"><i>127</i>&nbsp;        content = content.concat(&quot;Identity Card Number: &quot; + contract.getIdentity_card_number() + &quot;\n&quot;);</b>
+<b class="fc"><i>128</i>&nbsp;        content = content.concat(&quot;Identity Card Issued Date: &quot; + contract.getCard_issued_date().format(formatter) + &quot;\n&quot;);</b>
+<b class="fc"><i>129</i>&nbsp;        content = content.concat(&quot;Identity Card Issued Province: &quot; + contract.getCard_issued_province() + &quot;\n&quot;);</b>
+<b class="fc"><i>130</i>&nbsp;        content = content.concat(&quot;If any information were mistakenly given, please contact us immediately.\n&quot;);</b>
+<b class="fc"><i>131</i>&nbsp;        content = content.concat(&quot;We also recommend to update your profile if you have not done it, so the customers can have &quot; +</b>
+<i>132</i>&nbsp;                &quot;a better understanding about you !\n\n&quot;);
+<b class="fc"><i>133</i>&nbsp;        content = content.concat(&quot;Thank your for using our service.\n\n&quot;);</b>
+<b class="fc"><i>134</i>&nbsp;        content = content.concat(&quot;Sincerely,\n&quot;);</b>
+<b class="fc"><i>135</i>&nbsp;        content = content.concat(&quot;TravelWLocal&quot;);</b>
+<b class="fc"><i>136</i>&nbsp;        return content;</b>
+<i>137</i>&nbsp;    }
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;    @Override
+<i>140</i>&nbsp;    public String rejectContractMailContent(long guider_id) throws Exception {
+<b class="fc"><i>141</i>&nbsp;        String content = &quot;&quot;;</b>
+<b class="fc"><i>142</i>&nbsp;        Contract contract = guiderService.findGuiderContract(guider_id);</b>
+<b class="fc"><i>143</i>&nbsp;        content = content.concat(&quot;Dear Mr/Ms &quot; + contract.getName() + &quot;\n\n&quot;);</b>
+<b class="fc"><i>144</i>&nbsp;        content = content.concat(&quot;Thank you for your application for the position of tour guider at our TravelWLocal website. &quot; +</b>
+<i>145</i>&nbsp;                &quot;As you can imagine, we received a large number of applications. &quot; +
+<i>146</i>&nbsp;                &quot;I am sorry to inform you that you have not been selected for this position.\n\n&quot;);
+<b class="fc"><i>147</i>&nbsp;        content = content.concat(&quot;We at TravelWLocal thanks you for the time you invested in applying for the position. &quot; +</b>
+<i>148</i>&nbsp;                &quot;We encourage you to apply for future openings for which you qualify.\n\n&quot;);
+<b class="fc"><i>149</i>&nbsp;        content = content.concat(&quot;Best wishes for successful in life. Thank you, again, for your interest in our website.\n\n&quot;);</b>
+<b class="fc"><i>150</i>&nbsp;        content = content.concat(&quot;Thank your for using our service.\n\n&quot;);</b>
+<b class="fc"><i>151</i>&nbsp;        content = content.concat(&quot;Sincerely,\n&quot;);</b>
+<b class="fc"><i>152</i>&nbsp;        content = content.concat(&quot;TravelWLocal&quot;);</b>
+<b class="fc"><i>153</i>&nbsp;        return content;</b>
+<i>154</i>&nbsp;    }
+<i>155</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

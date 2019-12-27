@@ -1,0 +1,338 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: AccountRepository</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">services.account</a> ]
+</div>
+
+<h1>Coverage Summary for Class: AccountRepository (services.account)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AccountRepository</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/ 12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (56/ 56)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">AccountRepository$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/ 7)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$4RJSlaC1</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$agcuVYDi</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$EeiZofFu</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$Eo3oT92q</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$hGtJSDwO</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$hURNduPd</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$Kktzp9i7</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$pOcAhuj5</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$VojqSyxC</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$y5QuZWwb</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$Z4O4dKyg</td>
+  </tr>
+  <tr>
+    <td class="name">AccountRepository$MockitoMock$1058297561$auxiliary$zqm239uI</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (18/ 18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (72/ 72)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;/*
+<i>2</i>&nbsp; * To change this license header, choose License Headers in Project Properties.
+<i>3</i>&nbsp; * To change this template file, choose Tools | Templates
+<i>4</i>&nbsp; * and open the template in the editor.
+<i>5</i>&nbsp; */
+<i>6</i>&nbsp;package services.account;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import entities.Account;
+<i>9</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>10</i>&nbsp;import org.springframework.jdbc.core.JdbcTemplate;
+<i>11</i>&nbsp;import org.springframework.jdbc.core.RowMapper;
+<i>12</i>&nbsp;import org.springframework.jdbc.support.GeneratedKeyHolder;
+<i>13</i>&nbsp;import org.springframework.jdbc.support.KeyHolder;
+<i>14</i>&nbsp;import org.springframework.stereotype.Repository;
+<i>15</i>&nbsp;import services.Mail.MailService;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;import java.sql.PreparedStatement;
+<i>18</i>&nbsp;import java.sql.ResultSet;
+<i>19</i>&nbsp;import java.sql.SQLException;
+<i>20</i>&nbsp;import java.util.ArrayList;
+<i>21</i>&nbsp;import java.util.List;
+<i>22</i>&nbsp;import java.util.Random;
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;/**
+<i>25</i>&nbsp; * @author dgdbp
+<i>26</i>&nbsp; */
+<i>27</i>&nbsp;@Repository
+<i>28</i>&nbsp;public class AccountRepository {
+<i>29</i>&nbsp;    private JdbcTemplate jdbc;
+<i>30</i>&nbsp;    private MailService mailService;
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    @Autowired
+<b class="fc"><i>33</i>&nbsp;    public AccountRepository(JdbcTemplate jdbc, MailService ms) {</b>
+<b class="fc"><i>34</i>&nbsp;        this.jdbc = jdbc;</b>
+<b class="fc"><i>35</i>&nbsp;        this.mailService = ms;</b>
+<b class="fc"><i>36</i>&nbsp;    }</b>
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    public Account findAccountByName(String name) throws Exception {
+<b class="fc"><i>39</i>&nbsp;        return jdbc.queryForObject(&quot;select * from account where user_name=?&quot;, new RowMapper&lt;Account&gt;() {</b>
+<i>40</i>&nbsp;            @Override
+<i>41</i>&nbsp;            public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>42</i>&nbsp;                return new Account(</b>
+<b class="fc"><i>43</i>&nbsp;                        rs.getLong(&quot;account_id&quot;),</b>
+<b class="fc"><i>44</i>&nbsp;                        rs.getString(&quot;user_name&quot;),</b>
+<b class="fc"><i>45</i>&nbsp;                        rs.getString(&quot;password&quot;),</b>
+<b class="fc"><i>46</i>&nbsp;                        rs.getString(&quot;email&quot;),</b>
+<b class="fc"><i>47</i>&nbsp;                        rs.getString(&quot;role&quot;));</b>
+<i>48</i>&nbsp;            }
+<i>49</i>&nbsp;        }, name);
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    public String findAccountNameByAccountId(int account_id) throws Exception {
+<b class="fc"><i>53</i>&nbsp;        Account account = jdbc.queryForObject(&quot;select * from account where account_id=?&quot;, new RowMapper&lt;Account&gt;() {</b>
+<i>54</i>&nbsp;            @Override
+<i>55</i>&nbsp;            public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>56</i>&nbsp;                return new Account(</b>
+<b class="fc"><i>57</i>&nbsp;                        rs.getLong(&quot;account_id&quot;),</b>
+<b class="fc"><i>58</i>&nbsp;                        rs.getString(&quot;user_name&quot;),</b>
+<b class="fc"><i>59</i>&nbsp;                        rs.getString(&quot;email&quot;),</b>
+<b class="fc"><i>60</i>&nbsp;                        rs.getString(&quot;role&quot;));</b>
+<i>61</i>&nbsp;            }
+<b class="fc"><i>62</i>&nbsp;        }, account_id);</b>
+<b class="fc"><i>63</i>&nbsp;        return account.getUserName();</b>
+<i>64</i>&nbsp;    }
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    public int addAccount(Account acc) throws Exception {
+<b class="fc"><i>67</i>&nbsp;        KeyHolder keyHolder = new GeneratedKeyHolder();</b>
+<b class="fc"><i>68</i>&nbsp;        String query = &quot; INSERT INTO public.account( &quot;</b>
+<i>69</i>&nbsp;                + &quot; user_name, password, email ,role ) &quot;
+<i>70</i>&nbsp;                + &quot; VALUES ( ?, ?, ?, ? ) &quot;;
+<b class="fc"><i>71</i>&nbsp;        jdbc.update(connection -&gt; {</b>
+<b class="fc"><i>72</i>&nbsp;            PreparedStatement ps = connection</b>
+<b class="fc"><i>73</i>&nbsp;                    .prepareStatement(query, new String[]{&quot;account_id&quot;});</b>
+<b class="fc"><i>74</i>&nbsp;            ps.setString(1, acc.getUserName());</b>
+<b class="fc"><i>75</i>&nbsp;            ps.setString(2, acc.getPassword());</b>
+<b class="fc"><i>76</i>&nbsp;            ps.setString(3, acc.getEmail());</b>
+<b class="fc"><i>77</i>&nbsp;            ps.setString(4, acc.getRole());</b>
+<b class="fc"><i>78</i>&nbsp;            return ps;</b>
+<i>79</i>&nbsp;        }, keyHolder);
+<b class="fc"><i>80</i>&nbsp;        return (int) keyHolder.getKey();</b>
+<i>81</i>&nbsp;    }
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    public boolean canGuiderLogin(long guider_id) {
+<b class="fc"><i>84</i>&nbsp;        String query = &quot;select active from guider where guider_id = ?&quot;;</b>
+<b class="fc"><i>85</i>&nbsp;        return jdbc.queryForObject(query, new Object[]{guider_id}, boolean.class);</b>
+<i>86</i>&nbsp;    }
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;    public int changePassword(String name, String pass) throws Exception {
+<b class="fc"><i>89</i>&nbsp;        String query = &quot;update account set password = ? where user_name = ? ; &quot;;</b>
+<b class="fc"><i>90</i>&nbsp;        return jdbc.update(query, pass, name);</b>
+<i>91</i>&nbsp;    }
+<i>92</i>&nbsp;
+<i>93</i>&nbsp;    public String getEmail(int account_id) throws Exception {
+<b class="fc"><i>94</i>&nbsp;        String query = &quot;select email from account where account_id = ?&quot;;</b>
+<b class="fc"><i>95</i>&nbsp;        return jdbc.queryForObject(query, new Object[]{account_id}, String.class);</b>
+<i>96</i>&nbsp;    }
+<i>97</i>&nbsp;
+<i>98</i>&nbsp;    public boolean isMailVerified(long account_id) throws Exception {
+<b class="fc"><i>99</i>&nbsp;        String query = &quot;select email_verified from account where account_id = ?&quot;;</b>
+<b class="fc"><i>100</i>&nbsp;        return jdbc.queryForObject(query, new Object[]{account_id}, boolean.class);</b>
+<i>101</i>&nbsp;    }
+<i>102</i>&nbsp;
+<i>103</i>&nbsp;    public List&lt;Account&gt; findAllAccount() throws Exception {
+<b class="fc"><i>104</i>&nbsp;        List&lt;Account&gt; result = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>105</i>&nbsp;        String query = &quot;SELECT account_id, user_name, email, role, active FROM account left join guider on account_id = guider_id&quot;;</b>
+<b class="fc"><i>106</i>&nbsp;        result = jdbc.query(query, new RowMapper&lt;Account&gt;() {</b>
+<i>107</i>&nbsp;            @Override
+<i>108</i>&nbsp;            public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>109</i>&nbsp;                return new Account(rs.getInt(&quot;account_id&quot;), rs.getString(&quot;user_name&quot;),</b>
+<b class="fc"><i>110</i>&nbsp;                        rs.getString(&quot;email&quot;), rs.getString(&quot;role&quot;), rs.getBoolean(&quot;active&quot;));</b>
+<i>111</i>&nbsp;            }
+<i>112</i>&nbsp;        });
+<b class="fc"><i>113</i>&nbsp;        return result;</b>
+<i>114</i>&nbsp;    }
+<i>115</i>&nbsp;
+<i>116</i>&nbsp;    public String insertEmailConfirmToken(long account_id) throws Exception {
+<b class="fc"><i>117</i>&nbsp;        String SALTCHARS = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890&quot;;</b>
+<b class="fc"><i>118</i>&nbsp;        StringBuilder salt = new StringBuilder();</b>
+<b class="fc"><i>119</i>&nbsp;        Random rnd = new Random();</b>
+<b class="fc"><i>120</i>&nbsp;        while (salt.length() &lt; 50) { // length of the random string.</b>
+<b class="fc"><i>121</i>&nbsp;            int index = (int) (rnd.nextFloat() * SALTCHARS.length());</b>
+<b class="fc"><i>122</i>&nbsp;            salt.append(SALTCHARS.charAt(index));</b>
+<b class="fc"><i>123</i>&nbsp;        }</b>
+<b class="fc"><i>124</i>&nbsp;        String token = salt.toString();</b>
+<b class="fc"><i>125</i>&nbsp;        jdbc.update(&quot;update account set email_token = ? where account_id = ?&quot;, token, account_id);</b>
+<b class="fc"><i>126</i>&nbsp;        return account_id + &quot;E&quot; + token;</b>
+<i>127</i>&nbsp;    }
+<i>128</i>&nbsp;
+<i>129</i>&nbsp;    public void confirmEmail(String token) throws Exception {
+<b class="fc"><i>130</i>&nbsp;        String[] data = token.split(&quot;E&quot;, 2);</b>
+<b class="fc"><i>131</i>&nbsp;        int account_id = Integer.parseInt(data[0]);</b>
+<b class="fc"><i>132</i>&nbsp;        String checkToken = data[1];</b>
+<b class="fc"><i>133</i>&nbsp;        String query = &quot;select email_token from account where account_id = ?&quot;;</b>
+<b class="fc"><i>134</i>&nbsp;        String email_token = jdbc.queryForObject(query, new Object[]{account_id}, String.class);</b>
+<b class="fc"><i>135</i>&nbsp;        String content = &quot;&quot;;</b>
+<b class="fc"><i>136</i>&nbsp;        if (email_token.equals(checkToken)) {</b>
+<i>137</i>&nbsp;            // Change verified status
+<b class="fc"><i>138</i>&nbsp;            jdbc.update(&quot;update account set email_verified = true where account_id = ?&quot;, account_id);</b>
+<i>139</i>&nbsp;            // Mail content
+<b class="fc"><i>140</i>&nbsp;            content = &quot;Your email has been verified !\n&quot; +</b>
+<i>141</i>&nbsp;                    &quot;Have a nice day\n\n&quot;;
+<b class="fc"><i>142</i>&nbsp;            content = content.concat(&quot;Sincerely,\nTravelWLocal&quot;);</b>
+<i>143</i>&nbsp;        } else {
+<b class="fc"><i>144</i>&nbsp;            content = &quot;Your email has not been verified !\n&quot; + &quot;Please try again later !&quot; +</b>
+<i>145</i>&nbsp;                    &quot;Have a nice day\n\n&quot;;
+<b class="fc"><i>146</i>&nbsp;            content = content.concat(&quot;Sincerely,\nTravelWLocal&quot;);</b>
+<i>147</i>&nbsp;        }
+<i>148</i>&nbsp;        // Send result email
+<b class="fc"><i>149</i>&nbsp;        String email = this.getEmail(account_id);</b>
+<b class="fc"><i>150</i>&nbsp;        mailService.sendMail(email, &quot;TravelWLocal Email Confirmation&quot;, content);</b>
+<b class="fc"><i>151</i>&nbsp;    }</b>
+<i>152</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

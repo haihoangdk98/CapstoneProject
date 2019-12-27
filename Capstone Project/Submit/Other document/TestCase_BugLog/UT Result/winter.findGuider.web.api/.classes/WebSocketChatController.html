@@ -1,0 +1,151 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: WebSocketChatController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">winter.findGuider.web.api</a> ]
+</div>
+
+<h1>Coverage Summary for Class: WebSocketChatController (winter.findGuider.web.api)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">WebSocketChatController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (18/ 18)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package winter.findGuider.web.api;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import entities.ChatMessage;
+<i>4</i>&nbsp;import org.slf4j.Logger;
+<i>5</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>6</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>7</i>&nbsp;import org.springframework.http.HttpEntity;
+<i>8</i>&nbsp;import org.springframework.http.HttpStatus;
+<i>9</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>10</i>&nbsp;import org.springframework.messaging.handler.annotation.MessageMapping;
+<i>11</i>&nbsp;import org.springframework.messaging.handler.annotation.Payload;
+<i>12</i>&nbsp;import org.springframework.messaging.handler.annotation.SendTo;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+<i>15</i>&nbsp;import org.springframework.messaging.simp.SimpMessagingTemplate;
+<i>16</i>&nbsp;import org.springframework.stereotype.Controller;
+<i>17</i>&nbsp;import org.springframework.web.bind.annotation.PathVariable;
+<i>18</i>&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
+<i>19</i>&nbsp;import org.springframework.web.bind.annotation.RequestMethod;
+<i>20</i>&nbsp;import services.chatMessage.ChatMessageRepositoryImpl;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;import java.security.Principal;
+<i>23</i>&nbsp;import java.util.ArrayList;
+<i>24</i>&nbsp;import java.util.List;
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;@Controller
+<b class="fc"><i>27</i>&nbsp;public class WebSocketChatController {</b>
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    @Autowired
+<i>30</i>&nbsp;    private ChatMessageRepositoryImpl chatMessageRepository;
+<b class="fc"><i>31</i>&nbsp;    private Logger logger = LoggerFactory.getLogger(getClass());</b>
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    @Autowired
+<i>34</i>&nbsp;    private SimpMessagingTemplate simpMessagingTemplate;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    @MessageMapping(&quot;/chat.sendMessage&quot;)
+<i>38</i>&nbsp;    public void sendMessage( @Payload ChatMessage chatMessage) {
+<i>39</i>&nbsp;        try {
+<b class="fc"><i>40</i>&nbsp;            chatMessageRepository.save(chatMessage);</b>
+<b class="fc"><i>41</i>&nbsp;            this.simpMessagingTemplate.convertAndSendToUser(chatMessage.getGuider(),&quot;/queue/reply&quot;, chatMessage);</b>
+<b class="fc"><i>42</i>&nbsp;            this.simpMessagingTemplate.convertAndSendToUser(chatMessage.getTraveler(),&quot;/queue/reply&quot;, chatMessage);</b>
+<b class="fc"><i>43</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>44</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>45</i>&nbsp;        }</b>
+<b class="fc"><i>46</i>&nbsp;    }</b>
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;    @MessageMapping(&quot;chat.sendSeen&quot;)
+<i>49</i>&nbsp;    public void sendSeenMessage( @Payload ChatMessage chatMessage){
+<b class="fc"><i>50</i>&nbsp;        chatMessageRepository.updateSeen(chatMessage.getGuider(),chatMessage.getTraveler());</b>
+<i>51</i>&nbsp;        //this.simpMessagingTemplate.convertAndSendToUser(chatMessage.get(),&quot;/queue/reply&quot;, chatMessage);
+<b class="fc"><i>52</i>&nbsp;    }</b>
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;    @RequestMapping(value = &quot;/messages/{firstuser}/{seconduser}/{firstElement}/{lastElement}&quot;, method = RequestMethod.GET)
+<i>55</i>&nbsp;    public HttpEntity getMessage(@PathVariable(&quot;firstuser&quot;) String firstUser,@PathVariable(&quot;seconduser&quot;) String secondUser,@PathVariable(&quot;firstElement&quot;) int firstElement,@PathVariable(&quot;lastElement&quot;) int lastElement){
+<b class="fc"><i>56</i>&nbsp;        chatMessageRepository.updateSeen(firstUser,secondUser);</b>
+<b class="fc"><i>57</i>&nbsp;        List&lt;ChatMessage&gt; chatMessages = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>58</i>&nbsp;        chatMessages = chatMessageRepository.get(firstUser,secondUser,firstElement,lastElement);</b>
+<b class="fc"><i>59</i>&nbsp;        return new ResponseEntity(chatMessages, HttpStatus.OK);</b>
+<i>60</i>&nbsp;    }
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    @RequestMapping(value = &quot;/messages/{user}/{firstElement}/{lastElement}&quot;, method = RequestMethod.GET)
+<i>63</i>&nbsp;    public HttpEntity getReceiver(@PathVariable(&quot;user&quot;) String user,@PathVariable(&quot;firstElement&quot;) int firstElement,@PathVariable(&quot;lastElement&quot;) int lastElement){
+<b class="fc"><i>64</i>&nbsp;        List&lt;ChatMessage&gt; chatMessages = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>65</i>&nbsp;        chatMessages = chatMessageRepository.getReceiver(user,firstElement,lastElement);</b>
+<b class="fc"><i>66</i>&nbsp;        return new ResponseEntity(chatMessages, HttpStatus.OK);</b>
+<i>67</i>&nbsp;    }
+<i>68</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

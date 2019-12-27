@@ -1,0 +1,217 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ReviewController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">winter.findGuider.web.api</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ReviewController (winter.findGuider.web.api)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ReviewController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (47/ 47)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package winter.findGuider.web.api;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import entities.Review;
+<i>4</i>&nbsp;import entities.TravelerReview;
+<i>5</i>&nbsp;import org.slf4j.Logger;
+<i>6</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>8</i>&nbsp;import org.springframework.http.HttpStatus;
+<i>9</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>10</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i>11</i>&nbsp;import services.Review.ReviewService;
+<i>12</i>&nbsp;import services.contributionPoint.ContributionPointService;
+<i>13</i>&nbsp;import services.trip.TripService;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;import java.util.List;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;@RestController
+<i>18</i>&nbsp;@RequestMapping(path = &quot;/review&quot;, produces = &quot;application/json&quot;)
+<i>19</i>&nbsp;@CrossOrigin(origins = &quot;*&quot;)
+<i>20</i>&nbsp;public class ReviewController {
+<b class="fc"><i>21</i>&nbsp;    private Logger logger = LoggerFactory.getLogger(getClass());</b>
+<i>22</i>&nbsp;    private ReviewService reviewService;
+<i>23</i>&nbsp;    private ContributionPointService contributionPointService;
+<i>24</i>&nbsp;    private TripService tripService;
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    @Autowired
+<b class="fc"><i>27</i>&nbsp;    public ReviewController(ReviewService rs, ContributionPointService cps, TripService ts) {</b>
+<b class="fc"><i>28</i>&nbsp;        this.reviewService = rs;</b>
+<b class="fc"><i>29</i>&nbsp;        this.contributionPointService = cps;</b>
+<b class="fc"><i>30</i>&nbsp;        this.tripService = ts;</b>
+<b class="fc"><i>31</i>&nbsp;    }</b>
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    @RequestMapping(&quot;/reviewByGuiderId&quot;)
+<i>34</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>35</i>&nbsp;    public ResponseEntity&lt;List&lt;Review&gt;&gt; findReviewByGuiderId(@RequestParam(&quot;guider_id&quot;) long guider_id) {
+<i>36</i>&nbsp;        try {
+<b class="fc"><i>37</i>&nbsp;            return new ResponseEntity&lt;&gt;(reviewService.findReviewsByGuiderId(guider_id), HttpStatus.OK);</b>
+<b class="fc"><i>38</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>39</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>40</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>41</i>&nbsp;        }
+<i>42</i>&nbsp;    }
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    @RequestMapping(&quot;/reviewByPostId&quot;)
+<i>45</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>46</i>&nbsp;    public ResponseEntity&lt;List&lt;Review&gt;&gt; findReviewByPostId(@RequestParam(&quot;post_id&quot;) long post_id,
+<i>47</i>&nbsp;                                                           @RequestParam(&quot;page&quot;) long page) {
+<i>48</i>&nbsp;        try {
+<b class="fc"><i>49</i>&nbsp;            return new ResponseEntity&lt;&gt;(reviewService.findReviewsByPostId(post_id, page), HttpStatus.OK);</b>
+<b class="fc"><i>50</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>51</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>52</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>53</i>&nbsp;        }
+<i>54</i>&nbsp;    }
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    @RequestMapping(&quot;/reviewByPostIdAdmin&quot;)
+<i>57</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>58</i>&nbsp;    public ResponseEntity&lt;List&lt;Review&gt;&gt; findReviewByPostIdAdmin(@RequestParam(&quot;post_id&quot;) long post_id) {
+<i>59</i>&nbsp;        try {
+<b class="fc"><i>60</i>&nbsp;            return new ResponseEntity&lt;&gt;(reviewService.findReviewsByPostIdAdmin(post_id), HttpStatus.OK);</b>
+<b class="fc"><i>61</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>62</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>63</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>64</i>&nbsp;        }
+<i>65</i>&nbsp;    }
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    @RequestMapping(&quot;/create&quot;)
+<i>68</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>69</i>&nbsp;    public ResponseEntity&lt;Boolean&gt; createReview(@RequestBody Review newReview) {
+<i>70</i>&nbsp;        try {
+<b class="fc"><i>71</i>&nbsp;            boolean result = reviewService.createReview(newReview);</b>
+<b class="fc"><i>72</i>&nbsp;            if (result) {</b>
+<b class="fc"><i>73</i>&nbsp;                long post_id = tripService.findTripById((int) newReview.getTrip_id()).getPost_id();</b>
+<b class="fc"><i>74</i>&nbsp;                contributionPointService.calculatePostAndGuiderRating(post_id);</b>
+<i>75</i>&nbsp;            }
+<b class="fc"><i>76</i>&nbsp;            return new ResponseEntity&lt;&gt;(result, HttpStatus.OK);</b>
+<b class="fc"><i>77</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>78</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>79</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>80</i>&nbsp;        }
+<i>81</i>&nbsp;    }
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    @RequestMapping(&quot;/checkExist&quot;)
+<i>84</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>85</i>&nbsp;    public ResponseEntity&lt;List&lt;Review&gt;&gt; checkReviewExist(@RequestParam(&quot;trip_id&quot;) long trip_id) {
+<i>86</i>&nbsp;        try {
+<b class="fc"><i>87</i>&nbsp;            boolean isExist = reviewService.checkReviewExist(trip_id);</b>
+<b class="fc"><i>88</i>&nbsp;            if (isExist) {</b>
+<b class="fc"><i>89</i>&nbsp;                return new ResponseEntity&lt;&gt;(reviewService.findReviewByOrderId(trip_id), HttpStatus.OK);</b>
+<i>90</i>&nbsp;            } else {
+<b class="fc"><i>91</i>&nbsp;                return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>92</i>&nbsp;            }
+<b class="fc"><i>93</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>94</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>95</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>96</i>&nbsp;        }
+<i>97</i>&nbsp;    }
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;    @RequestMapping(&quot;/showHideReview&quot;)
+<i>100</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>101</i>&nbsp;    public ResponseEntity&lt;Boolean&gt; showHideReview(@RequestParam(&quot;trip_id&quot;) long trip_id) {
+<i>102</i>&nbsp;        try {
+<b class="fc"><i>103</i>&nbsp;            reviewService.showHideReview(trip_id);</b>
+<b class="fc"><i>104</i>&nbsp;            return new ResponseEntity&lt;&gt;(true, HttpStatus.OK);</b>
+<b class="fc"><i>105</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>106</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>107</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>108</i>&nbsp;        }
+<i>109</i>&nbsp;    }
+<i>110</i>&nbsp;
+<i>111</i>&nbsp;    @RequestMapping(&quot;/createTravelerReview&quot;)
+<i>112</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>113</i>&nbsp;    public ResponseEntity&lt;TravelerReview&gt; createTravelerReview(@RequestBody TravelerReview review) {
+<i>114</i>&nbsp;        try {
+<b class="fc"><i>115</i>&nbsp;            long id = reviewService.createTravelerReview(review);</b>
+<b class="fc"><i>116</i>&nbsp;            return new ResponseEntity&lt;&gt;(reviewService.findTravelerReviewById(id), HttpStatus.OK);</b>
+<b class="fc"><i>117</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>118</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>119</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>120</i>&nbsp;        }
+<i>121</i>&nbsp;    }
+<i>122</i>&nbsp;
+<i>123</i>&nbsp;    @RequestMapping(&quot;/showTravelerReview&quot;)
+<i>124</i>&nbsp;    @ResponseStatus(HttpStatus.OK)
+<i>125</i>&nbsp;    public ResponseEntity&lt;List&lt;TravelerReview&gt;&gt; showTravelerReview(@RequestParam(&quot;traveler_id&quot;) long traveler_id,
+<i>126</i>&nbsp;                                                                   @RequestParam(&quot;page&quot;) long page) {
+<i>127</i>&nbsp;        try {
+<b class="fc"><i>128</i>&nbsp;            return new ResponseEntity&lt;&gt;(reviewService.findReviewOfATraveler(traveler_id, page), HttpStatus.OK);</b>
+<b class="fc"><i>129</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>130</i>&nbsp;            logger.error(e.getMessage());</b>
+<b class="fc"><i>131</i>&nbsp;            return new ResponseEntity&lt;&gt;(null, HttpStatus.NOT_FOUND);</b>
+<i>132</i>&nbsp;        }
+<i>133</i>&nbsp;    }
+<i>134</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

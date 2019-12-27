@@ -1,0 +1,722 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TripServiceImpl</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">services.trip</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TripServiceImpl (services.trip)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TripServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (25/ 25)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    98.2%
+  </span>
+  <span class="absValue">
+    (213/ 217)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">TripServiceImpl$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/ 8)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">TripServiceImpl$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/ 14)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">TripServiceImpl$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">TripServiceImpl$4</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">TripServiceImpl$5</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">TripServiceImpl$6</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/ 14)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (37/ 37)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    98.5%
+  </span>
+  <span class="absValue">
+    (261/ 265)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package services.trip;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.paypal.base.rest.PayPalRESTException;
+<i>4</i>&nbsp;import entities.Order;
+<i>5</i>&nbsp;import org.slf4j.Logger;
+<i>6</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>8</i>&nbsp;import org.springframework.beans.factory.annotation.Value;
+<i>9</i>&nbsp;import org.springframework.jdbc.core.JdbcTemplate;
+<i>10</i>&nbsp;import org.springframework.jdbc.core.RowMapper;
+<i>11</i>&nbsp;import org.springframework.scheduling.annotation.Scheduled;
+<i>12</i>&nbsp;import org.springframework.stereotype.Repository;
+<i>13</i>&nbsp;import services.Paypal.PaypalService;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;import java.sql.ResultSet;
+<i>16</i>&nbsp;import java.sql.SQLException;
+<i>17</i>&nbsp;import java.sql.Timestamp;
+<i>18</i>&nbsp;import java.text.SimpleDateFormat;
+<i>19</i>&nbsp;import java.time.LocalDate;
+<i>20</i>&nbsp;import java.time.LocalDateTime;
+<i>21</i>&nbsp;import java.time.format.DateTimeFormatter;
+<i>22</i>&nbsp;import java.util.*;
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;@Repository
+<i>25</i>&nbsp;public class TripServiceImpl implements TripService {
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    private static final String UNCONFIRMED = &quot;WAITING&quot;;
+<i>28</i>&nbsp;    private static final String ONGOING = &quot;ONGOING&quot;;
+<i>29</i>&nbsp;    private static final String FINISHED = &quot;FINISHED&quot;;
+<i>30</i>&nbsp;    private static final String CANCELLED = &quot;CANCELLED&quot;;
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    private static final String HOUR_TAIL_0 = &quot;:00&quot;;
+<i>33</i>&nbsp;    private static final String HOUR_TAIL_30 = &quot;:30&quot;;
+<i>34</i>&nbsp;    private static final String HOUR_POSITION_BEFORE = &quot;before&quot;;
+<i>35</i>&nbsp;    private static final String HOUR_POSITION_AFTER = &quot;after&quot;;
+<i>36</i>&nbsp;
+<b class="fc"><i>37</i>&nbsp;    private final Logger logger = LoggerFactory.getLogger(getClass());</b>
+<i>38</i>&nbsp;    private JdbcTemplate jdbcTemplate;
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    @Value(&quot;${order.buffer}&quot;)
+<i>41</i>&nbsp;    private String bufferPercent;
+<i>42</i>&nbsp;    @Autowired
+<i>43</i>&nbsp;    private PaypalService paypalService;
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    @Autowired
+<b class="fc"><i>46</i>&nbsp;    public TripServiceImpl(JdbcTemplate jdbcTemplate) {</b>
+<b class="fc"><i>47</i>&nbsp;        this.jdbcTemplate = jdbcTemplate;</b>
+<b class="fc"><i>48</i>&nbsp;    }</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    @Override
+<i>51</i>&nbsp;    public void createTrip(Order newOrder) throws Exception {
+<b class="fc"><i>52</i>&nbsp;        String insertQuery = &quot;insert into trip (traveler_id,post_id,begin_date,finish_date,adult_quantity,children_quantity,fee_paid,transaction_id,status)&quot;</b>
+<i>53</i>&nbsp;                + &quot;values (?,?,?,?,?,?,?,?,?)&quot;;
+<b class="fc"><i>54</i>&nbsp;        double totalHour = this.getTourTotalHour(newOrder.getPost_id());</b>
+<b class="fc"><i>55</i>&nbsp;        long bufferHour = (long) java.lang.Math.ceil(totalHour / 100 * Integer.parseInt(bufferPercent));</b>
+<b class="fc"><i>56</i>&nbsp;        jdbcTemplate.update(insertQuery, newOrder.getTraveler_id(), newOrder.getPost_id(),</b>
+<b class="fc"><i>57</i>&nbsp;                Timestamp.valueOf(newOrder.getBegin_date()),</b>
+<b class="fc"><i>58</i>&nbsp;                Timestamp.valueOf(newOrder.getFinish_date().plusHours(bufferHour).minusMinutes(30)),</b>
+<b class="fc"><i>59</i>&nbsp;                newOrder.getAdult_quantity(), newOrder.getChildren_quantity(), newOrder.getFee_paid(),</b>
+<b class="fc"><i>60</i>&nbsp;                newOrder.getTransaction_id(), UNCONFIRMED);</b>
+<b class="fc"><i>61</i>&nbsp;    }</b>
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;    @Override
+<i>64</i>&nbsp;    public Order findTripById(long trip_id) throws Exception {
+<b class="fc"><i>65</i>&nbsp;        Order searchOrder = new Order();</b>
+<b class="fc"><i>66</i>&nbsp;        String query = &quot;select * from trip where trip_id = ?&quot;;</b>
+<b class="fc"><i>67</i>&nbsp;        searchOrder = jdbcTemplate.queryForObject(query, new RowMapper&lt;Order&gt;() {</b>
+<i>68</i>&nbsp;            @Override
+<i>69</i>&nbsp;            public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>70</i>&nbsp;                return new Order(rs.getInt(&quot;trip_id&quot;), rs.getInt(&quot;traveler_id&quot;),</b>
+<b class="fc"><i>71</i>&nbsp;                        rs.getInt(&quot;post_id&quot;),</b>
+<b class="fc"><i>72</i>&nbsp;                        rs.getTimestamp(&quot;begin_date&quot;).toLocalDateTime(),</b>
+<b class="fc"><i>73</i>&nbsp;                        rs.getTimestamp(&quot;finish_date&quot;).toLocalDateTime(),</b>
+<b class="fc"><i>74</i>&nbsp;                        rs.getInt(&quot;adult_quantity&quot;), rs.getInt(&quot;children_quantity&quot;),</b>
+<b class="fc"><i>75</i>&nbsp;                        rs.getLong(&quot;fee_paid&quot;), rs.getString(&quot;transaction_id&quot;),</b>
+<b class="fc"><i>76</i>&nbsp;                        rs.getString(&quot;status&quot;));</b>
+<i>77</i>&nbsp;            }
+<b class="fc"><i>78</i>&nbsp;        }, trip_id);</b>
+<b class="fc"><i>79</i>&nbsp;        return searchOrder;</b>
+<i>80</i>&nbsp;    }
+<i>81</i>&nbsp;
+<i>82</i>&nbsp;    @Override
+<i>83</i>&nbsp;    public List&lt;Order&gt; findTripByStatus(String role, int id, String status) throws Exception {
+<b class="fc"><i>84</i>&nbsp;        List&lt;Order&gt; result = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>85</i>&nbsp;        String query = &quot;&quot;;</b>
+<b class="fc"><i>86</i>&nbsp;        if (role.equalsIgnoreCase(&quot;guider&quot;)) {</b>
+<b class="fc"><i>87</i>&nbsp;            query = &quot;SELECT o.*, p.guider_id, p.title, t.first_name, t.last_name FROM trip as o &quot;</b>
+<i>88</i>&nbsp;                    + &quot; inner join traveler as t on o.traveler_id = t.traveler_id &quot;
+<i>89</i>&nbsp;                    + &quot; inner join post as p on p.post_id = o.post_id &quot;
+<i>90</i>&nbsp;                    + &quot; where p.guider_id = ? and status = ? &quot;
+<i>91</i>&nbsp;                    + &quot; order by begin_date desc &quot;;
+<b class="fc"><i>92</i>&nbsp;        } else if (role.equalsIgnoreCase(&quot;traveler&quot;)) {</b>
+<b class="fc"><i>93</i>&nbsp;            query = &quot;SELECT o.*, p.guider_id, p.title, g.first_name, g.last_name &quot;</b>
+<i>94</i>&nbsp;                    + &quot;FROM trip as o &quot;
+<i>95</i>&nbsp;                    + &quot;inner join post as p on p.post_id = o.post_id &quot;
+<i>96</i>&nbsp;                    + &quot;inner join guider as g on p.guider_id = g.guider_id &quot;
+<i>97</i>&nbsp;                    + &quot;where o.traveler_id = ? and status = ? &quot;
+<i>98</i>&nbsp;                    + &quot;order by begin_date desc&quot;;
+<i>99</i>&nbsp;        } else {
+<b class="fc"><i>100</i>&nbsp;            throw new Exception(&quot;wrong role&quot;);</b>
+<i>101</i>&nbsp;        }
+<i>102</i>&nbsp;
+<b class="fc"><i>103</i>&nbsp;        result = jdbcTemplate.query(query, new RowMapper&lt;Order&gt;() {</b>
+<i>104</i>&nbsp;            @Override
+<i>105</i>&nbsp;            public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>106</i>&nbsp;                return new Order(rs.getInt(&quot;trip_id&quot;),</b>
+<b class="fc"><i>107</i>&nbsp;                        rs.getInt(&quot;traveler_id&quot;),</b>
+<b class="fc"><i>108</i>&nbsp;                        rs.getInt(&quot;guider_id&quot;),</b>
+<b class="fc"><i>109</i>&nbsp;                        rs.getInt(&quot;post_id&quot;),</b>
+<b class="fc"><i>110</i>&nbsp;                        rs.getTimestamp(&quot;begin_date&quot;).toLocalDateTime(),</b>
+<b class="fc"><i>111</i>&nbsp;                        rs.getTimestamp(&quot;finish_date&quot;).toLocalDateTime(),</b>
+<b class="fc"><i>112</i>&nbsp;                        rs.getInt(&quot;adult_quantity&quot;),</b>
+<b class="fc"><i>113</i>&nbsp;                        rs.getInt(&quot;children_quantity&quot;),</b>
+<b class="fc"><i>114</i>&nbsp;                        rs.getDouble(&quot;fee_paid&quot;),</b>
+<b class="fc"><i>115</i>&nbsp;                        rs.getString(&quot;transaction_id&quot;),</b>
+<b class="fc"><i>116</i>&nbsp;                        rs.getString(&quot;status&quot;),</b>
+<b class="fc"><i>117</i>&nbsp;                        rs.getString(&quot;title&quot;),</b>
+<b class="fc"><i>118</i>&nbsp;                        rs.getString(&quot;first_name&quot;) + &quot; &quot; + rs.getString(&quot;last_name&quot;));</b>
+<i>119</i>&nbsp;            }
+<b class="fc"><i>120</i>&nbsp;        }, id, status);</b>
+<i>121</i>&nbsp;        //System.out.println(query + id + status + result.size());
+<b class="fc"><i>122</i>&nbsp;        return result;</b>
+<i>123</i>&nbsp;    }
+<i>124</i>&nbsp;
+<i>125</i>&nbsp;    @Override
+<i>126</i>&nbsp;    public boolean acceptTrip(long trip_id) throws Exception {
+<b class="fc"><i>127</i>&nbsp;        String check = &quot;select count(trip_id) from trip where trip_id = ? and status = ?&quot;;</b>
+<b class="fc"><i>128</i>&nbsp;        int count = jdbcTemplate.queryForObject(check, new Object[]{trip_id, UNCONFIRMED}, int.class);</b>
+<b class="fc"><i>129</i>&nbsp;        if (count == 0) {</b>
+<b class="fc"><i>130</i>&nbsp;            return false;</b>
+<i>131</i>&nbsp;        }
+<b class="fc"><i>132</i>&nbsp;        String query = &quot;update trip set status = ? where trip_id = ?&quot;;</b>
+<b class="fc"><i>133</i>&nbsp;        jdbcTemplate.update(query, ONGOING, trip_id);</b>
+<b class="fc"><i>134</i>&nbsp;        return true;</b>
+<i>135</i>&nbsp;    }
+<i>136</i>&nbsp;
+<i>137</i>&nbsp;    @Override
+<i>138</i>&nbsp;    public boolean cancelTrip(long trip_id) throws Exception {
+<b class="fc"><i>139</i>&nbsp;        String check = &quot;select count(trip_id) from trip where trip_id = ? and status = ? or status = ?&quot;;</b>
+<b class="fc"><i>140</i>&nbsp;        int count = jdbcTemplate.queryForObject(check, new Object[]{trip_id, UNCONFIRMED, ONGOING}, int.class);</b>
+<b class="fc"><i>141</i>&nbsp;        if (count == 0) {</b>
+<b class="fc"><i>142</i>&nbsp;            return false;</b>
+<i>143</i>&nbsp;        }
+<b class="fc"><i>144</i>&nbsp;        String query = &quot;update trip set status = ? where trip_id = ?&quot;;</b>
+<b class="fc"><i>145</i>&nbsp;        jdbcTemplate.update(query, CANCELLED, trip_id);</b>
+<b class="fc"><i>146</i>&nbsp;        return true;</b>
+<i>147</i>&nbsp;    }
+<i>148</i>&nbsp;
+<i>149</i>&nbsp;    @Override
+<i>150</i>&nbsp;    public boolean finishTrip(long trip_id) throws Exception {
+<b class="fc"><i>151</i>&nbsp;        String check = &quot;select count(trip_id) from trip where trip_id = ? and status = ?&quot;;</b>
+<b class="fc"><i>152</i>&nbsp;        int count = jdbcTemplate.queryForObject(check, new Object[]{trip_id, ONGOING}, int.class);</b>
+<b class="fc"><i>153</i>&nbsp;        if (count == 0) {</b>
+<b class="fc"><i>154</i>&nbsp;            return false;</b>
+<i>155</i>&nbsp;        }
+<b class="fc"><i>156</i>&nbsp;        String query = &quot;update trip set status = ? where trip_id = ?&quot;;</b>
+<b class="fc"><i>157</i>&nbsp;        jdbcTemplate.update(query, FINISHED, trip_id);</b>
+<b class="fc"><i>158</i>&nbsp;        return true;</b>
+<i>159</i>&nbsp;    }
+<i>160</i>&nbsp;
+<i>161</i>&nbsp;    @Override
+<i>162</i>&nbsp;    public void getTripGuiderId_FinishDate(Order newOrder) throws Exception {
+<b class="fc"><i>163</i>&nbsp;        String query = &quot;SELECT guider_id, total_hour FROM post where post_id = ?&quot;;</b>
+<b class="fc"><i>164</i>&nbsp;        jdbcTemplate.queryForObject(query, new RowMapper&lt;Order&gt;() {</b>
+<i>165</i>&nbsp;            @Override
+<i>166</i>&nbsp;            public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>167</i>&nbsp;                newOrder.setGuider_id(rs.getInt(&quot;guider_id&quot;));</b>
+<b class="fc"><i>168</i>&nbsp;                Timestamp finishDate = Timestamp.valueOf(newOrder.getBegin_date().plusHours(rs.getLong(&quot;total_hour&quot;)));</b>
+<b class="fc"><i>169</i>&nbsp;                newOrder.setFinish_date(finishDate.toLocalDateTime());</b>
+<b class="fc"><i>170</i>&nbsp;                return newOrder;</b>
+<i>171</i>&nbsp;            }
+<b class="fc"><i>172</i>&nbsp;        }, newOrder.getPost_id());</b>
+<b class="fc"><i>173</i>&nbsp;    }</b>
+<i>174</i>&nbsp;
+<i>175</i>&nbsp;    @Override
+<i>176</i>&nbsp;    public int checkTripExist(long id) throws Exception {
+<b class="fc"><i>177</i>&nbsp;        int count = 0;</b>
+<b class="fc"><i>178</i>&nbsp;        String query = &quot;SELECT t1.begin_date , t1.finish_date, p2.guider_id FROM trip as t1&quot;</b>
+<i>179</i>&nbsp;                + &quot; inner join post as p2 on t1.post_id = p2.post_id &quot;
+<i>180</i>&nbsp;                + &quot; where t1.trip_id = ? &quot;;
+<b class="fc"><i>181</i>&nbsp;        Map&lt;String, Object&gt; times = jdbcTemplate.queryForMap(query, id);</b>
+<i>182</i>&nbsp;
+<b class="fc"><i>183</i>&nbsp;        query = &quot;SELECT count (trip_id) FROM trip as t1 &quot;</b>
+<i>184</i>&nbsp;                + &quot;inner join post as p2 on  t1.post_id = p2.post_id  &quot;
+<i>185</i>&nbsp;                + &quot;where (p2.guider_id = ?) and (t1.status = ?) &quot;
+<i>186</i>&nbsp;                + &quot;and ((t1.begin_date between ? and ?) &quot;
+<i>187</i>&nbsp;                + &quot;or (t1.finish_date between ? and ?))&quot;;
+<b class="fc"><i>188</i>&nbsp;        count = jdbcTemplate.queryForObject(query, new Object[]{times.get(&quot;guider_id&quot;), ONGOING,</b>
+<b class="fc"><i>189</i>&nbsp;                times.get(&quot;begin_date&quot;), times.get(&quot;finish_date&quot;),</b>
+<b class="fc"><i>190</i>&nbsp;                times.get(&quot;begin_date&quot;), times.get(&quot;finish_date&quot;)}, int.class);</b>
+<b class="fc"><i>191</i>&nbsp;        return count;</b>
+<i>192</i>&nbsp;    }
+<i>193</i>&nbsp;
+<i>194</i>&nbsp;    @Override
+<i>195</i>&nbsp;    public int checkAvailabilityOfTrip(Order newOrder) throws Exception {
+<b class="fc"><i>196</i>&nbsp;        int count = 0;</b>
+<b class="fc"><i>197</i>&nbsp;        String query = &quot;SELECT count (trip_id) FROM trip &quot;</b>
+<i>198</i>&nbsp;                + &quot;inner join post on post.post_id = trip.post_id &quot;
+<i>199</i>&nbsp;                + &quot;where (post.guider_id = ?) and (status = ?) &quot;
+<i>200</i>&nbsp;                + &quot;and ((begin_date between ? and ?) &quot;
+<i>201</i>&nbsp;                + &quot;or (finish_date between ? and ?))&quot;;
+<b class="fc"><i>202</i>&nbsp;        int guider_id = newOrder.getGuider_id();</b>
+<b class="fc"><i>203</i>&nbsp;        Timestamp acceptableBeginDate = Timestamp.valueOf(newOrder.getBegin_date());</b>
+<b class="fc"><i>204</i>&nbsp;        Timestamp acceptableFinishDate = Timestamp.valueOf(newOrder.getFinish_date());</b>
+<b class="fc"><i>205</i>&nbsp;        count = jdbcTemplate.queryForObject(query, new Object[]{guider_id, ONGOING, acceptableBeginDate,</b>
+<i>206</i>&nbsp;                acceptableFinishDate, acceptableBeginDate, acceptableFinishDate}, int.class);
+<b class="fc"><i>207</i>&nbsp;        return count;</b>
+<i>208</i>&nbsp;    }
+<i>209</i>&nbsp;
+<i>210</i>&nbsp;    @Override
+<i>211</i>&nbsp;    public ArrayList&lt;String&gt; getGuiderAvailableHours(LocalDate chosenDate, int post_id, int guider_id) throws Exception {
+<i>212</i>&nbsp;        // Create default available hours
+<b class="fc"><i>213</i>&nbsp;        ArrayList&lt;String&gt; availableHours = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>214</i>&nbsp;        this.createHourArray(availableHours, 0, 24);</b>
+<i>215</i>&nbsp;
+<i>216</i>&nbsp;        // check if day in mid tour
+<b class="fc"><i>217</i>&nbsp;        boolean isMidTour = this.checkDayInMidTour(guider_id, chosenDate);</b>
+<b class="fc"><i>218</i>&nbsp;        if (isMidTour) {</b>
+<b class="fc"><i>219</i>&nbsp;            availableHours.clear();</b>
+<b class="fc"><i>220</i>&nbsp;            return availableHours;</b>
+<i>221</i>&nbsp;        }
+<i>222</i>&nbsp;
+<i>223</i>&nbsp;        // Get guider schedule
+<b class="fc"><i>224</i>&nbsp;        List&lt;Order&gt; guiderSchedule = this.getGuiderSchedule(guider_id, chosenDate);</b>
+<b class="fc"><i>225</i>&nbsp;        if (!guiderSchedule.isEmpty()) {</b>
+<i>226</i>&nbsp;            // Get occupy hours
+<b class="fc"><i>227</i>&nbsp;            ArrayList&lt;String&gt; occupyHour = this.getOccupyHours(guiderSchedule, chosenDate);</b>
+<i>228</i>&nbsp;            // Clear out occupy hours from available hours
+<b class="fc"><i>229</i>&nbsp;            availableHours.removeAll(occupyHour);</b>
+<i>230</i>&nbsp;        }
+<i>231</i>&nbsp;
+<i>232</i>&nbsp;        // Get unacceptable hours
+<b class="fc"><i>233</i>&nbsp;        ArrayList&lt;String&gt; unacceptableHours = this.getUnacceptableHours(post_id, availableHours, chosenDate);</b>
+<b class="fc"><i>234</i>&nbsp;        if (!unacceptableHours.isEmpty()) {</b>
+<b class="fc"><i>235</i>&nbsp;            availableHours.removeAll(unacceptableHours);</b>
+<i>236</i>&nbsp;        }
+<i>237</i>&nbsp;
+<b class="fc"><i>238</i>&nbsp;        return availableHours;</b>
+<i>239</i>&nbsp;    }
+<i>240</i>&nbsp;
+<i>241</i>&nbsp;    @Override
+<i>242</i>&nbsp;    public String getClosestTripFinishDate(LocalDate date, int guider_id) throws Exception {
+<b class="fc"><i>243</i>&nbsp;        String closestFinishDate = &quot;&quot;;</b>
+<b class="fc"><i>244</i>&nbsp;        String query = &quot;SELECT finish_date FROM trip &quot;</b>
+<i>245</i>&nbsp;                + &quot;inner join post on post.post_id = trip.post_id &quot;
+<i>246</i>&nbsp;                + &quot;where post.guider_id = ? and finish_date &lt; ? &quot;
+<i>247</i>&nbsp;                + &quot;and status = ? &quot;
+<i>248</i>&nbsp;                + &quot;order by finish_date desc &quot;
+<i>249</i>&nbsp;                + &quot;limit 1&quot;;
+<b class="fc"><i>250</i>&nbsp;        List&lt;String&gt; result = jdbcTemplate.query(query, new RowMapper&lt;String&gt;() {</b>
+<i>251</i>&nbsp;            @Override
+<i>252</i>&nbsp;            public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>253</i>&nbsp;                return rs.getString(1);</b>
+<i>254</i>&nbsp;            }
+<b class="fc"><i>255</i>&nbsp;        }, guider_id, date, FINISHED);</b>
+<b class="fc"><i>256</i>&nbsp;        if (result == null || result.isEmpty()) {</b>
+<b class="fc"><i>257</i>&nbsp;            return &quot;a very long time ago&quot;;</b>
+<i>258</i>&nbsp;        } else {
+<b class="fc"><i>259</i>&nbsp;            closestFinishDate = result.get(0);</b>
+<i>260</i>&nbsp;        }
+<b class="fc"><i>261</i>&nbsp;        closestFinishDate = new SimpleDateFormat(&quot;MM/dd/yyyy HH:mm&quot;).format(</b>
+<b class="fc"><i>262</i>&nbsp;                new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;).parse(closestFinishDate));</b>
+<b class="fc"><i>263</i>&nbsp;        return closestFinishDate;</b>
+<i>264</i>&nbsp;    }
+<i>265</i>&nbsp;
+<i>266</i>&nbsp;    @Override
+<i>267</i>&nbsp;    public boolean checkTripReach24Hours(Order cancelOrder, LocalDateTime rightNow) throws Exception {
+<b class="fc"><i>268</i>&nbsp;        LocalDateTime boundaryDay = cancelOrder.getBegin_date().minusDays(1);</b>
+<i>269</i>&nbsp;        // check day
+<b class="fc"><i>270</i>&nbsp;        if (rightNow.getDayOfMonth() &lt; boundaryDay.getDayOfMonth()) {</b>
+<b class="fc"><i>271</i>&nbsp;            return false;</b>
+<b class="fc"><i>272</i>&nbsp;        } else if (rightNow.getDayOfMonth() &gt; boundaryDay.getDayOfMonth()) {</b>
+<b class="fc"><i>273</i>&nbsp;            return true;</b>
+<i>274</i>&nbsp;        } else {
+<b class="fc"><i>275</i>&nbsp;            if (rightNow.getHour() &lt; boundaryDay.getHour()) {</b>
+<b class="fc"><i>276</i>&nbsp;                return false;</b>
+<b class="fc"><i>277</i>&nbsp;            } else if (rightNow.getHour() &gt; boundaryDay.getHour()) {</b>
+<b class="fc"><i>278</i>&nbsp;                return true;</b>
+<i>279</i>&nbsp;            } else {
+<b class="fc"><i>280</i>&nbsp;                if (rightNow.getMinute() &lt; boundaryDay.getMinute()) {</b>
+<b class="fc"><i>281</i>&nbsp;                    return false;</b>
+<i>282</i>&nbsp;                } else {
+<b class="fc"><i>283</i>&nbsp;                    return true;</b>
+<i>284</i>&nbsp;                }
+<i>285</i>&nbsp;            }
+<i>286</i>&nbsp;        }
+<i>287</i>&nbsp;    }
+<i>288</i>&nbsp;
+<i>289</i>&nbsp;    @Override
+<i>290</i>&nbsp;    public String getExpectedEndTripTime(int post_id, LocalDateTime begin_date) throws Exception {
+<b class="fc"><i>291</i>&nbsp;        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;MM/dd/yyyy HH:mm&quot;);</b>
+<b class="fc"><i>292</i>&nbsp;        double totalHour = this.getTourTotalHour(post_id);</b>
+<b class="fc"><i>293</i>&nbsp;        long bufferHour = (long) java.lang.Math.ceil(totalHour / 100 * Integer.parseInt(bufferPercent));</b>
+<b class="fc"><i>294</i>&nbsp;        long duration = (long) totalHour + bufferHour;</b>
+<b class="fc"><i>295</i>&nbsp;        LocalDateTime end_date = begin_date.plusHours(duration).minusMinutes(30);</b>
+<b class="fc"><i>296</i>&nbsp;        return end_date.format(formatter);</b>
+<i>297</i>&nbsp;    }
+<i>298</i>&nbsp;
+<i>299</i>&nbsp;    private double getTourTotalHour(int post_id) throws Exception {
+<b class="fc"><i>300</i>&nbsp;        double total_hour = 0;</b>
+<b class="fc"><i>301</i>&nbsp;        String query = &quot;SELECT total_hour FROM post where post_id = ?&quot;;</b>
+<b class="fc"><i>302</i>&nbsp;        total_hour = (double) jdbcTemplate.queryForObject(query, new Object[]{post_id}, int.class);</b>
+<b class="fc"><i>303</i>&nbsp;        return total_hour;</b>
+<i>304</i>&nbsp;    }
+<i>305</i>&nbsp;
+<i>306</i>&nbsp;    private void createHourArray(ArrayList&lt;String&gt; array, int startHour, int endHour) throws Exception {
+<b class="fc"><i>307</i>&nbsp;        String[] hourTails = {HOUR_TAIL_0, HOUR_TAIL_30};</b>
+<b class="fc"><i>308</i>&nbsp;        for (int i = startHour; i &lt; endHour; i++) {</b>
+<b class="fc"><i>309</i>&nbsp;            for (int j = 0; j &lt; 2; j++) {</b>
+<b class="fc"><i>310</i>&nbsp;                String availableTime = i + hourTails[j];</b>
+<b class="fc"><i>311</i>&nbsp;                if (i &lt; 10) {</b>
+<b class="fc"><i>312</i>&nbsp;                    availableTime = &quot;0&quot; + availableTime;</b>
+<i>313</i>&nbsp;                }
+<b class="fc"><i>314</i>&nbsp;                if (!array.contains(availableTime)) {</b>
+<b class="fc"><i>315</i>&nbsp;                    array.add(availableTime);</b>
+<i>316</i>&nbsp;                }
+<i>317</i>&nbsp;            }
+<i>318</i>&nbsp;        }
+<b class="fc"><i>319</i>&nbsp;    }</b>
+<i>320</i>&nbsp;
+<i>321</i>&nbsp;    private boolean checkDayInMidTour(long guider_id, LocalDate date) throws Exception {
+<b class="fc"><i>322</i>&nbsp;        String query = &quot;SELECT count(trip_id) FROM trip &quot;</b>
+<i>323</i>&nbsp;                + &quot;inner join post on trip.post_id = post.post_id &quot;
+<i>324</i>&nbsp;                + &quot;where post.guider_id = ? and status = ? &quot;
+<i>325</i>&nbsp;                + &quot;and date(begin_date) &lt; ? and date(finish_date) &gt; ? &quot;;
+<b class="fc"><i>326</i>&nbsp;        int count = jdbcTemplate.queryForObject(query, new Object[]{guider_id, ONGOING, date, date}, int.class);</b>
+<b class="fc"><i>327</i>&nbsp;        if (count != 0) {</b>
+<b class="fc"><i>328</i>&nbsp;            return true;</b>
+<i>329</i>&nbsp;        } else {
+<b class="fc"><i>330</i>&nbsp;            return false;</b>
+<i>331</i>&nbsp;        }
+<i>332</i>&nbsp;    }
+<i>333</i>&nbsp;
+<i>334</i>&nbsp;    private List&lt;Order&gt; getGuiderSchedule(int guider_id, LocalDate date) throws Exception {
+<b class="fc"><i>335</i>&nbsp;        List&lt;Order&gt; guiderSchedule = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>336</i>&nbsp;        String query = &quot;SELECT trip_id, begin_date, finish_date FROM trip &quot;</b>
+<i>337</i>&nbsp;                + &quot;inner join post on trip.post_id = post.post_id &quot;
+<i>338</i>&nbsp;                + &quot;where post.guider_id = ? and status = ? &quot;
+<i>339</i>&nbsp;                + &quot;and (Date(begin_date) = ? &quot;
+<i>340</i>&nbsp;                + &quot;or Date(finish_date) = ?) &quot;
+<i>341</i>&nbsp;                + &quot;order by begin_date&quot;;
+<b class="fc"><i>342</i>&nbsp;        guiderSchedule = jdbcTemplate.query(query, new RowMapper&lt;Order&gt;() {</b>
+<i>343</i>&nbsp;            @Override
+<i>344</i>&nbsp;            public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>345</i>&nbsp;                Order temp = new Order();</b>
+<b class="fc"><i>346</i>&nbsp;                temp.setBegin_date(rs.getTimestamp(&quot;begin_date&quot;).toLocalDateTime());</b>
+<b class="fc"><i>347</i>&nbsp;                temp.setFinish_date(rs.getTimestamp(&quot;finish_date&quot;).toLocalDateTime());</b>
+<b class="fc"><i>348</i>&nbsp;                return temp;</b>
+<i>349</i>&nbsp;            }
+<b class="fc"><i>350</i>&nbsp;        }, guider_id, ONGOING, date, date);</b>
+<b class="fc"><i>351</i>&nbsp;        return guiderSchedule;</b>
+<i>352</i>&nbsp;    }
+<i>353</i>&nbsp;
+<i>354</i>&nbsp;    private ArrayList&lt;String&gt; getOccupyHours(List&lt;Order&gt; guiderSchedule, LocalDate date) throws Exception {
+<b class="fc"><i>355</i>&nbsp;        ArrayList&lt;String&gt; occupyHour = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>356</i>&nbsp;        for (Order order : guiderSchedule) {</b>
+<b class="fc"><i>357</i>&nbsp;            int beginHour = order.getBegin_date().getHour();</b>
+<b class="fc"><i>358</i>&nbsp;            int finishHour = order.getFinish_date().getHour();</b>
+<b class="fc"><i>359</i>&nbsp;            int beginMinute = order.getBegin_date().getMinute();</b>
+<b class="fc"><i>360</i>&nbsp;            int finishMinute = order.getFinish_date().getMinute();</b>
+<i>361</i>&nbsp;
+<b class="fc"><i>362</i>&nbsp;            if (order.getBegin_date().getDayOfMonth() &lt; date.getDayOfMonth()) {</b>
+<b class="fc"><i>363</i>&nbsp;                this.createHourArray(occupyHour, 0, finishHour + 1);</b>
+<b class="fc"><i>364</i>&nbsp;                if (finishMinute == 0) {</b>
+<b class="fc"><i>365</i>&nbsp;                    this.removeHour(occupyHour, finishHour, HOUR_POSITION_AFTER);</b>
+<i>366</i>&nbsp;                }
+<b class="fc"><i>367</i>&nbsp;            } else if (order.getFinish_date().getDayOfMonth() &gt; date.getDayOfMonth()) {</b>
+<b class="fc"><i>368</i>&nbsp;                boolean frontExist = this.checkDuplicateHours(occupyHour, beginHour);</b>
+<b class="fc"><i>369</i>&nbsp;                this.createHourArray(occupyHour, beginHour, 24);</b>
+<b class="fc"><i>370</i>&nbsp;                if (!frontExist) {</b>
+<b class="fc"><i>371</i>&nbsp;                    if (beginMinute != 0) {</b>
+<b class="fc"><i>372</i>&nbsp;                        this.removeHour(occupyHour, beginHour, HOUR_POSITION_BEFORE);</b>
+<i>373</i>&nbsp;                    }
+<i>374</i>&nbsp;                }
+<b class="fc"><i>375</i>&nbsp;            } else {</b>
+<b class="fc"><i>376</i>&nbsp;                boolean frontExist = this.checkDuplicateHours(occupyHour, beginHour);</b>
+<b class="fc"><i>377</i>&nbsp;                this.createHourArray(occupyHour, beginHour, finishHour + 1);</b>
+<b class="fc"><i>378</i>&nbsp;                if (beginMinute != 0 &amp;&amp; finishMinute == 0) {</b>
+<b class="fc"><i>379</i>&nbsp;                    if (!frontExist) {</b>
+<b class="fc"><i>380</i>&nbsp;                        this.removeHour(occupyHour, beginHour, HOUR_POSITION_BEFORE);</b>
+<i>381</i>&nbsp;                    }
+<b class="fc"><i>382</i>&nbsp;                    this.removeHour(occupyHour, finishHour, HOUR_POSITION_AFTER);</b>
+<b class="fc"><i>383</i>&nbsp;                } else if (beginMinute == 0 &amp;&amp; finishMinute == 0) {</b>
+<b class="fc"><i>384</i>&nbsp;                    this.removeHour(occupyHour, finishHour, HOUR_POSITION_AFTER);</b>
+<b class="fc"><i>385</i>&nbsp;                } else if (beginMinute != 0 &amp;&amp; finishMinute != 0) {</b>
+<b class="fc"><i>386</i>&nbsp;                    if (!frontExist) {</b>
+<b class="fc"><i>387</i>&nbsp;                        this.removeHour(occupyHour, beginHour, HOUR_POSITION_BEFORE);</b>
+<i>388</i>&nbsp;                    }
+<i>389</i>&nbsp;                }
+<i>390</i>&nbsp;            }
+<b class="fc"><i>391</i>&nbsp;        }</b>
+<b class="fc"><i>392</i>&nbsp;        Collections.sort(occupyHour);</b>
+<b class="fc"><i>393</i>&nbsp;        return occupyHour;</b>
+<i>394</i>&nbsp;    }
+<i>395</i>&nbsp;
+<i>396</i>&nbsp;    private ArrayList&lt;String&gt; getUnacceptableHours(int post_id, ArrayList&lt;String&gt; availableHours,
+<i>397</i>&nbsp;                                                   LocalDate chosenDate) throws Exception {
+<i>398</i>&nbsp;
+<b class="fc"><i>399</i>&nbsp;        ArrayList&lt;String&gt; unacceptableHours = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>400</i>&nbsp;        double totalHour = this.getTourTotalHour(post_id);</b>
+<b class="fc"><i>401</i>&nbsp;        long bufferHour = (long) java.lang.Math.ceil(totalHour / 100 * Integer.parseInt(bufferPercent));</b>
+<b class="fc"><i>402</i>&nbsp;        long duration = (long) totalHour + bufferHour;</b>
+<b class="fc"><i>403</i>&nbsp;        for (String hour : availableHours) {</b>
+<b class="fc"><i>404</i>&nbsp;            LocalDateTime checkDate = LocalDateTime.parse(chosenDate + &quot;T&quot; + hour);</b>
+<b class="fc"><i>405</i>&nbsp;            checkDate = checkDate.plusHours(duration);</b>
+<b class="fc"><i>406</i>&nbsp;            String query = &quot;SELECT count(trip_id) FROM trip &quot;</b>
+<i>407</i>&nbsp;                    + &quot;where post_id = ? and status = ? &quot;
+<i>408</i>&nbsp;                    + &quot;and (begin_date &lt;= ? &quot;
+<i>409</i>&nbsp;                    + &quot;and finish_date &gt;= ?)&quot;;
+<b class="fc"><i>410</i>&nbsp;            int count = jdbcTemplate.queryForObject(query, new Object[]{post_id, ONGOING, checkDate, checkDate}, int.class);</b>
+<b class="fc"><i>411</i>&nbsp;            if (count != 0) {</b>
+<b class="fc"><i>412</i>&nbsp;                unacceptableHours.add(hour);</b>
+<i>413</i>&nbsp;            }
+<b class="fc"><i>414</i>&nbsp;        }</b>
+<b class="fc"><i>415</i>&nbsp;        return unacceptableHours;</b>
+<i>416</i>&nbsp;    }
+<i>417</i>&nbsp;
+<i>418</i>&nbsp;    private void removeHour(ArrayList&lt;String&gt; array, int hour, String type) throws Exception {
+<b class="fc"><i>419</i>&nbsp;        if (hour &lt; 10) {</b>
+<b class="fc"><i>420</i>&nbsp;            array.remove(&quot;0&quot; + hour + (type.equals(HOUR_POSITION_BEFORE) ? HOUR_TAIL_0 : HOUR_TAIL_30));</b>
+<i>421</i>&nbsp;        } else {
+<b class="fc"><i>422</i>&nbsp;            array.remove(hour + (type.equals(HOUR_POSITION_BEFORE) ? HOUR_TAIL_0 : HOUR_TAIL_30));</b>
+<i>423</i>&nbsp;        }
+<b class="fc"><i>424</i>&nbsp;    }</b>
+<i>425</i>&nbsp;
+<i>426</i>&nbsp;    private boolean checkDuplicateHours(ArrayList&lt;String&gt; occupyHour, int hour) throws Exception {
+<b class="fc"><i>427</i>&nbsp;        if (hour &lt; 10) {</b>
+<b class="fc"><i>428</i>&nbsp;            if (occupyHour.contains(&quot;0&quot; + hour + HOUR_TAIL_0) || occupyHour.contains(&quot;0&quot; + hour + HOUR_TAIL_30)) {</b>
+<b class="fc"><i>429</i>&nbsp;                return true;</b>
+<i>430</i>&nbsp;            }
+<i>431</i>&nbsp;        } else {
+<b class="fc"><i>432</i>&nbsp;            if (occupyHour.contains(hour + HOUR_TAIL_0) || occupyHour.contains(hour + HOUR_TAIL_30)) {</b>
+<b class="fc"><i>433</i>&nbsp;                return true;</b>
+<i>434</i>&nbsp;            }
+<i>435</i>&nbsp;        }
+<b class="fc"><i>436</i>&nbsp;        return false;</b>
+<i>437</i>&nbsp;    }
+<i>438</i>&nbsp;
+<i>439</i>&nbsp;    @Override
+<i>440</i>&nbsp;    public List&lt;Order&gt; getTripByWeek(int id, Date start, Date end) throws Exception {
+<b class="fc"><i>441</i>&nbsp;        List&lt;Order&gt; result = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>442</i>&nbsp;        String query = &quot;SELECT o.*, p.guider_id, p.title, t.first_name, t.last_name FROM trip as o &quot;</b>
+<i>443</i>&nbsp;                + &quot; inner join traveler as t on o.traveler_id = t.traveler_id &quot;
+<i>444</i>&nbsp;                + &quot; inner join post as p on p.post_id = o.post_id &quot;
+<i>445</i>&nbsp;                + &quot; where p.guider_id = ? and (o.status = &#39;ONGOING&#39;) &quot;
+<i>446</i>&nbsp;                + &quot; and ((o.begin_date between ? and ?) or (o.finish_date between ? and ?) )&quot;
+<i>447</i>&nbsp;                + &quot; order by o.begin_date ; &quot;;
+<i>448</i>&nbsp;
+<b class="fc"><i>449</i>&nbsp;        result = jdbcTemplate.query(query, new RowMapper&lt;Order&gt;() {</b>
+<i>450</i>&nbsp;            @Override
+<i>451</i>&nbsp;            public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>452</i>&nbsp;                return new Order(rs.getInt(&quot;trip_id&quot;),</b>
+<b class="fc"><i>453</i>&nbsp;                        rs.getInt(&quot;traveler_id&quot;),</b>
+<b class="fc"><i>454</i>&nbsp;                        rs.getInt(&quot;guider_id&quot;),</b>
+<b class="fc"><i>455</i>&nbsp;                        rs.getInt(&quot;post_id&quot;),</b>
+<b class="fc"><i>456</i>&nbsp;                        rs.getTimestamp(&quot;begin_date&quot;).toLocalDateTime(),</b>
+<b class="fc"><i>457</i>&nbsp;                        rs.getTimestamp(&quot;finish_date&quot;).toLocalDateTime(),</b>
+<b class="fc"><i>458</i>&nbsp;                        rs.getInt(&quot;adult_quantity&quot;),</b>
+<b class="fc"><i>459</i>&nbsp;                        rs.getInt(&quot;children_quantity&quot;),</b>
+<b class="fc"><i>460</i>&nbsp;                        rs.getDouble(&quot;fee_paid&quot;),</b>
+<b class="fc"><i>461</i>&nbsp;                        rs.getString(&quot;transaction_id&quot;),</b>
+<b class="fc"><i>462</i>&nbsp;                        rs.getString(&quot;status&quot;),</b>
+<b class="fc"><i>463</i>&nbsp;                        rs.getString(&quot;title&quot;),</b>
+<b class="fc"><i>464</i>&nbsp;                        rs.getString(&quot;first_name&quot;) + &quot; &quot; + rs.getString(&quot;last_name&quot;));</b>
+<i>465</i>&nbsp;            }
+<b class="fc"><i>466</i>&nbsp;        }, id, new Timestamp(start.getTime()), new Timestamp(end.getTime()), new Timestamp(start.getTime()), new Timestamp(end.getTime()));</b>
+<i>467</i>&nbsp;
+<b class="fc"><i>468</i>&nbsp;        return result;</b>
+<i>469</i>&nbsp;    }
+<i>470</i>&nbsp;
+<i>471</i>&nbsp;    //@Scheduled(cron = &quot;0 0 * * * *&quot;)
+<i>472</i>&nbsp;    @Scheduled(cron = &quot;0 0/5 * 1/1 * *&quot;)
+<i>473</i>&nbsp;    public void cancelTripFilter() throws PayPalRESTException {
+<b class="fc"><i>474</i>&nbsp;        List&lt;Map&lt;String, Object&gt;&gt; lo = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>475</i>&nbsp;        String query = &quot;select trip_id, transaction_id from trip &quot;</b>
+<i>476</i>&nbsp;                + &quot; where extract (epoch from (now() - book_time))::integer &quot;
+<i>477</i>&nbsp;                + &quot; &gt; extract(epoch from TIMESTAMP &#39;1970-1-1 05:00:00&#39;)::integer &quot;
+<i>478</i>&nbsp;                + &quot; and status = &#39;WAITING&#39;; &quot;;
+<b class="fc"><i>479</i>&nbsp;        lo = jdbcTemplate.queryForList(query);</b>
+<i>480</i>&nbsp;
+<b class="fc"><i>481</i>&nbsp;        List&lt;String&gt; update = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>482</i>&nbsp;        for (Map m : lo) {</b>
+<b class="nc"><i>483</i>&nbsp;            paypalService.refundPayment(m.get(&quot;transaction_id&quot;).toString());</b>
+<b class="nc"><i>484</i>&nbsp;            update.add(&quot;update trip set status = &#39;CANCELLED&#39; where trip_id = &quot; + m.get(&quot;trip_id&quot;));</b>
+<b class="nc"><i>485</i>&nbsp;        }</b>
+<b class="fc"><i>486</i>&nbsp;        logger.warn(update.toString());</b>
+<i>487</i>&nbsp;
+<b class="fc"><i>488</i>&nbsp;        String[] updateList = update.toArray(new String[0]);</b>
+<b class="fc"><i>489</i>&nbsp;        if (updateList.length &gt; 0) {</b>
+<b class="nc"><i>490</i>&nbsp;            jdbcTemplate.batchUpdate(updateList);</b>
+<i>491</i>&nbsp;        }
+<b class="fc"><i>492</i>&nbsp;    }</b>
+<i>493</i>&nbsp;
+<i>494</i>&nbsp;    //@Scheduled(cron = &quot;0 0 * * * *&quot;)
+<i>495</i>&nbsp;    @Scheduled(cron = &quot;0 0/5 * 1/1 * *&quot;)
+<i>496</i>&nbsp;    public void finishTripFilter() {
+<b class="fc"><i>497</i>&nbsp;        List&lt;Map&lt;String, Object&gt;&gt; lo = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>498</i>&nbsp;        String query = &quot;select trip_id from trip &quot;</b>
+<i>499</i>&nbsp;                + &quot; where extract (epoch from (now() - finish_date))::integer &quot;
+<i>500</i>&nbsp;                + &quot; &lt;= extract(epoch from TIMESTAMP &#39;1970-1-2 00:00:00&#39;)::integer &quot;
+<i>501</i>&nbsp;                + &quot; and now() &gt; finish_date &quot;
+<i>502</i>&nbsp;                + &quot; and status = &#39;ONGOING&#39;; &quot;;
+<b class="fc"><i>503</i>&nbsp;        lo = jdbcTemplate.queryForList(query);</b>
+<i>504</i>&nbsp;
+<b class="fc"><i>505</i>&nbsp;        List&lt;String&gt; update = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>506</i>&nbsp;        for (Map m : lo) {</b>
+<i>507</i>&nbsp;
+<b class="fc"><i>508</i>&nbsp;            update.add(&quot;update trip set status = &#39;FINISHED&#39; where trip_id = &quot; + m.get(&quot;trip_id&quot;));</b>
+<b class="fc"><i>509</i>&nbsp;        }</b>
+<b class="fc"><i>510</i>&nbsp;        logger.warn(update.toString());</b>
+<i>511</i>&nbsp;
+<b class="fc"><i>512</i>&nbsp;        String[] updateList = update.toArray(new String[0]);</b>
+<b class="fc"><i>513</i>&nbsp;        if (updateList.length &gt; 0) {</b>
+<b class="fc"><i>514</i>&nbsp;            jdbcTemplate.batchUpdate(updateList);</b>
+<i>515</i>&nbsp;        }
+<b class="fc"><i>516</i>&nbsp;    }</b>
+<i>517</i>&nbsp;
+<i>518</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

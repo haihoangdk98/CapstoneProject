@@ -1,0 +1,86 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TripService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">services.trip</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TripService (services.trip)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">TripService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package services.trip;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import entities.Order;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import java.time.LocalDate;
+<i>6</i>&nbsp;import java.time.LocalDateTime;
+<i>7</i>&nbsp;import java.util.ArrayList;
+<i>8</i>&nbsp;import java.util.Date;
+<i>9</i>&nbsp;import java.util.List;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;public interface TripService {
+<i>12</i>&nbsp;    void createTrip(Order newOrder) throws Exception;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    int checkTripExist(long id) throws Exception;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    Order findTripById(long trip_id) throws Exception;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    List&lt;Order&gt; findTripByStatus(String role, int id, String status) throws Exception;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    boolean acceptTrip(long trip_id) throws Exception;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    boolean cancelTrip(long trip_id) throws Exception;
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    boolean finishTrip(long trip_id) throws Exception;
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    void getTripGuiderId_FinishDate(Order newOrder) throws Exception;
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    int checkAvailabilityOfTrip(Order newOrder) throws Exception;
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    ArrayList&lt;String&gt; getGuiderAvailableHours(LocalDate date, int post_id, int guider_id) throws Exception;
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    String getClosestTripFinishDate(LocalDate date, int guider_id) throws Exception;
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    List&lt;Order&gt; getTripByWeek(int id, Date start, Date end) throws Exception;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    boolean checkTripReach24Hours(Order cancelOrder, LocalDateTime rightNow) throws Exception;
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    String getExpectedEndTripTime(int post_id, LocalDateTime begin_date) throws Exception;
+<i>39</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

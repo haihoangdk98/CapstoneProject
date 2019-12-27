@@ -1,0 +1,402 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ReviewServiceImpl</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">services.Review</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ReviewServiceImpl (services.Review)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ReviewServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/ 12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (49/ 49)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ReviewServiceImpl$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ReviewServiceImpl$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ReviewServiceImpl$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ReviewServiceImpl$4</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ReviewServiceImpl$5</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ReviewServiceImpl$6</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ReviewServiceImpl$7</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (26/ 26)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (80/ 80)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package services.Review;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import entities.Review;
+<i>4</i>&nbsp;import entities.TravelerReview;
+<i>5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>6</i>&nbsp;import org.springframework.jdbc.core.JdbcTemplate;
+<i>7</i>&nbsp;import org.springframework.jdbc.core.RowMapper;
+<i>8</i>&nbsp;import org.springframework.jdbc.support.GeneratedKeyHolder;
+<i>9</i>&nbsp;import org.springframework.jdbc.support.KeyHolder;
+<i>10</i>&nbsp;import org.springframework.stereotype.Repository;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;import java.sql.PreparedStatement;
+<i>13</i>&nbsp;import java.sql.ResultSet;
+<i>14</i>&nbsp;import java.sql.SQLException;
+<i>15</i>&nbsp;import java.sql.Timestamp;
+<i>16</i>&nbsp;import java.time.LocalDateTime;
+<i>17</i>&nbsp;import java.util.List;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;@Repository
+<i>20</i>&nbsp;public class ReviewServiceImpl implements ReviewService {
+<b class="fc"><i>21</i>&nbsp;    private final int LIMIT = 5;</b>
+<i>22</i>&nbsp;    private JdbcTemplate jdbcTemplate;
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    @Autowired
+<b class="fc"><i>25</i>&nbsp;    public ReviewServiceImpl(JdbcTemplate jdbcTemplate) {</b>
+<b class="fc"><i>26</i>&nbsp;        this.jdbcTemplate = jdbcTemplate;</b>
+<b class="fc"><i>27</i>&nbsp;    }</b>
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    @Override
+<i>30</i>&nbsp;    public List&lt;Review&gt; findReviewByOrderId(long trip_id) throws Exception {
+<b class="fc"><i>31</i>&nbsp;        String query = &quot;select * from review where trip_id = ?&quot;;</b>
+<b class="fc"><i>32</i>&nbsp;        return jdbcTemplate.query(query, new RowMapper&lt;Review&gt;() {</b>
+<i>33</i>&nbsp;            public Review mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>34</i>&nbsp;                return new Review(rs.getLong(&quot;trip_id&quot;), rs.getLong(&quot;rated&quot;),</b>
+<b class="fc"><i>35</i>&nbsp;                        rs.getDate(&quot;post_date&quot;), rs.getString(&quot;review&quot;),</b>
+<b class="fc"><i>36</i>&nbsp;                        rs.getBoolean(&quot;visible&quot;));</b>
+<i>37</i>&nbsp;            }
+<b class="fc"><i>38</i>&nbsp;        }, trip_id);</b>
+<i>39</i>&nbsp;    }
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    @Override
+<i>42</i>&nbsp;    public List&lt;Review&gt; findReviewsByGuiderId(long guider_id) throws Exception {
+<b class="fc"><i>43</i>&nbsp;        String query = &quot;select review.* from review &quot; +</b>
+<i>44</i>&nbsp;                &quot;inner join trip on review.trip_id = trip.trip_id &quot; +
+<i>45</i>&nbsp;                &quot;inner join post on post.guider_id = ?&quot;;
+<b class="fc"><i>46</i>&nbsp;        return jdbcTemplate.query(query, new RowMapper&lt;Review&gt;() {</b>
+<i>47</i>&nbsp;            public Review mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>48</i>&nbsp;                return new Review(rs.getLong(&quot;trip_id&quot;), rs.getLong(&quot;rated&quot;),</b>
+<b class="fc"><i>49</i>&nbsp;                        rs.getDate(&quot;post_date&quot;), rs.getString(&quot;review&quot;),</b>
+<b class="fc"><i>50</i>&nbsp;                        rs.getBoolean(&quot;visible&quot;));</b>
+<i>51</i>&nbsp;            }
+<b class="fc"><i>52</i>&nbsp;        }, guider_id);</b>
+<i>53</i>&nbsp;    }
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    @Override
+<i>56</i>&nbsp;    public List&lt;Review&gt; findReviewsByPostId(long post_id, long page) throws Exception {
+<b class="fc"><i>57</i>&nbsp;        String query = &quot;select review.*, user_name, avatar_link from review &quot; +</b>
+<i>58</i>&nbsp;                &quot;inner join trip on trip.trip_id = review.trip_id &quot; +
+<i>59</i>&nbsp;                &quot;inner join traveler on trip.traveler_id = traveler.traveler_id &quot; +
+<i>60</i>&nbsp;                &quot;inner join account on trip.traveler_id = account.account_id &quot; +
+<i>61</i>&nbsp;                &quot;where trip.post_id = ? and visible = true &quot; +
+<i>62</i>&nbsp;                &quot;limit ? offset ?&quot;;
+<b class="fc"><i>63</i>&nbsp;        return jdbcTemplate.query(query, new RowMapper&lt;Review&gt;() {</b>
+<i>64</i>&nbsp;            public Review mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>65</i>&nbsp;                return new Review(rs.getLong(&quot;trip_id&quot;), rs.getLong(&quot;rated&quot;),</b>
+<b class="fc"><i>66</i>&nbsp;                        rs.getDate(&quot;post_date&quot;), rs.getString(&quot;review&quot;),</b>
+<b class="fc"><i>67</i>&nbsp;                        rs.getBoolean(&quot;visible&quot;), rs.getString(&quot;user_name&quot;),</b>
+<b class="fc"><i>68</i>&nbsp;                        rs.getString(&quot;avatar_link&quot;));</b>
+<i>69</i>&nbsp;            }
+<b class="fc"><i>70</i>&nbsp;        }, post_id, LIMIT, page * LIMIT);</b>
+<i>71</i>&nbsp;    }
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    @Override
+<i>74</i>&nbsp;    public List&lt;Review&gt; findReviewsByPostIdAdmin(long post_id) throws Exception {
+<b class="fc"><i>75</i>&nbsp;        String query = &quot;select review.* from review inner join trip on trip.trip_id = review.trip_id &quot; +</b>
+<i>76</i>&nbsp;                &quot;where trip.post_id = ?&quot;;
+<b class="fc"><i>77</i>&nbsp;        return jdbcTemplate.query(query, new RowMapper&lt;Review&gt;() {</b>
+<i>78</i>&nbsp;            public Review mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>79</i>&nbsp;                return new Review(rs.getLong(&quot;trip_id&quot;), rs.getLong(&quot;rated&quot;),</b>
+<b class="fc"><i>80</i>&nbsp;                        rs.getDate(&quot;post_date&quot;), rs.getString(&quot;review&quot;),</b>
+<b class="fc"><i>81</i>&nbsp;                        rs.getBoolean(&quot;visible&quot;));</b>
+<i>82</i>&nbsp;            }
+<b class="fc"><i>83</i>&nbsp;        }, post_id);</b>
+<i>84</i>&nbsp;    }
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;    @Override
+<i>87</i>&nbsp;    public boolean createReview(Review newReview) throws Exception {
+<b class="fc"><i>88</i>&nbsp;        String query = &quot;insert into review (trip_id, rated, post_date, review, visible)&quot; +</b>
+<i>89</i>&nbsp;                &quot;values (?,?,?,?,?)&quot;;
+<b class="fc"><i>90</i>&nbsp;        jdbcTemplate.update(query, newReview.getTrip_id(), newReview.getRated(),</b>
+<b class="fc"><i>91</i>&nbsp;                Timestamp.valueOf(LocalDateTime.now()), newReview.getReview(), true);</b>
+<b class="fc"><i>92</i>&nbsp;        return true;</b>
+<i>93</i>&nbsp;    }
+<i>94</i>&nbsp;
+<i>95</i>&nbsp;    @Override
+<i>96</i>&nbsp;    public boolean checkReviewExist(long trip_id) throws Exception {
+<b class="fc"><i>97</i>&nbsp;        String query = &quot;select count(trip_id) from review where trip_id = ?&quot;;</b>
+<b class="fc"><i>98</i>&nbsp;        List&lt;Integer&gt; checklist = jdbcTemplate.query(query, new RowMapper&lt;Integer&gt;() {</b>
+<i>99</i>&nbsp;            @Override
+<i>100</i>&nbsp;            public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>101</i>&nbsp;                return rs.getInt(&quot;count&quot;);</b>
+<i>102</i>&nbsp;            }
+<b class="fc"><i>103</i>&nbsp;        }, trip_id);</b>
+<b class="fc"><i>104</i>&nbsp;        if (checklist.get(0) == 0) {</b>
+<b class="fc"><i>105</i>&nbsp;            return false;</b>
+<i>106</i>&nbsp;        } else {
+<b class="fc"><i>107</i>&nbsp;            return true;</b>
+<i>108</i>&nbsp;        }
+<i>109</i>&nbsp;    }
+<i>110</i>&nbsp;
+<i>111</i>&nbsp;    @Override
+<i>112</i>&nbsp;    public void showHideReview(long trip_id) throws Exception {
+<b class="fc"><i>113</i>&nbsp;        String check = &quot;select visible from review where trip_id = ?&quot;;</b>
+<b class="fc"><i>114</i>&nbsp;        boolean isVisible = jdbcTemplate.queryForObject(check, new Object[]{trip_id}, boolean.class);</b>
+<i>115</i>&nbsp;        String query;
+<b class="fc"><i>116</i>&nbsp;        if (isVisible) {</b>
+<b class="fc"><i>117</i>&nbsp;            query = &quot;update review set visible = false where trip_id = ?&quot;;</b>
+<i>118</i>&nbsp;        } else {
+<b class="fc"><i>119</i>&nbsp;            query = &quot;update review set visible = true where trip_id = ?&quot;;</b>
+<i>120</i>&nbsp;        }
+<b class="fc"><i>121</i>&nbsp;        jdbcTemplate.update(query, trip_id);</b>
+<b class="fc"><i>122</i>&nbsp;    }</b>
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;    @Override
+<i>125</i>&nbsp;    public int createTravelerReview(TravelerReview review) throws Exception {
+<b class="fc"><i>126</i>&nbsp;        KeyHolder keyHolder = new GeneratedKeyHolder();</b>
+<b class="fc"><i>127</i>&nbsp;        String query = &quot;insert into travelerreviews (traveler_id,guider_id,review) values (?,?,?)&quot;;</b>
+<b class="fc"><i>128</i>&nbsp;        jdbcTemplate.update(connection -&gt; {</b>
+<b class="fc"><i>129</i>&nbsp;            PreparedStatement ps = connection</b>
+<b class="fc"><i>130</i>&nbsp;                    .prepareStatement(query, new String[]{&quot;review_id&quot;});</b>
+<b class="fc"><i>131</i>&nbsp;            ps.setLong(1, review.getTraveler_id());</b>
+<b class="fc"><i>132</i>&nbsp;            ps.setLong(2, review.getGuider_id());</b>
+<b class="fc"><i>133</i>&nbsp;            ps.setString(3, review.getReview());</b>
+<b class="fc"><i>134</i>&nbsp;            return ps;</b>
+<i>135</i>&nbsp;        }, keyHolder);
+<b class="fc"><i>136</i>&nbsp;        return (int) keyHolder.getKey();</b>
+<i>137</i>&nbsp;    }
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;    @Override
+<i>140</i>&nbsp;    public List&lt;TravelerReview&gt; findReviewOfATraveler(long traveler_id, long page) throws Exception {
+<b class="fc"><i>141</i>&nbsp;        String query = &quot;select review_id, user_name as gu_name, &quot; +</b>
+<i>142</i>&nbsp;                &quot;post_date, review, gu.avatar from travelerreviews as tra_re &quot; +
+<i>143</i>&nbsp;                &quot;inner join traveler as tra on tra_re.traveler_id = tra.traveler_id &quot; +
+<i>144</i>&nbsp;                &quot;inner join guider as gu on tra_re.guider_id = gu.guider_id &quot; +
+<i>145</i>&nbsp;                &quot;inner join account as acc on tra_re.guider_id = acc.account_id &quot; +
+<i>146</i>&nbsp;                &quot;where tra_re.traveler_id = ? and visible = true &quot; +
+<i>147</i>&nbsp;                &quot;limit ? offset ?&quot;;
+<b class="fc"><i>148</i>&nbsp;        return jdbcTemplate.query(query, new RowMapper&lt;TravelerReview&gt;() {</b>
+<i>149</i>&nbsp;            @Override
+<i>150</i>&nbsp;            public TravelerReview mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>151</i>&nbsp;                return new TravelerReview(rs.getLong(&quot;review_id&quot;),</b>
+<b class="fc"><i>152</i>&nbsp;                        rs.getTimestamp(&quot;post_date&quot;).toLocalDateTime(),</b>
+<b class="fc"><i>153</i>&nbsp;                        rs.getString(&quot;review&quot;),</b>
+<b class="fc"><i>154</i>&nbsp;                        rs.getString(&quot;gu_name&quot;),</b>
+<b class="fc"><i>155</i>&nbsp;                        rs.getString(&quot;avatar&quot;));</b>
+<i>156</i>&nbsp;            }
+<b class="fc"><i>157</i>&nbsp;        }, traveler_id, LIMIT, page * LIMIT);</b>
+<i>158</i>&nbsp;    }
+<i>159</i>&nbsp;
+<i>160</i>&nbsp;    @Override
+<i>161</i>&nbsp;    public TravelerReview findTravelerReviewById(long review_id) throws Exception {
+<b class="fc"><i>162</i>&nbsp;        String query = &quot;select review_id, user_name as gu_name, &quot; +</b>
+<i>163</i>&nbsp;                &quot;post_date, review, gu.avatar from travelerreviews as tra_re &quot; +
+<i>164</i>&nbsp;                &quot;inner join traveler as tra on tra_re.traveler_id = tra.traveler_id &quot; +
+<i>165</i>&nbsp;                &quot;inner join guider as gu on tra_re.guider_id = gu.guider_id &quot; +
+<i>166</i>&nbsp;                &quot;inner join account as acc on tra_re.guider_id = acc.account_id &quot; +
+<i>167</i>&nbsp;                &quot;where tra_re.review_id = ? and visible = true &quot;;
+<b class="fc"><i>168</i>&nbsp;        return jdbcTemplate.queryForObject(query, new RowMapper&lt;TravelerReview&gt;() {</b>
+<i>169</i>&nbsp;            @Override
+<i>170</i>&nbsp;            public TravelerReview mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>171</i>&nbsp;                return new TravelerReview(rs.getLong(&quot;review_id&quot;),</b>
+<b class="fc"><i>172</i>&nbsp;                        rs.getTimestamp(&quot;post_date&quot;).toLocalDateTime(),</b>
+<b class="fc"><i>173</i>&nbsp;                        rs.getString(&quot;review&quot;),</b>
+<b class="fc"><i>174</i>&nbsp;                        rs.getString(&quot;gu_name&quot;),</b>
+<b class="fc"><i>175</i>&nbsp;                        rs.getString(&quot;avatar&quot;));</b>
+<i>176</i>&nbsp;            }
+<b class="fc"><i>177</i>&nbsp;        }, review_id);</b>
+<i>178</i>&nbsp;    }
+<i>179</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,252 @@
+.layout{
+    width:100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.6);
+    top:0;
+    z-index: 10;
+    padding-top: 10%;
+    display: none;
+}
+
+.content-login{
+    width: 400px;
+    height: auto;
+    margin: 0 auto;
+    border: #000 solid 1px;
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
+}
+.facebook-button-container{
+    margin: 3rem 0 0;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+}
+.facebook-button{
+    margin: 0 auto;
+    width: 300px;
+    height: 38px;
+    border-radius: 20px;
+    background: #3b5998;
+    border: none;
+    color: #fff;
+}
+.IconContainer-3X91n{
+    margin-right: 7px;
+    width: 10px;
+    height: 0px;
+}
+.FacebookText-eC-J-{
+    text-align: center;
+    line-height: 38px;
+    font-family: Arial;
+    font-weight: bold;
+}
+.google-button-container{
+    margin: 1rem 0 0;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+}
+.google-button{
+    margin: 0 auto;
+    width: 300px;
+    height: 38px;
+    border: 1px solid #bfbfbe;
+    border-radius: 1.5rem;
+    background: #fff;
+    flex-direction: row;
+    position: relative;  
+    display: flex;
+}
+.Children-49JTf{
+    margin-left: 7px;
+    color: #4a4a4a;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0;
+    padding-top: 5px;
+    font-family: Arial;
+}
+
+.SignupSeparator-zlqUF {
+    text-align: center;
+    width: 100%;
+    margin: 2rem 0 1.5rem;
+    min-height: 1rem;
+}
+.SignupSeparatorText-2cxm- {
+    overflow: hidden;
+    text-align: center;
+    color: #bfbfbe;
+    font-size: .875rem;
+    font-weight: 400;
+}
+.SignupSeparatorText-2cxm-:before {
+    right: .5rem;
+    margin-left: -50%;
+}
+.SignupSeparatorText-2cxm-:after {
+    left: .5rem;
+    margin-right: -50%;
+}
+.SignupSeparatorText-2cxm-:after, .SignupSeparatorText-2cxm-:before {
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    background-color: #bfbfbe;
+    width: 35%;
+}
+.SubTitle-230L- {    
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1rem;
+    width: 100%;
+    text-align: center;
+    color: #4a4a4a;
+    padding-bottom: 15px;
+    margin-top: 30px;
+}
+.SignupForm-20HPb {
+    -webkit-box-flex: 0;
+    flex: 0 1 auto;
+    width: 100%;
+}
+.InputLabelConditionalHide-24VTo {
+    color: #bfbfbe;
+    display: none;
+}
+.InputLabel-Tch5j {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #000;
+    line-height: 1rem;
+    height: 1rem;
+    margin: 0 0 .5rem;
+    flex-direction: column;
+    
+}
+.Input-1e6rU {
+    background: transparent;
+    padding: 0 1rem;
+    font-size: 1rem;
+    width: 300px;
+    border: 1px solid #eaeaea;
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+    line-height: calc(3.5rem - 2px);
+    height: 40px;
+    border-radius: 2px;
+}
+.Button-2iSbC{
+    width: 300px;
+    height: 43px;
+    background-color: #e71575;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.loginLinkContain{
+    margin: .5rem 0;
+    color: #4a4a4a;
+}
+.loginLink{
+    font-size: 14px;
+    overflow: visible;
+    border: 0;
+    font: inherit;
+    -webkit-font-smoothing: inherit;
+    letter-spacing: inherit;
+    background: none;
+    cursor: pointer;
+    margin-bottom: 17px;
+}
+.SpanReady{
+    font-size: 13px;
+    font-family: Arial;
+    color: #4A4A4A;
+}
+
+.SpanLogin,.SpanSignUp{
+    font-size: 13px;
+    font-family: Arial;
+    color: #E71575;
+    cursor: pointer;
+}
+
+/* button close sign up form */
+
+.content-login .closeLogin{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.content-login .closeLogin i{
+    font-size: 20px;
+    color: #bfbfbd;
+}
+
+.loginForm .showPass{
+    position: relative;
+}
+
+.loginForm .showPass i{
+    right: 60px;
+    position: absolute;
+    top: 14px;
+    left: right;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.loginForm .forgotPass{
+    margin-bottom: 10px;
+}
+
+.loginForm .forgotPass a{
+    text-decoration: none;
+    color: rgb(191, 191, 190);
+}
+
+.loginForm .forgotPass a:hover{
+    color:#E71575;
+    text-decoration: underline;
+}
+
+.log-in-custom-select,.sign-up-custom-select {
+    height: 30px;
+    width: 100px;
+    margin-bottom: 15px;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+}
+
+.SignIn {
+    color:#e71575;
+    font-size: 13px;
+}
+
+
+/* Css change password */
+.changePassword{
+    margin: auto;
+    margin-top: 40px;
+    height: 500px;
+}
+
+.changePassword h2{
+    text-align: center;
+    margin-bottom: 30px;
+}

@@ -1,0 +1,541 @@
+.search .searchInput{
+  padding: 22px 39px;
+    border: 1px solid #eaeaea;
+    font-size: 18px;
+    height: 20px;
+    width: 380px;
+    color: #757575;
+    box-shadow: 0 2px 8px 2px rgba(0,0,0,.07);
+}
+.navbarRightContent ul li{
+  font-size: 17px;
+}
+/* content-left */
+.book_block{
+  padding: 2rem 1.5rem;
+  border-radius: .5rem;
+  min-width: 270px;
+  background: #fff;
+  box-shadow: 0 7px 33px 0 hsla(0,0%,78%,.5);
+  margin: 30px 30px 0 0;
+}
+.experience_price{
+      font-size: 1.25rem;
+  line-height: 1.5rem;
+  color: #4a4a4a;
+  font-family: Arial;
+}
+.Rating {
+  padding: 0;
+  margin: 5px 0 1.5rem;
+  font-size: .675rem;
+  font-weight: 500;
+  display: inline-block;
+  line-height: 1rem;
+}
+.DateSelector-2OYxm{
+  position: relative;
+  margin-bottom: 5px;
+}
+.DropdownButton-1gKqn {
+  margin-bottom: 1rem;
+}
+.Button-1bHL5 {
+  width: 100%;
+  line-height: calc(2.5rem - 2px);
+  padding: 0 1rem 0 .5rem;
+  border-radius: 2px;
+  border: 1px solid #eaeaea;
+  margin: 0;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  background: #fff;
+}
+.CalendarIconContainer-2Gxrj {
+  display: flex;
+  width: 1.5rem;
+}
+.CalendarIcon-3Nhbh {
+  fill: #bfbfbe;
+}
+.ButtonText-xoSvS {
+  font-weight: 500;
+  width: 100%;
+  text-align: left;
+  font-size: 17px;
+}
+.ChevronIcon-1tmys {
+  fill: #bfbfbe;
+  transform: rotate(0deg);
+  transition: transform .3s ease,-webkit-transform .3s ease;
+  margin-left: auto;
+}
+.PeopleSelector-3cPTh {
+  position: relative;
+}
+.DropdownButton-15Fja {
+  margin-bottom: 1rem;
+}
+.Button-1bHL5 {
+  width: 100%;
+  line-height: calc(2.5rem - 2px);
+  padding: 0 1rem 0 .5rem;
+  border-radius: 2px;
+  border: 1px solid #eaeaea;
+  margin: 0;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.ProfileIconContainer-3Xala {
+  display: flex;
+  width: 1.5rem;
+}
+.ProfileIcon-3FvCp {
+  fill: #bfbfbe;
+}
+.ButtonText-3rr6g {
+  font-weight: 500;
+  font-size: 17px;
+}
+.LocalInfo-3-Zrh {
+  min-height: 3.5rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  margin-top: 20px;
+}
+.LocalImages-1fJRM {
+  -webkit-box-flex: 0;
+  flex: 0 0 5.5rem;
+  position: relative;
+}
+.LocalAvatar-2w9Nv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 100%;
+  border: 2px solid #fff;
+  z-index: 1;
+}
+.LocalAvatar-2w9Nv:nth-child(2) {
+  left: 1.5rem;
+  z-index: 0;
+}
+.LocalInfoText-2C1wz {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1rem;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.HighlightedText-1qv83 {
+  color: #6fbe44;
+}
+.BookButtonContainer-8-YC2 {
+  height: 3.5rem;
+}
+.FullWidth-pJfgw {
+  width: 100%;
+}
+.Gradient-9mayK {
+  color: #fff;
+  background: #6fbe44;
+}
+.Large-1e1rx {
+  max-height: 3.5rem;
+  min-height: 3.5rem;
+}
+.Button-2iSbC {
+  font-size: 1rem;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0 2rem;
+  border-radius: 2.5rem;
+  border: none;
+  font-weight: 600;
+  user-select: none;
+  height: 3rem;
+  overflow: hidden;
+}
+/* end content-left */
+
+.Breadcrumbs li{
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.Breadcrumbs li a{
+    text-decoration: none;
+    color: inherit;
+    padding-right: 10px;
+}
+
+.Breadcrumbs li a:hover{
+    color:#6fbe44;
+    text-decoration: underline;
+}
+
+.content-right .intro .titleTour{
+    font-size: 50px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 30px;
+    max-width: 95%;
+    position: relative;
+}
+.content-right .intro  #favorite {
+  color:#e71575;
+}
+
+.content-right .intro .fa-heart{
+  position: absolute;
+  top:0;
+  right:-50px;
+  cursor: pointer;
+}
+.content-right .intro p{
+    font-size: 20px;
+    letter-spacing: 1.5px;
+}
+.activities{
+    font-size: 18px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #eaeaea;
+} 
+
+.activities ul{
+    padding: 2.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.activities ul li{
+    display: inline-block;
+    list-style-type: none;
+    width: 50%;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+.activities i{
+    font-size: 22px;
+}
+
+.activities span{
+    padding-left: 15px;
+}
+
+.reason h2{
+    margin-top: 30px;
+    font-size: 32px;
+    font-weight: 800;
+}
+.reason ul {
+    padding-bottom: 0;
+}
+.reason ul li{
+    position: relative;
+}
+
+.reason i{
+    color:#6fbe44;
+    position: absolute;
+}
+
+.reason ul li p{
+    padding-left: 35px;
+}
+
+/* slideshow */
+.slideshow-container h2{
+    margin: 20px 0;
+    font-size: 32px;
+    font-weight: 800;
+}
+.mySlides {
+    /* display: none */
+}
+.mySlides img {
+    vertical-align: middle;
+    width: 100%;
+    height: 525px;
+    border-radius: 10px;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+/* end slide */
+
+.slideshow .readMoreText .slideshow p{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+
+.slideshow .readMoreText {
+  padding-bottom: 30px;
+    border-bottom: #eaeaea 1px solid;
+}
+/* plan */
+#planInPost {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eaeaea;
+  width: 100%;
+}
+#planInPost h2{
+  padding: 30px 0;
+  font-weight: 800;
+  font-size: 32px;
+}
+
+#planInPost p{
+  line-height: 25px;
+}
+.meetPoint,.detail{
+  position: relative;
+}
+#planInPost .fa-map-marker{
+  color:#e71575 ;
+  position: absolute;
+  font-size: 20px;
+}
+
+#planInPost .fa-graduation-cap{
+  color:#e71575 ;
+  position: absolute;
+  font-size: 20px;
+}
+#planInPost .detailPlan{
+  display: inline-block;
+  padding-left: 35px;
+  margin-bottom: 30px ;
+}
+
+#planInPost .detail > i{
+  color:#e71575 !important;
+  position: absolute;
+  font-size: 10px;
+  top:10px;
+}
+
+#planInPost button{
+  padding: 15px 30px;
+    font-size: 15px;
+    font-weight: 800;
+    background: #fff;
+    color: #6fbe44;
+    border: 1px solid;
+    border-radius: 50px;
+}
+
+/* good to know */
+.shouldKnow{
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 30px;
+}
+.shouldKnow h3{
+  margin-bottom: 30px;
+}
+
+.shouldKnow ul{
+  margin-bottom: 30px;
+}
+
+.shouldKnow ul li{
+  display: block;
+  width: 100%;
+}
+
+.shouldKnow ul li .fa-times{
+  font-size: 29px;
+    top: -5px;
+}
+
+.tourversion{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.tourversion h2{
+  font-size: 32px;
+  margin: 30px 0;
+}
+
+.tourversion ul li .sheet{
+  width: 420px;
+}
+
+/* calendar button */
+
+#text-calendar{
+  display: none;
+}
+
+/* view đếm số lượng người */
+
+.viewNumberTravel{
+  height: 180px;
+  padding: 30px 20px;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 5px;
+  display: none;
+}
+
+.viewNumberTravel .plusAndMinus{
+  display: inline-block;
+  float: right;
+}
+
+.viewNumberTravel .adult,.children{
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #4a4a4a;
+}
+
+.adult,.children i {
+  cursor: pointer;
+}
+
+.viewNumberTravel p{
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.viewNumberTravel a{
+  color:#6fbe44;
+}
+.react-datepicker-popper{
+  z-index: 2 !important;
+}
+
+.react-datepicker-wrapper{
+  width: 100%;
+  line-height: calc(2.5rem - 2px);
+  padding: 0 1rem 0 .5rem;
+  border-radius: 2px;
+  border: 1px solid #eaeaea;
+  margin: 0;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.DateSelector-2OYxm{
+  position: relative;
+}
+
+.DateSelector-2OYxm i{
+  position: absolute;
+  font-size: 16px;
+  top: 10px;
+  left: 10px;
+  opacity: 0.2;
+}
+.react-datepicker__input-container input{
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  border: 1px solid #eaeaea;
+}
+
+.mySlides {
+  display: none;
+}
+.mySlides.active {
+  display: block;
+}
+.dot.active {
+  background: blue;
+}
+
+.serve {
+  padding: 15px 30px;
+    font-size: 15px;
+    font-weight: 800;
+    background: #fff;
+    color: #6fbe44;
+    border: 1px solid;
+    border-radius: 50px;
+    margin: 25px 0;
+}

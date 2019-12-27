@@ -1,0 +1,252 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PaypalServiceImpl</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">services.Paypal</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PaypalServiceImpl (services.Paypal)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PaypalServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (63/ 63)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">PaypalServiceImpl$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/ 9)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/ 10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (72/ 72)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package services.Paypal;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.paypal.api.payments.*;
+<i>4</i>&nbsp;import com.paypal.base.rest.APIContext;
+<i>5</i>&nbsp;import com.paypal.base.rest.PayPalRESTException;
+<i>6</i>&nbsp;import entities.Order;
+<i>7</i>&nbsp;import org.slf4j.Logger;
+<i>8</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>9</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>10</i>&nbsp;import org.springframework.jdbc.core.JdbcTemplate;
+<i>11</i>&nbsp;import org.springframework.jdbc.core.RowMapper;
+<i>12</i>&nbsp;import org.springframework.stereotype.Repository;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import java.sql.ResultSet;
+<i>15</i>&nbsp;import java.sql.SQLException;
+<i>16</i>&nbsp;import java.time.format.DateTimeFormatter;
+<i>17</i>&nbsp;import java.util.ArrayList;
+<i>18</i>&nbsp;import java.util.List;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;@Repository
+<i>21</i>&nbsp;public class PaypalServiceImpl implements PaypalService {
+<i>22</i>&nbsp;    private JdbcTemplate jdbcTemplate;
+<i>23</i>&nbsp;    private APIContext apiContext;
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    @Autowired
+<b class="fc"><i>26</i>&nbsp;    public PaypalServiceImpl(JdbcTemplate jt, APIContext context) {</b>
+<b class="fc"><i>27</i>&nbsp;        this.jdbcTemplate = jt;</b>
+<b class="fc"><i>28</i>&nbsp;        this.apiContext = context;</b>
+<b class="fc"><i>29</i>&nbsp;    }</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    @Override
+<i>32</i>&nbsp;    public Payment createPayment(Double total, String currency, String description, String cancelUrl, String successUrl) throws PayPalRESTException {
+<i>33</i>&nbsp;        // Create amount
+<b class="fc"><i>34</i>&nbsp;        Amount amount = new Amount();</b>
+<b class="fc"><i>35</i>&nbsp;        amount.setCurrency(currency);</b>
+<b class="fc"><i>36</i>&nbsp;        amount.setTotal(String.format(&quot;%.2f&quot;, total));</b>
+<i>37</i>&nbsp;        //Create transaction
+<b class="fc"><i>38</i>&nbsp;        Transaction transaction = new Transaction();</b>
+<b class="fc"><i>39</i>&nbsp;        transaction.setDescription(description);</b>
+<b class="fc"><i>40</i>&nbsp;        transaction.setAmount(amount);</b>
+<b class="fc"><i>41</i>&nbsp;        List&lt;Transaction&gt; transactions = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>42</i>&nbsp;        transactions.add(transaction);</b>
+<i>43</i>&nbsp;        // Create payer
+<b class="fc"><i>44</i>&nbsp;        Payer payer = new Payer();</b>
+<b class="fc"><i>45</i>&nbsp;        payer.setPaymentMethod(PaypalPaymentMethod.paypal.toString());</b>
+<i>46</i>&nbsp;        // Create payment
+<b class="fc"><i>47</i>&nbsp;        Payment payment = new Payment();</b>
+<b class="fc"><i>48</i>&nbsp;        payment.setIntent(PaypalPaymentIntent.sale.toString());</b>
+<b class="fc"><i>49</i>&nbsp;        payment.setPayer(payer);</b>
+<b class="fc"><i>50</i>&nbsp;        payment.setTransactions(transactions);</b>
+<b class="fc"><i>51</i>&nbsp;        RedirectUrls redirectUrls = new RedirectUrls();</b>
+<b class="fc"><i>52</i>&nbsp;        redirectUrls.setCancelUrl(cancelUrl);</b>
+<b class="fc"><i>53</i>&nbsp;        redirectUrls.setReturnUrl(successUrl);</b>
+<b class="fc"><i>54</i>&nbsp;        payment.setRedirectUrls(redirectUrls);</b>
+<b class="fc"><i>55</i>&nbsp;        apiContext.setMaskRequestId(true);</b>
+<b class="fc"><i>56</i>&nbsp;        return payment.create(apiContext);</b>
+<i>57</i>&nbsp;    }
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    @Override
+<i>60</i>&nbsp;    public Payment executePayment(String paymentId, String payerId) throws PayPalRESTException {
+<b class="fc"><i>61</i>&nbsp;        Payment payment = new Payment();</b>
+<b class="fc"><i>62</i>&nbsp;        payment.setId(paymentId);</b>
+<b class="fc"><i>63</i>&nbsp;        PaymentExecution paymentExecute = new PaymentExecution();</b>
+<b class="fc"><i>64</i>&nbsp;        paymentExecute.setPayerId(payerId);</b>
+<b class="fc"><i>65</i>&nbsp;        return payment.execute(apiContext, paymentExecute);</b>
+<i>66</i>&nbsp;    }
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;    @Override
+<i>69</i>&nbsp;    public void createTransactionRecord(String transaction_id, String payment_id,
+<i>70</i>&nbsp;                                        String payer_id, String description, boolean success) throws Exception {
+<b class="fc"><i>71</i>&nbsp;        String insertQuery = &quot;insert into transaction (transaction_id, payment_id, payer_id, description, date_of_transaction, success) &quot; +</b>
+<i>72</i>&nbsp;                &quot;values (?,?,?,?,?,?)&quot;;
+<b class="fc"><i>73</i>&nbsp;        jdbcTemplate.update(insertQuery, transaction_id, payment_id, payer_id, description,</b>
+<b class="fc"><i>74</i>&nbsp;                new java.sql.Timestamp(System.currentTimeMillis()), success);</b>
+<b class="fc"><i>75</i>&nbsp;    }</b>
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;    @Override
+<i>78</i>&nbsp;    public double getTransactionFee(Order order) throws Exception {
+<b class="fc"><i>79</i>&nbsp;        double fee = 0;</b>
+<b class="fc"><i>80</i>&nbsp;        String query = &quot;select price from post where post_id = ?&quot;;</b>
+<b class="fc"><i>81</i>&nbsp;        double price = jdbcTemplate.queryForObject(query, new Object[]{order.getPost_id()}, double.class);</b>
+<b class="fc"><i>82</i>&nbsp;        fee = price * order.getAdult_quantity() + (price / 2) * order.getChildren_quantity();</b>
+<b class="fc"><i>83</i>&nbsp;        return fee;</b>
+<i>84</i>&nbsp;    }
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;    @Override
+<i>87</i>&nbsp;    public String getTransactionDescription(Order order) throws Exception {
+<b class="fc"><i>88</i>&nbsp;        DateTimeFormatter format = DateTimeFormatter.ofPattern(&quot;MMM dd, yyyy&quot;);</b>
+<b class="fc"><i>89</i>&nbsp;        List&lt;String&gt; description = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>90</i>&nbsp;        String ds = &quot;&quot;;</b>
+<b class="fc"><i>91</i>&nbsp;        ds = &quot;On &quot; + format.format(order.getBegin_date()) + &quot;\n&quot;;</b>
+<b class="fc"><i>92</i>&nbsp;        ds += &quot;. Include adult: &quot; + order.getAdult_quantity() + &quot;, children: &quot; + order.getChildren_quantity()</b>
+<b class="fc"><i>93</i>&nbsp;                + &quot;. Fee: &quot; + order.getFee_paid() + &quot;.&quot;;</b>
+<b class="fc"><i>94</i>&nbsp;        String query = &quot;SELECT title, traveler.first_name as traFname, traveler.last_name as traLname, &quot; +</b>
+<i>95</i>&nbsp;                &quot;guider.first_name as guFname, guider.last_name as guLname &quot; +
+<i>96</i>&nbsp;                &quot;FROM post &quot; +
+<i>97</i>&nbsp;                &quot;join guider on post.guider_id = guider.guider_id &quot; +
+<i>98</i>&nbsp;                &quot;join traveler on traveler_id = ? &quot; +
+<i>99</i>&nbsp;                &quot;where post_id = ?&quot;;
+<b class="fc"><i>100</i>&nbsp;        description = jdbcTemplate.query(query, new RowMapper&lt;String&gt;() {</b>
+<i>101</i>&nbsp;            @Override
+<i>102</i>&nbsp;            public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+<b class="fc"><i>103</i>&nbsp;                String info = &quot;&quot;;</b>
+<b class="fc"><i>104</i>&nbsp;                if (rs.getString(&quot;title&quot;) != null) {</b>
+<b class="fc"><i>105</i>&nbsp;                    info += &quot; On tour &quot; + rs.getString(&quot;title&quot;);</b>
+<i>106</i>&nbsp;                }
+<b class="fc"><i>107</i>&nbsp;                if (rs.getString(&quot;traFname&quot;) != null &amp;&amp; (rs.getString(&quot;traLname&quot;) != null)) {</b>
+<b class="fc"><i>108</i>&nbsp;                    info += &quot; of &quot; + rs.getString(&quot;traFname&quot;) + &quot; &quot; + rs.getString(&quot;traLname&quot;);</b>
+<i>109</i>&nbsp;                }
+<b class="fc"><i>110</i>&nbsp;                if (rs.getString(&quot;guFname&quot;) != null &amp;&amp; rs.getString(&quot;guLname&quot;) != null) {</b>
+<b class="fc"><i>111</i>&nbsp;                    info += &quot; and &quot; + rs.getString(&quot;guFname&quot;) + &quot; &quot; + rs.getString(&quot;guLname&quot;);</b>
+<i>112</i>&nbsp;                }
+<b class="fc"><i>113</i>&nbsp;                return info;</b>
+<i>114</i>&nbsp;            }
+<b class="fc"><i>115</i>&nbsp;        }, order.getTraveler_id(), order.getPost_id());</b>
+<b class="fc"><i>116</i>&nbsp;        if (description != null &amp;&amp; !description.isEmpty()) {</b>
+<b class="fc"><i>117</i>&nbsp;            ds += description.get(0);</b>
+<i>118</i>&nbsp;        }
+<b class="fc"><i>119</i>&nbsp;        return ds;</b>
+<i>120</i>&nbsp;    }
+<i>121</i>&nbsp;
+<i>122</i>&nbsp;    @Override
+<i>123</i>&nbsp;    public Refund refundPayment(String transaction_id) throws PayPalRESTException {
+<b class="fc"><i>124</i>&nbsp;        String query = &quot;SELECT fee_paid FROM trip where transaction_id = ?&quot;;</b>
+<b class="fc"><i>125</i>&nbsp;        double fee = jdbcTemplate.queryForObject(query, new Object[]{transaction_id}, double.class);</b>
+<i>126</i>&nbsp;        // Create new refund
+<b class="fc"><i>127</i>&nbsp;        Refund refund = new Refund();</b>
+<i>128</i>&nbsp;        // Create amount
+<b class="fc"><i>129</i>&nbsp;        Amount amount = new Amount();</b>
+<b class="fc"><i>130</i>&nbsp;        amount.setTotal(String.format(&quot;%.2f&quot;, fee));</b>
+<b class="fc"><i>131</i>&nbsp;        amount.setCurrency(&quot;USD&quot;);</b>
+<b class="fc"><i>132</i>&nbsp;        refund.setAmount(amount);</b>
+<b class="fc"><i>133</i>&nbsp;        Sale sale = new Sale();</b>
+<b class="fc"><i>134</i>&nbsp;        sale.setId(transaction_id);</b>
+<b class="fc"><i>135</i>&nbsp;        return sale.refund(apiContext, refund);</b>
+<i>136</i>&nbsp;    }
+<i>137</i>&nbsp;
+<i>138</i>&nbsp;    @Override
+<i>139</i>&nbsp;    public void createRefundRecord(String transaction_id, String message) throws Exception {
+<b class="fc"><i>140</i>&nbsp;        String query = &quot;insert into refund (transaction_id, date_of_refund, message) values (?,?,?)&quot;;</b>
+<b class="fc"><i>141</i>&nbsp;        jdbcTemplate.update(query, transaction_id, new java.sql.Timestamp(System.currentTimeMillis()), message);</b>
+<b class="fc"><i>142</i>&nbsp;    }</b>
+<i>143</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-12-15 16:30</div>
+</div>
+</body>
+</html>
